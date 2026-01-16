@@ -1,0 +1,149 @@
+---
+title: Academic Works
+permalink: /academic-works.html
+---
+
+<main id="main-content" class="container content-container">
+    <!-- Left sidebar with profile (Desktop only) -->
+    <aside class="sidebar profile-sidebar">
+        <div class="profile-card">
+            <div class="profile-image-container">
+                <img src="/jordan.jpg" 
+                     alt="Professional headshot of Dr. Jordan Terry"
+                     class="profile-image">
+                <div class="image-blur"></div>
+            </div>
+            <h2 class="profile-name">Jordan Terry</h2>
+            <p class="profile-email">{{site.email}}</p>
+        </div>
+        
+        <!-- Social icons for tablet/mobile -->
+        <div class="mobile-social-icons">
+            <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
+                <img src="/assets/images/github.svg" alt="GitHub">
+            </a>
+            <a href="{{site.twitter}}" class="social-icon" aria-label="Twitter">
+                <img src="/assets/images/twitter.svg" alt="Twitter">
+            </a>
+            <a href="{{site.linkedin}}" class="social-icon" aria-label="LinkedIn">
+                <img src="/assets/images/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="{{site.google-scholar}}" class="social-icon" aria-label="Google Scholar">
+                <img src="/assets/images/google-scholar.svg" alt="Google Scholar">
+            </a>
+            <a href="{{site.bluesky}}" class="social-icon" aria-label="Bluesky">
+                <img src="/assets/images/bluesky.svg" alt="Bluesky">
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main content area -->
+    <div class="main-content-wrapper">
+        <!-- Publications Section -->
+        <section class="academic-section">
+            <h1 class="academic-title">Publications</h1>
+            
+            {% for publication in site.data.academic.Publications %}
+            <div class="publication-item">
+                <h2 class="publication-title">
+                    {% if publication.arxiv %}
+                        <a href="{{ publication.arxiv }}" class="publication-link" target="_blank" rel="noopener">
+                            {{ publication.title }}
+                        </a>
+                    {% else %}
+                        {{ publication.title }}
+                    {% endif %}
+                </h2>
+                
+                <div class="publication-authors">{{ publication.authors }}</div>
+                
+                <div class="publication-meta">
+                    <span class="publication-location">{{ publication.location }}</span>
+                    <span class="publication-date">{{ publication.date }}</span>
+                </div>
+                
+                {% if publication.notes %}
+                <div class="publication-notes">
+                    {% for note in publication.notes %}
+                    <span class="publication-note">{{ note }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if publication.arxiv %}
+                <div class="publication-links">
+                    <a href="{{ publication.arxiv }}" class="publication-link-button" target="_blank" rel="noopener">
+                        arXiv
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+        
+        <!-- Talks Section -->
+        {% if site.data.academic.Talks %}
+        <section class="academic-section">
+            <h1 class="academic-title">Talks</h1>
+            
+            {% for talk in site.data.academic.Talks %}
+            <div class="talk-item">
+                <h2 class="talk-title">{{ talk.title }}</h2>
+                
+                <div class="talk-meta">
+                    <span class="talk-location">{{ talk.location }}</span>
+                    <span class="talk-date">{{ talk.date }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+        
+        <!-- Teaching Section -->
+        {% if site.data.academic.Teaching %}
+        <section class="academic-section">
+            <h1 class="academic-title">Teaching</h1>
+            
+            {% for teaching in site.data.academic.Teaching %}
+            <div class="teaching-item">
+                <h2 class="teaching-title">{{ teaching.title }}</h2>
+                
+                <div class="teaching-meta">
+                    <span class="teaching-position">{{ teaching.position }}</span>
+                    <span class="teaching-date">{{ teaching.date }}</span>
+                </div>
+                
+                {% if teaching.notes %}
+                <div class="teaching-notes">
+                    {% for note in teaching.notes %}
+                    <span class="teaching-note">{{ note }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+    </div>
+
+    <!-- Right sidebar with social icons (Desktop only) -->
+    <aside class="sidebar social-sidebar">
+        <div class="social-icons">
+            <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
+                <img src="/assets/images/github.svg" alt="GitHub">
+            </a>
+            <a href="{{site.twitter}}" class="social-icon" aria-label="Twitter">
+                <img src="/assets/images/twitter.svg" alt="Twitter">
+            </a>
+            <a href="{{site.linkedin}}" class="social-icon" aria-label="LinkedIn">
+                <img src="/assets/images/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="{{site.google-scholar}}" class="social-icon" aria-label="Google Scholar">
+                <img src="/assets/images/google-scholar.svg" alt="Google Scholar">
+            </a>
+            <a href="{{site.bluesky}}" class="social-icon" aria-label="Bluesky">
+                <img src="/assets/images/bluesky.svg" alt="Bluesky">
+            </a>
+        </div>
+    </aside>
+</main>

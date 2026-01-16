@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {% include head.html %}
+
+  <link href="assets/css/cv.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    {% include nav_head.html %}
+
+    <main id="main-content" class="container content-container">
+        <!-- Left sidebar with social icons (Desktop only) -->
+        <aside class="sidebar social-sidebar">
+            <div class="social-icons">
+                <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
+                    <img src="/assets/images/github.svg" alt="GitHub">
+                </a>
+                <a href="{{site.twitter}}" class="social-icon" aria-label="Twitter">
+                    <img src="/assets/images/twitter.svg" alt="Twitter">
+                </a>
+                <a href="{{site.linkedin}}" class="social-icon" aria-label="LinkedIn">
+                    <img src="/assets/images/linkedin.svg" alt="LinkedIn">
+                </a>
+                <a href="{{site.google-scholar}}" class="social-icon" aria-label="Google Scholar">
+                    <img src="/assets/images/google-scholar.svg" alt="Google Scholar">
+                </a>
+                <a href="{{site.bluesky}}" class="social-icon" aria-label="Bluesky">
+                    <img src="/assets/images/bluesky.svg" alt="Bluesky">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main content area -->
+        <div class="main-content-wrapper">
+            <div id="cv-box">
+                {{content}}
+            </div>
+        </div>
+
+     
+    </main>
+</body>
+
+</html>

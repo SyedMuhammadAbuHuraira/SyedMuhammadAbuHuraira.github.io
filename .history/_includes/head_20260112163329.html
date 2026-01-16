@@ -1,0 +1,64 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dr. Jordan Terry leads the Farama Foundation, developing open-source machine learning software. Former founder of Swarm Labs and PhD from University of Maryland.">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>{{ site.name }}</title>
+
+    {% seo title=false %}
+    {% include analytics.html %}
+
+    <link rel="canonical" href="https://jkterry.ai/" />
+
+    <!-- Add favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    
+    <!-- Theme toggle script -->
+    <script>
+        // Check for saved theme preference or default to dark
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (themeToggle && themeIcon) {
+                // Update toggle button based on current theme
+                updateThemeIcon(currentTheme, themeIcon);
+                
+                // Toggle theme on button click
+                themeToggle.addEventListener('click', function() {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    
+                    // Update theme
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    
+                    // Update icon
+                    updateThemeIcon(newTheme, themeIcon);
+                });
+            }
+            
+            function updateThemeIcon(theme, icon) {
+                if (theme === 'dark') {
+                    icon.innerHTML = '☀️'; // Sun icon for light mode
+                    icon.setAttribute('aria-label', 'Switch to light mode');
+                } else {
+                    icon.innerHTML = '🌙'; // Moon icon for dark mode
+                    icon.setAttribute('aria-label', 'Switch to dark mode');
+                }
+            }
+        });
+    </script>
+</head>

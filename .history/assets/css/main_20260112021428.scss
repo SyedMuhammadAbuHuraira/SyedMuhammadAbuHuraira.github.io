@@ -1,0 +1,310 @@
+---
+---
+
+/* Reset CSS */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Improve text rendering */
+body {
+    margin: 0;
+    padding-bottom: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #666;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1 {
+    position: relative;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Focus styles for accessibility */
+:focus {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+/* Focus-visible for better UX */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+/* Skip to main content link for accessibility */
+.skip-to-main {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1em;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+}
+
+.skip-to-main:focus {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.header-bar {
+    background-color: #fff;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.header-bar .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-left {
+    flex: 0 0 200px;
+
+    @media (max-width: 900px) {
+        margin: 0 -1.5rem;
+    }
+}
+
+.header-left a {
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    color: #333;
+}
+
+.header-link-container {
+    display: flex;
+    /* flex: 0 0 auto; */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem 3rem;
+
+}
+
+a.header-link {
+    color: #666;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.2s;
+}
+
+a.header-link:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+/* like a .header-link-container but used somewhere below the actual header */
+.body-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem 2.5rem;
+
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+    margin: -1rem 0;
+    padding: 0 1rem;
+}
+
+/* Remove animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+    a.header-link::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        transform: scaleX(0);
+        transition: transform 0.2s;
+    }
+
+    a.header-link:hover::after {
+        transform: scaleX(1);
+    }
+}
+
+.social-links {
+    flex: 0 0 200px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+}
+
+.social-links img {
+    width: 18px;
+    height: 18px;
+    transition: opacity 0.2s;
+    opacity: 0.7;
+}
+
+.social-links img:hover {
+    opacity: 1;
+}
+
+.content-container {
+    display: flex;
+    gap: 4rem;
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.sidebar {
+    flex: 0 0 250px;
+    position: sticky;
+    top: 2rem;
+}
+
+.main-content {
+    flex: 1;
+    max-width: 600px;
+    padding-bottom: 4rem;
+}
+
+/* Improve paragraph readability */
+.main-content p {
+    margin-bottom: 1.5em;
+    max-width: 70ch;
+}
+
+.profile-image {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.sidebar h1 {
+    text-align: center;
+    font-size: 1.75rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.sidebar h5 {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+/* Print styles */
+@media print {
+    .header-bar {
+        box-shadow: none;
+        border-bottom: 1px solid #000;
+    }
+
+    .social-links {
+        display: none;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+
+    body {
+        color: #000;
+    }
+}
+
+
+.info-header {
+    margin-bottom: 1rem;
+    text-align: center;
+    // color: #333;
+    font-size: 90%;
+}
+
+.citation {
+    margin: 0.5rem 0 1.5rem 0;
+
+    .citation-title {
+        font-size: 110%;
+
+        a {
+            text-decoration: underline;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #666;
+        }
+    }
+}
+
+/* mobile */
+
+@media (max-width: 900px) {
+    .content-container {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .sidebar {
+        position: static;
+        text-align: center;
+    }
+
+    .header-bar .row {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header-left, .header-links, .social-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .header-links {
+        margin: 0.5rem 0;
+        gap: 2rem;
+    }
+
+    .header-bar {
+        padding: 1rem 0;
+    }
+}

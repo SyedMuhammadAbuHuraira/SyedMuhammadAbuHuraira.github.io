@@ -1,0 +1,211 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Enhanced SEO Descriptions -->
+    <meta name="description" content="Dr. Jordan Terry leads the Farama Foundation, developing open-source reinforcement learning infrastructure. PhD in Computer Science from University of Maryland.">
+    <meta name="keywords" content="AI research, reinforcement learning, machine learning, Farama Foundation, computer science, academic">
+    <meta name="author" content="Dr. Jordan Terry">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ site.url }}/jordan.jpg">
+    
+    <!-- Theme Color for Cosmic Blue Design -->
+    <meta name="theme-color" content="#1a237e" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#e3f2fd" media="(prefers-color-scheme: light)">
+    
+    <!-- Apple Minimalism Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.name }}</title>
+
+    {% seo title=false %}
+    {% include analytics.html %}
+
+    <link rel="canonical" href="{{ site.url }}" />
+
+    <!-- ===== SF PRO TYPOGRAPHY ===== -->
+    <!-- Primary: SF Pro Display (Apple's system font fallback) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fallback fonts for academic professionalism -->
+    <style>
+        @font-face {
+            font-family: 'SF Pro Display';
+            src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto');
+            font-weight: 300 700;
+        }
+        
+        :root {
+            --font-sf-pro: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            --font-academic: 'Inter', 'SF Pro Display', Georgia, 'Times New Roman', serif;
+            --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+        }
+    </style>
+
+    <!-- ===== CRITICAL CSS (Inlined for Performance) ===== -->
+    <style>
+        /* Critical: Layout and Typography */
+        :root {
+            /* Cosmic Blue Color Palette */
+            --cosmic-blue-dark: #0d1b2a;
+            --cosmic-blue-medium: #1b263b;
+            --cosmic-blue-light: #415a77;
+            --cosmic-blue-accent: #3498db;
+            --cosmic-blue-particle: #64b5f6;
+            
+            /* Metallic Gradients */
+            --metallic-silver: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 50%, #e0e0e0 100%);
+            --metallic-blue: linear-gradient(135deg, #3498db 0%, #1a237e 50%, #3498db 100%);
+            
+            /* Typography Scale */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            
+            /* Spacing (Grid Discipline) */
+            --space-unit: 0.5rem;
+            --space-xs: calc(var(--space-unit) * 1);
+            --space-sm: calc(var(--space-unit) * 2);
+            --space-md: calc(var(--space-unit) * 4);
+            --space-lg: calc(var(--space-unit) * 6);
+            --space-xl: calc(var(--space-unit) * 8);
+            
+            /* Border Radius (Apple Minimalism) */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Transitions (Calm Animation Timing) */
+            --transition-fast: 150ms ease;
+            --transition-base: 300ms ease;
+            --transition-slow: 500ms ease;
+        }
+
+        /* Dark/Light Theme Variables */
+        [data-theme="dark"] {
+            --bg-primary: var(--cosmic-blue-dark);
+            --bg-secondary: var(--cosmic-blue-medium);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --card-bg: rgba(0, 0, 0, 0.02);
+        }
+
+        /* Base Typography (Academic Professionalism) */
+        body {
+            font-family: var(--font-academic);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            margin: 0;
+            padding: 0;
+            transition: background-color var(--transition-base), color var(--transition-base);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-sf-pro);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        /* Academic Reading Flow */
+        .academic-content {
+            max-width: 65ch;
+            line-height: 1.8;
+        }
+
+        /* Metallic Lines */
+        .metallic-line {
+            height: 1px;
+            background: var(--metallic-silver);
+            width: 100%;
+            margin: var(--space-md) 0;
+            position: relative;
+        }
+
+        .metallic-line::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--metallic-blue);
+        }
+
+        /* Particle Canvas Setup */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+
+    <!-- ===== EXTERNAL DEPENDENCIES ===== -->
+    <!-- Particles.js for Cosmic Blue Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS (Deferred) -->
+    <link rel="preload" href="/assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/main.css"></noscript>
+    
+    <!-- Theme Detection Script -->
+    <script>
+        // Theme detection and setting
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+            
+            // Load non-critical CSS
+            function loadCSS(href) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                document.head.appendChild(link);
+            }
+            
+            window.addEventListener('load', function() {
+                loadCSS('/assets/css/main.css');
+            });
+        })();
+    </script>
+</head>

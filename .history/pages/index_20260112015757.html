@@ -1,0 +1,209 @@
+---
+title: Dr. Jordan Terry
+permalink: /
+layout: default
+---
+
+<!-- Main Content with Apple Minimalism Design -->
+<div class="home-container">
+  <!-- Left Sidebar - Professional Profile -->
+  <aside class="profile-sidebar">
+    <!-- Gradient Silver Stroke Border -->
+    <div class="profile-card">
+      <div class="profile-image-wrapper">
+        <!-- Metallic gradient border -->
+        <div class="metallic-border"></div>
+        <img src="/jordan.jpg" 
+             alt="Professional headshot of Dr. Jordan Terry"
+             class="profile-image">
+        
+        <!-- Subtle particle effect on hover -->
+        <div class="particle-overlay"></div>
+      </div>
+      
+      <!-- Name with SF Pro typography -->
+      <div class="profile-info">
+        <h1 class="profile-name">
+          <span class="gradient-text">Dr. Jordan Terry</span>
+        </h1>
+        <p class="profile-title">AI Research • Reinforcement Learning • Computational Economics</p>
+        
+        <!-- Geometric bullet icon list -->
+        <ul class="profile-quicklinks">
+          <li>
+            <svg class="bullet-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4" fill="#3498db"/>
+              <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <a href="/cv">Academic CV</a>
+          </li>
+          <li>
+            <svg class="bullet-icon" viewBox="0 0 24 24">
+              <polygon points="12,2 22,12 12,22 2,12" fill="#2ecc71"/>
+              <circle cx="12" cy="12" r="3" fill="white"/>
+            </svg>
+            <a href="/academic-works">Publications</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area - Left-aligned academic reading flow -->
+  <main class="academic-content">
+    <!-- Section with thin metallic line divider -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="metallic-line"></div>
+        <h2 class="section-title">Research Leadership</h2>
+      </div>
+      
+      <div class="content-block">
+        <p class="academic-paragraph">
+          <span class="lead-sentence">Jordan Terry founded and leads the</span> 
+          <a href="https://farama.org" class="academic-link">Farama Foundation</a>, 
+          whose reinforcement learning infrastructure powers AI research at Amazon, 
+          Google/DeepMind, Meta, Microsoft, and every major AI research organization 
+          globally — with <strong>250+ million installations</strong> to date.
+        </p>
+        <p class="academic-paragraph">
+          OpenAI transferred stewardship of <em>OpenAI Gym</em> — their first flagship 
+          project — to the Foundation. The Foundation also maintains the 
+          <em>Arcade Learning Environment</em>, the benchmark that led Google to 
+          acquire DeepMind.
+        </p>
+      </div>
+    </section>
+
+    <!-- Another section with generous whitespace -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="metallic-line"></div>
+        <h2 class="section-title">Entrepreneurship & Industry</h2>
+      </div>
+      
+      <div class="content-block">
+        <p class="academic-paragraph">
+          She previously founded <strong>Swarm Labs</strong>, a venture-backed AI security 
+          company that developed a novel AI-assisted vulnerability search tool for 
+          deployed AI systems.
+        </p>
+        <p class="academic-paragraph">
+          The company was backed by technical leadership at OpenAI, Microsoft, Google, 
+          and HuggingFace. Jordan Terry also led teams using deep learning for embedded 
+          systems in intelligence applications at two major multinational defense 
+          contractors.
+        </p>
+      </div>
+    </section>
+
+    <!-- Academic credentials with geometric bullets -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="metallic-line"></div>
+        <h2 class="section-title">Academic Background</h2>
+      </div>
+      
+      <div class="credentials-grid">
+        <div class="credential-card">
+          <svg class="credential-icon" viewBox="0 0 24 24">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M2 7V17L12 22L22 17V7" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          <div>
+            <h3>Ph.D. in Computer Science</h3>
+            <p class="institution">University of Maryland</p>
+            <p class="thesis">Reinforcement Learning Interfaces & Chaotic System Modeling</p>
+          </div>
+        </div>
+        
+        <div class="credential-card">
+          <svg class="credential-icon" viewBox="0 0 24 24">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          <div>
+            <h3>B.S. in Physics</h3>
+            <p class="institution">University of Maryland</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="content-block">
+        <p class="academic-paragraph">
+          Her doctoral research developed a <strong>reinforcement learning interface</strong> that became 
+          industry standard and a new method for modeling behavior in chaotic and economic 
+          systems using AI.
+        </p>
+        <p class="academic-paragraph">
+          She was advised by <em>Dr. Dan Lathrop</em>, a physicist specializing in chaos theory, 
+          and <em>Dr. John Dickerson</em>, a computer scientist working in AI and computational 
+          economics.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Micro-interaction area (for future enhancement) -->
+    <div class="interaction-zone" data-interaction="particles">
+      <!-- Cosmic blue particles will appear here on interaction -->
+    </div>
+  </main>
+</div>
+
+<!-- Additional CSS will be added to main.scss -->
+<style>
+  /* These styles should be added to your main.scss file */
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .profile-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+  
+  .profile-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(135deg, 
+      rgba(52, 152, 219, 0.3) 0%,
+      rgba(149, 165, 166, 0.2) 50%,
+      rgba(52, 152, 219, 0.3) 100%);
+    border-radius: 25px;
+    z-index: -1;
+  }
+  
+  .metallic-border {
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, 
+      #bdc3c7 0%,
+      #ecf0f1 25%,
+      #7f8c8d 50%,
+      #ecf0f1 75%,
+      #bdc3c7 100%);
+    border-radius: 26px;
+    z-index: -1;
+    opacity: 0.3;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>

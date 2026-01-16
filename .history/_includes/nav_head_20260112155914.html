@@ -1,0 +1,36 @@
+<header class="header-bar" role="banner">
+    <div class="container">
+        <div class="row">
+            <div class="header-left">
+                <a href="{{site.baseurl}}/"><strong>{{site.name}}</strong></a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="header-link-container" role="navigation" aria-label="Main navigation">
+                <a class="header-link" href="{{site.baseurl}}/cv">CV</a>
+                <a class="header-link" href="{{site.baseurl}}/academic-works">Academic Works</a>
+            </nav>
+            
+            <!-- Mobile Hamburger Menu -->
+            <button class="hamburger-menu" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Navigation Menu -->
+<div class="mobile-nav-overlay" role="navigation" aria-label="Mobile navigation">
+    <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+            <a href="{{site.baseurl}}/" class="mobile-nav-logo">{{site.name}}</a>
+            <button class="mobile-nav-close" aria-label="Close navigation menu">×</button>
+        </div>
+        <nav class="mobile-nav-links">
+            <a class="mobile-nav-link" href="{{site.baseurl}}/cv">CV</a>
+            <a class="mobile-nav-link" href="{{site.baseurl}}/academic-works">Academic Works</a>
+        </nav>
+    </div>
+</div>

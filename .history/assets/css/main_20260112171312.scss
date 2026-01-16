@@ -1,0 +1,52 @@
+---
+---
+
+/* CSS Variables for Themes */
+:root {
+    /* Dark Theme (Default) */
+    --bg-primary: #0B0B0B;
+    --bg-secondary: #121212;
+    --bg-tertiary: #161616;
+    --text-primary: #FAFAFA;
+    --text-secondary: #D3D3D3;
+    --text-tertiary: #A6A8AD;
+    --border-color: #696A6B;
+    --link-color: #FAFAFA;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    
+    /* Light Theme */
+    --bg-primary-light: #FFFFFF;
+    --bg-secondary-light: #F8F9FA;
+    --bg-tertiary-light: #E9ECEF;
+    --text-primary-light: #212529;
+    --text-secondary-light: #495057;
+    --text-tertiary-light: #6C757D;
+    --border-color-light: #DEE2E6;
+    --link-color-light: #212529;
+    --card-bg-light: rgba(0, 0, 0, 0.02);
+    --shadow-color-light: rgba(0, 0, 0, 0.1);
+}
+
+/* Apply Dark Theme by Default */
+[data-theme="dark"] {
+    --bg-primary: #0B0B0B;
+    --bg-secondary: #121212;
+    --bg-tertiary: #161616;
+    --text-primary: #FAFAFA;
+    --text-secondary: #D3D3D3;
+    --text-tertiary: #A6A8AD;
+    --border-color: #696A6B;
+    --link-color: #FAFAFA;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Apply Light Theme */
+[data-theme="light"] {
+    --bg-primary: var(--bg-primary-light);
+    --bg-secondary: var(--bg-secondary-light);
+    --bg-tertiary: var(--bg-tertiary-light);
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --text-tertiary: var(--text-tertiary-light);

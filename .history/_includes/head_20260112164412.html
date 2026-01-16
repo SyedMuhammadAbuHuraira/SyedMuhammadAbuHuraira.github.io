@@ -1,0 +1,83 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dr. Jordan Terry leads the Farama Foundation, developing open-source machine learning software. Former founder of Swarm Labs and PhD from University of Maryland.">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>{{ site.name }}</title>
+
+    {% seo title=false %}
+    {% include analytics.html %}
+
+    <link rel="canonical" href="https://jkterry.ai/" />
+
+    <!-- Preload critical fonts if you're using any custom ones -->
+    <!-- <link rel="preload" href="/fonts/your-font.woff2" as="font" type="font/woff2" crossorigin> -->
+
+    <!-- Add favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    
+    <!-- JavaScript for hamburger menu -->
+    <script>
+        // Simple hamburger menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerButton = document.querySelector('.hamburger-menu');
+            const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+            const mobileNavClose = document.querySelector('.mobile-nav-close');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            if (hamburgerButton && mobileNavOverlay) {
+                // Open mobile menu
+                hamburgerButton.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    mobileNavOverlay.classList.toggle('active', !isExpanded);
+                    document.body.style.overflow = isExpanded ? 'auto' : 'hidden';
+                });
+                
+                // Close mobile menu
+                if (mobileNavClose) {
+                    mobileNavClose.addEventListener('click', function() {
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                        mobileNavOverlay.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+                
+                // Close menu when clicking on links
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                        mobileNavOverlay.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+                
+                // Close menu when clicking outside content
+                mobileNavOverlay.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                        this.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+                
+                // Close menu with Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNavOverlay.classList.contains('active')) {
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                        mobileNavOverlay.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+    </script>
+</head>

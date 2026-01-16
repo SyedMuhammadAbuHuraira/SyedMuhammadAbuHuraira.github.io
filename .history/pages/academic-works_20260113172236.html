@@ -1,0 +1,167 @@
+---
+permalink: /academic-works.html
+---
+
+<main id="main-content" class="container content-container">
+    <!-- Left sidebar with social icons (Desktop only) -->
+    <aside class="sidebar social-sidebar">
+        <div class="social-icons">
+            <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
+                <img src="/assets/images/github.svg" alt="GitHub">
+            </a>
+            <a href="{{site.twitter}}" class="social-icon" aria-label="Twitter">
+                <img src="/assets/images/twitter.svg" alt="Twitter">
+            </a>
+            <a href="{{site.linkedin}}" class="social-icon" aria-label="LinkedIn">
+                <img src="/assets/images/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="{{site.google-scholar}}" class="social-icon" aria-label="Google Scholar">
+                <img src="/assets/images/google-scholar.svg" alt="Google Scholar">
+            </a>
+            <a href="{{site.bluesky}}" class="social-icon" aria-label="Bluesky">
+                <img src="/assets/images/bluesky.svg" alt="Bluesky">
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main content area -->
+    <div class="main-content-wrapper">
+        <div class="academic-section">
+            <div class="academic-header">
+                <h1 class="academic-title">Academic Works</h1>
+                <p class="academic-subtitle"><i>Asterisk (*) indicates equal contribution.</i></p>
+            </div>
+
+            <div class="academic-content">
+                {% for var in site.data.academic %}
+                {% assign type = var[0] %}
+                {% assign publications = var[1] %}
+                
+                <div class="publication-category" id="{{type | downcase}}">
+                    {% if type == "Publications" %}
+                    {% for pub in publications %}
+                    <div class="publication-item">
+                        <h2 class="publication-title">
+                            {% if pub.arxiv and pub.arxiv != "" %}
+                            <a href="{{pub.arxiv}}" class="publication-link">{{pub.title}}</a>
+                            {% else %}
+                            {{pub.title}}
+                            {% endif %}
+                        </h2>
+                        
+                        <div class="publication-authors">
+                            {% assign bold_author_name = '<strong>' | append: site.author_name | append: '</strong>' %}
+                            {{pub.authors | replace: site.author_name, bold_author_name}}
+                        </div>
+                        
+                        <div class="publication-meta">
+                            <span class="publication-venue">{{pub.location}}</span>
+                            <span class="publication-year">{{pub.date}}</span>
+                        </div>
+                        
+                        {% if pub.notes and pub.notes != "" %}
+                        <div class="publication-notes">
+                            {% if pub.notes contains ',' %}
+                                {% assign notes_array = pub.notes | split: ',' %}
+                                {% for note in notes_array %}
+                                <p class="publication-note">{{ note | strip }}</p>
+                                {% endfor %}
+                            {% else %}
+                            <p class="publication-note">{{ pub.notes }}</p>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        
+                        {% if pub.link or pub.video or pub.pdf %}
+                        <div class="publication-links">
+                            {% if pub.link and pub.link != "" %}
+                            <a href="{{pub.link}}" class="publication-link-button" target="_blank">Link</a>
+                            {% endif %}
+                            {% if pub.video and pub.video != "" %}
+                            <a href="{{pub.video}}" class="publication-link-button" target="_blank">Video</a>
+                            {% endif %}
+                            {% if pub.pdf and pub.pdf != "" %}
+                            <a href="{{pub.pdf}}" class="publication-link-button" target="_blank">PDF</a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    
+                    {% elsif type == "Talks" or type == "Teaching" %}
+                    {% for pub in publications %}
+                    <div class="talk-item">
+                        <h2 class="talk-title">{{pub.title}}</h2>
+                        
+                        <div class="talk-meta">
+                            {% if pub.location %}
+                            <span class="talk-location">{{pub.location}}</span>
+                            {% endif %}
+                            <span class="talk-date">{{pub.date}}</span>
+                            {% if type == "Teaching" and pub.position %}
+                            <span class="teaching-position">{{pub.position}}</span>
+                            {% endif %}
+                        </div>
+                        
+                        {% if pub.notes and pub.notes != "" %}
+                        <div class="talk-notes">
+                            {% if pub.notes contains ',' %}
+                                {% assign notes_array = pub.notes | split: ',' %}
+                                {% for note in notes_array %}
+                                <p class="talk-note">{{ note | strip }}</p>
+                                {% endfor %}
+                            {% else %}
+                            <p class="talk-note">{{ pub.notes }}</p>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        
+                        {% if pub.link or pub.video or pub.pdf %}
+                        <div class="talk-links">
+                            {% if pub.link and pub.link != "" %}
+                            <a href="{{pub.link}}" class="publication-link-button" target="_blank">Link</a>
+                            {% endif %}
+                            {% if pub.video and pub.video != "" %}
+                            <a href="{{pub.video}}" class="publication-link-button" target="_blank">Video</a>
+                            {% endif %}
+                            {% if pub.pdf and pub.pdf != "" %}
+                            <a href="{{pub.pdf}}" class="publication-link-button" target="_blank">PDF</a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Right sidebar (empty on academic works page) -->
+    <aside class="sidebar profile-sidebar" style="display: none;"></aside>
+</main>
+
+<!-- Footer with social icons for tablet/mobile -->
+<footer class="site-footer" style="display: block;">
+    <div class="footer-content">
+        <div class="footer-social-icons">
+            <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
+                <img src="/assets/images/github.svg" alt="GitHub">
+            </a>
+            <a href="{{site.twitter}}" class="social-icon" aria-label="Twitter">
+                <img src="/assets/images/twitter.svg" alt="Twitter">
+            </a>
+            <a href="{{site.linkedin}}" class="social-icon" aria-label="LinkedIn">
+                <img src="/assets/images/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="{{site.google-scholar}}" class="social-icon" aria-label="Google Scholar">
+                <img src="/assets/images/google-scholar.svg" alt="Google Scholar">
+            </a>
+            <a href="{{site.bluesky}}" class="social-icon" aria-label="Bluesky">
+                <img src="/assets/images/bluesky.svg" alt="Bluesky">
+            </a>
+        </div>
+        <p class="footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.author_name }}. All rights reserved.</p>
+    </div>
+</footer>

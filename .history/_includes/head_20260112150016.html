@@ -1,0 +1,120 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Dr. Jordan Terry leads the Farama Foundation, developing open-source machine learning software. Former founder of Swarm Labs and PhD from University of Maryland.">
+    <meta name="keywords" content="Jordan Terry, Farama Foundation, reinforcement learning, AI research, open source, machine learning, PhD computer science">
+    <meta name="author" content="Dr. Jordan Terry">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#0B0B0B" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jkterry.ai/">
+    <meta property="og:title" content="Dr. Jordan Terry - Leading Open Source AI Research">
+    <meta property="og:description" content="Founder & CEO of Farama Foundation, building the open-source tools that power modern global reinforcement learning research.">
+    <meta property="og:image" content="https://jkterry.ai/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Dr. Jordan Terry - AI Researcher and Open Source Leader">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jkterry.ai/">
+    <meta property="twitter:title" content="Dr. Jordan Terry - Leading Open Source AI Research">
+    <meta property="twitter:description" content="Founder & CEO of Farama Foundation, building the open-source tools that power modern global reinforcement learning research.">
+    <meta property="twitter:image" content="https://jkterry.ai/assets/images/twitter-image.jpg">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#0B0B0B">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#0B0B0B">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/assets/css/main.css" as="style">
+    <link rel="preload" href="/jordan.jpg" as="image" type="image/jpeg">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <!-- Preload system fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jkterry.ai/">
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Dr. Jordan Terry - Latest Updates" href="/feed.xml">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dr. Jordan Terry",
+      "url": "https://jkterry.ai",
+      "image": "https://jkterry.ai/jordan.jpg",
+      "jobTitle": "Founder & CEO",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Farama Foundation"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "University of Maryland"
+      },
+      "sameAs": [
+        "{{site.github}}",
+        "{{site.linkedin}}",
+        "{{site.twitter}}",
+        "{{site.google-scholar}}"
+      ],
+      "description": "Dr. Jordan Terry builds the open-source tools that power modern global reinforcement learning research through the Farama Foundation.",
+      "knowsAbout": ["Reinforcement Learning", "Artificial Intelligence", "Machine Learning", "Open Source Software", "Computer Science Research"]
+    }
+    </script>
+    
+    <!-- Title -->
+    <title>{% if page.title %}{{ page.title }} - {{ site.name }}{% else %}{{ site.name }} - {{ site.description }}{% endif %}</title>
+    
+    <!-- SEO via Jekyll -->
+    {% seo title=false %}
+    
+    <!-- Analytics -->
+    {% include analytics.html %}
+    
+    <!-- Progressive Web App (Optional) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dr. Jordan Terry">
+    
+    <!-- Dark/Light Mode Script (Early) -->
+    <script>
+      // Early theme detection to prevent flash
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.style.backgroundColor = '#0B0B0B';
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.style.backgroundColor = '#ffffff';
+        }
+      })();
+    </script>
+</head>

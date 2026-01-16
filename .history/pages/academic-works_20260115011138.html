@@ -1,0 +1,111 @@
+---
+layout: default
+title: Academic Works
+permalink: /academic-works.html
+---
+
+<main id="main-content" class="container content-container">
+    <!-- Left sidebar with social icons (Desktop only) -->
+    <aside class="sidebar social-sidebar">
+        <div class="social-icons">
+            <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
+                <img src="/assets/images/github.svg" alt="GitHub">
+            </a>
+            <a href="{{site.twitter}}" class="social-icon" aria-label="Twitter">
+                <img src="/assets/images/twitter.svg" alt="Twitter">
+            </a>
+            <a href="{{site.linkedin}}" class="social-icon" aria-label="LinkedIn">
+                <img src="/assets/images/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="{{site.google-scholar}}" class="social-icon" aria-label="Google Scholar">
+                <img src="/assets/images/google-scholar.svg" alt="Google Scholar">
+            </a>
+            <a href="{{site.bluesky}}" class="social-icon" aria-label="Bluesky">
+                <img src="/assets/images/bluesky.svg" alt="Bluesky">
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main content area -->
+    <div class="main-content-wrapper">
+        <section class="academic-section">
+            <div class="academic-header">
+                <h1 class="academic-title">Academic Works</h1>
+                <p class="academic-subtitle">Asterisk (*) indicates equal contribution.</p>
+            </div>
+
+            <div class="publications-list">
+                {% assign bold_author_name = '<strong>' | append: site.author_name | append: '</strong>' %}
+                {% for publication in site.data.publications %}
+                <div class="publication-item">
+                    <h2 class="publication-title">
+                        {% if publication.link %}
+                        <a href="{{publication.link}}" class="publication-link">{{publication.title}}</a>
+                        {% else %}
+                        {{publication.title}}
+                        {% endif %}
+                    </h2>
+                    
+                    <p class="publication-authors">
+                        {{publication.authors | replace: site.author_name, bold_author_name}}
+                    </p>
+                    
+                    <p class="publication-meta">
+                        <span class="publication-location">{{publication.location}}</span>
+                        <span class="publication-date">{{publication.date}}</span>
+                    </p>
+                    
+                    {% if publication.notes %}
+                    <div class="publication-notes">
+                        {% for note in publication.notes %}
+                        <p class="publication-note">{{note}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    {% if publication.links %}
+                    <div class="publication-links">
+                        {% for link in publication.links %}
+                        <a href="{{link.url}}" class="publication-link-button" target="_blank">{{link.label}}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <!-- Right sidebar with profile (Desktop only) -->
+    <aside class="sidebar profile-sidebar">
+        <div class="profile-card">
+            <div class="profile-image-container">
+                <img src="/jordan.jpg" 
+                     alt="Professional headshot of Dr. Jordan Terry"
+                     class="profile-image">
+                <div class="image-blur"></div>
+            </div>
+            <h2 class="profile-name">Jordan Terry</h2>
+            <p class="profile-email">{{site.email}}</p>
+        </div>
+        
+        <!-- Social icons for tablet/mobile -->
+        <div class="mobile-social-icons">
+            <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
+                <img src="/assets/images/github.svg" alt="GitHub">
+            </a>
+            <a href="{{site.twitter}}" class="social-icon" aria-label="Twitter">
+                <img src="/assets/images/twitter.svg" alt="Twitter">
+            </a>
+            <a href="{{site.linkedin}}" class="social-icon" aria-label="LinkedIn">
+                <img src="/assets/images/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="{{site.google-scholar}}" class="social-icon" aria-label="Google Scholar">
+                <img src="/assets/images/google-scholar.svg" alt="Google Scholar">
+            </a>
+            <a href="{{site.bluesky}}" class="social-icon" aria-label="Bluesky">
+                <img src="/assets/images/bluesky.svg" alt="Bluesky">
+            </a>
+        </div>
+    </aside>
+</main>

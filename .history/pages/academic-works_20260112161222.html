@@ -1,0 +1,65 @@
+---
+permalink: /academic-works.html
+---
+
+<div class="body-navbar">
+    {% for name in site.data.academic %}
+    <a class="header-link" href="#{{name[0]}}">{{name[0]}}</a>
+    {% endfor %}
+</div>
+
+<div class="container">
+    <div class="row">
+        <div>
+            {% assign bold_author_name = '<b>' | append: site.author_name | append: '</b>' %}
+            {% for var in site.data.academic %}
+            {% assign type = var[0] %}
+            <h1 id="{{type}}">{{type}}</h1>
+            {% if type == "Publications" %}
+            <p class="info-header"><i>Asterisk (*) indicates equal contribution.</i></p>     
+            {% endif %}
+            {% assign publications = var[1] %}
+            {% for pub in publications %}
+            <div class="citation">
+                {% if pub.authors %}
+                <div class="citation-title">
+                    {% if pub.arxiv and pub.arxiv != "" %}
+                    <a href="{{pub.arxiv}}">{{pub.title}}.</a>
+                    {% else %}
+                    {{pub.title}}.
+                    {% endif %}
+                </div>
+                <div>
+                    {{pub.authors | replace: site.author_name, bold_author_name}}.
+
+                    {{pub.location}} {{pub.date}}.
+                </div>
+                {% else %}
+                <div class="citation-title">
+                    {{pub.title}}
+                </div>
+                <div>
+                    {% if pub.location %}{{pub.location}}, {% endif %}{{pub.date}}
+                </div>
+                {% endif %}
+
+                {% if pub.notes and pub.notes != "" %}
+                <i>{{ pub.notes | array_to_sentence_string: ',' }}</i>
+                {% endif %}
+                <div>
+                    {% if pub.link and pub.link != "" %}
+                    [<a href="{{pub.link}}">link</a>]
+                    {% endif %}
+                    {% if pub.video and pub.video != "" %}
+                    [<a href="{{pub.video}}">video</a>]
+                    {% endif %}
+                    {% if pub.pdf and pub.pdf != "" %}
+                    [<a href="{{pub.pdf}}" target="_blank">pdf</a>]
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor%}
+        </div>
+    </div>
+</div>

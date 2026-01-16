@@ -1,0 +1,460 @@
+<header class="figma-header" role="banner">
+    <div class="figma-header-content">
+        <!-- Logo/Name -->
+        <div class="figma-logo">
+            <a href="/" class="figma-logo-link">
+                <span class="figma-logo-text">Jordan Terry</span>
+            </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="figma-desktop-nav" role="navigation" aria-label="Main navigation">
+            <a href="/cv" class="figma-nav-link">
+                <span>CV</span>
+            </a>
+            <a href="/academic-works" class="figma-nav-link">
+                <span>Academic Works</span>
+            </a>
+        </nav>
+        
+        <!-- Social Media Icons (Desktop) -->
+        <div class="figma-header-social" role="navigation" aria-label="Social media links">
+            <a href="{{site.github}}" class="figma-header-social-icon" aria-label="View Jordan Terry's projects on GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" fill="#A6A8AD"/>
+                </svg>
+            </a>
+            <a href="{{site.google-scholar}}" class="figma-header-social-icon" aria-label="Visit Jordan Terry's Google Scholar profile">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M0.94 2.52L12 0L23.06 2.52V12C23.06 18.63 18.63 23.06 12 23.06C5.37 23.06 0.94 18.63 0.94 12V2.52Z" fill="#A6A8AD"/>
+                </svg>
+            </a>
+            <a href="{{site.linkedin}}" class="figma-header-social-icon" aria-label="Connect with Jordan Terry on LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" fill="#A6A8AD"/>
+                    <rect x="3.33" y="3.33" width="17.33" height="17.33" fill="#121212"/>
+                </svg>
+            </a>
+            <a href="{{site.bluesky}}" class="figma-header-social-icon" aria-label="Follow Jordan Terry on Bluesky">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M0 1.5L12 0L24 1.5V12C24 19.18 18.63 24.5 12 24.5C5.37 24.5 0 19.18 0 12V1.5Z" fill="#A6A8AD"/>
+                </svg>
+            </a>
+            <a href="{{site.twitter}}" class="figma-header-social-icon" aria-label="Follow Jordan Terry on X">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M0 0H23V24H0V0Z" fill="#A6A8AD"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button class="figma-hamburger" aria-label="Open menu" aria-expanded="false">
+            <div class="figma-hamburger-icon"></div>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="figma-mobile-menu-overlay" aria-hidden="true">
+    <div class="figma-mobile-menu">
+        <div class="figma-mobile-menu-header">
+            <div class="figma-mobile-logo">Jordan Terry</div>
+            <button class="figma-mobile-close" aria-label="Close menu">
+                <div class="figma-close-icon"></div>
+            </button>
+        </div>
+        
+        <nav class="figma-mobile-nav">
+            <a href="/" class="figma-mobile-nav-link">
+                <span>Home</span>
+            </a>
+            <a href="/cv" class="figma-mobile-nav-link">
+                <span>CV</span>
+            </a>
+            <a href="/academic-works" class="figma-mobile-nav-link">
+                <span>Academic Works</span>
+            </a>
+        </nav>
+        
+        <!-- Mobile Social Icons -->
+        <div class="figma-mobile-social">
+            <a href="{{site.github}}" class="figma-mobile-social-icon" aria-label="GitHub">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" fill="#A6A8AD"/>
+                </svg>
+            </a>
+            <a href="{{site.google-scholar}}" class="figma-mobile-social-icon" aria-label="Google Scholar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M0.94 2.52L12 0L23.06 2.52V12C23.06 18.63 18.63 23.06 12 23.06C5.37 23.06 0.94 18.63 0.94 12V2.52Z" fill="#A6A8AD"/>
+                </svg>
+            </a>
+            <a href="{{site.linkedin}}" class="figma-mobile-social-icon" aria-label="LinkedIn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" fill="#A6A8AD"/>
+                    <rect x="3.33" y="3.33" width="17.33" height="17.33" fill="#121212"/>
+                </svg>
+            </a>
+            <a href="{{site.bluesky}}" class="figma-mobile-social-icon" aria-label="Bluesky">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M0 1.5L12 0L24 1.5V12C24 19.18 18.63 24.5 12 24.5C5.37 24.5 0 19.18 0 12V1.5Z" fill="#A6A8AD"/>
+                </svg>
+            </a>
+            <a href="{{site.twitter}}" class="figma-mobile-social-icon" aria-label="X/Twitter">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M0 0H23V24H0V0Z" fill="#A6A8AD"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Add CSS for the header -->
+<style>
+    /* ===== FIGMA HEADER ===== */
+    .figma-header {
+        align-self: stretch;
+        height: 80px;
+        padding-left: 160px;
+        padding-right: 160px;
+        border-bottom: 0.50px #696A6B solid;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        background: rgba(11, 11, 11, 0.9);
+    }
+
+    .figma-header-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Logo */
+    .figma-logo-link {
+        text-decoration: none;
+    }
+
+    .figma-logo-text {
+        color: white;
+        font-size: 20px;
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    /* Desktop Navigation */
+    .figma-desktop-nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .figma-nav-link {
+        align-self: stretch;
+        padding-left: 2px;
+        padding-right: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+
+    .figma-nav-link span {
+        color: #FAFAFA;
+        font-size: 16px;
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.32px;
+        transition: color 0.3s ease;
+    }
+
+    .figma-nav-link:hover span {
+        color: #FFFFFF;
+    }
+
+    /* Header Social Icons */
+    .figma-header-social {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .figma-header-social-icon {
+        width: 20px;
+        height: 20px;
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    .figma-header-social-icon:hover {
+        opacity: 0.8;
+    }
+
+    /* Hamburger Menu (Mobile) */
+    .figma-hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    .figma-hamburger-icon {
+        width: 24px;
+        height: 24px;
+        position: relative;
+    }
+
+    .figma-hamburger-icon::before,
+    .figma-hamburger-icon::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #FAFAFA;
+        left: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .figma-hamburger-icon::before {
+        top: 6px;
+    }
+
+    .figma-hamburger-icon::after {
+        top: 16px;
+    }
+
+    /* Mobile Menu Overlay */
+    .figma-mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: flex-end;
+        z-index: 1000;
+    }
+
+    .figma-mobile-menu-overlay[aria-hidden="false"] {
+        display: flex;
+    }
+
+    .figma-mobile-menu {
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        background: linear-gradient(360deg, #0B0B0B 0%, #121212 55%, #161616 100%);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .figma-mobile-menu-overlay[aria-hidden="false"] .figma-mobile-menu {
+        transform: translateX(0);
+    }
+
+    .figma-mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 0.50px #696A6B solid;
+        margin-bottom: 20px;
+    }
+
+    .figma-mobile-logo {
+        color: white;
+        font-size: 20px;
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 600;
+    }
+
+    .figma-mobile-close {
+        width: 24px;
+        height: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .figma-close-icon {
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        left: 6px;
+        top: 6px;
+        outline: 2px #FAFAFA solid;
+        outline-offset: -1px;
+        transform: rotate(45deg);
+    }
+
+    .figma-close-icon::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #FAFAFA;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+
+    .figma-close-icon::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background: #FAFAFA;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+
+    .figma-mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .figma-mobile-nav-link {
+        padding: 16px;
+        text-decoration: none;
+        border-bottom: 0.50px #696A6B solid;
+    }
+
+    .figma-mobile-nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .figma-mobile-nav-link span {
+        color: #FAFAFA;
+        font-size: 16px;
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.32px;
+    }
+
+    /* Mobile Social Icons */
+    .figma-mobile-social {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 0.50px #696A6B solid;
+    }
+
+    .figma-mobile-social-icon {
+        width: 24px;
+        height: 24px;
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    .figma-mobile-social-icon:hover {
+        opacity: 0.8;
+    }
+
+    /* ===== RESPONSIVE BREAKPOINTS ===== */
+    @media screen and (max-width: 1200px) {
+        .figma-header {
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .figma-header {
+            padding-left: 40px;
+            padding-right: 40px;
+            height: 60px;
+        }
+        
+        .figma-desktop-nav,
+        .figma-header-social {
+            display: none;
+        }
+        
+        .figma-hamburger {
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .figma-header {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        
+        .figma-mobile-menu {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<!-- JavaScript for Mobile Menu -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.figma-hamburger');
+        const mobileMenuOverlay = document.querySelector('.figma-mobile-menu-overlay');
+        const closeButton = document.querySelector('.figma-mobile-close');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                this.setAttribute('aria-expanded', 'true');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        if (closeButton) {
+            closeButton.addEventListener('click', function() {
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.figma-mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenuOverlay.getAttribute('aria-hidden') === 'false') {
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+</script>
