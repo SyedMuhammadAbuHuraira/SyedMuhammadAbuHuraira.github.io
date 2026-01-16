@@ -1,0 +1,207 @@
+  Publications:
+    - title: "Meta-World+: An Improved, Standardized, RL Benchmark"
+      authors: "R. McLean, E. Chatzaroulas, L. McCutcheon, F. Röder, T. Yu, Z. He, KR Zentner, R. Julian, J. K. Terry, I. Woungang, N. Farsad, P. Samuel Castro"
+      location: NeurIPS
+      date: "2025"
+      arxiv: "https://arxiv.org/abs/2505.11289"
+      bibtex: ""
+  
+    - title: "Multi-Task Reinforcement Learning Enables Parameter Scaling"
+      authors: "R. McLean, E. Chatzaroulas, J. K. Terry, I. Woungang, N. Farsad, P. Samuel Castro"
+      location: Reinforcement Learning Conference
+      date: "2025"
+      arxiv: "https://arxiv.org/abs/2503.05126"
+      bibtex: "@article{mclean2025multi,
+                title={Multi-Task Reinforcement Learning Enables Parameter Scaling},
+                author={McLean, Reginald and Chatzaroulas, Evangelos and Terry, Jordan and Woungang, Isaac and Farsad, Nariman and Castro, Pablo Samuel},
+                journal={arXiv preprint arXiv:2503.05126},
+                year={2025}
+              }"
+      notes:
+        - "Outstanding Paper Award on Scientific Understanding in Reinforcement Learning"
+  
+    - title: "A2Perf: Real-World Autonomous Agents Benchmark"
+      authors: "I. Uchendu, J. Jabbour, K. Van den Berghe, J. Runevic, M. Stewart, J. Ma, S. Krishnan, I. Gur, A. Huang, C. Bishop, P. Bailey, W. Jiang, E. M Songhori, S. Guadarrama, J. Tan, J. K. Terry, A. Faust, V. Janapa Reddi"
+      location: arXiv
+      date: "2025"
+      arxiv: "https://arxiv.org/abs/2503.03056"
+      bibtex: "@article{uchendu2025a2perf,
+                title={A2Perf: Real-World Autonomous Agents Benchmark},
+                author={Uchendu, Ikechukwu and Jabbour, Jason and Berghe, Korneel Van den and Runevic, Joel and Stewart, Matthew and Ma, Jeffrey and Krishnan, Srivatsan and Gur, Izzeddin and Huang, Austin and Bishop, Colton and others},
+                journal={arXiv preprint arXiv:2503.03056},
+                year={2025}
+              }"
+            
+    - title: "Gymnasium: A Standard Interface for Reinforcement Learning Environments"
+      authors: "M. Towers*, A. Kwiatkowski*, J. K. Terry*, J. U. Balis, G. De Cola, T. Deleu, M. Goulão, A. Kallinteris, M. Krimmel, Markus, A. KG, and others"
+      location: NeurIPS
+      date: "2024"
+      arxiv: "https://arxiv.org/abs/2407.17032"
+      bibtex: "@article{towers2024gymnasium,
+                title={Gymnasium: A standard interface for reinforcement learning environments},
+                author={Towers, Mark and Kwiatkowski, Ariel and Terry, Jordan and Balis, John U and De Cola, Gianluca and Deleu, Tristan and Goul{\"~a}o, Manuel and   Kallinteris, Andreas and Krimmel, Markus and KG, Arjun and others},
+                journal={arXiv preprint arXiv:2407.17032},
+                year={2024}
+              }"
+      notes:
+        - "Spotlight paper"
+
+    - title: "MOMAland: A Set of Benchmarks for Multi-Objective Multi-Agent Reinforcement Learning"
+      authors: "F. Felten, U. Ucak, H. Azmani, G. Peng, W. Röpke, H. Baier, P. Mannion, D. M. Roijers, J. K. Terry, E.-G. Talbi, and others"
+      location: arXiv
+      date: "2024"
+      arxiv: "https://arxiv.org/abs/2407.16312"
+      bibtex: |-
+              @article{felten2024momaland,
+                title={MOMAland: A Set of Benchmarks for Multi-Objective Multi-Agent Reinforcement Learning},
+                author={Felten, Florian and Ucak, Umut and Azmani, Hicham and Peng, Gao and R{\"o}pke, Willem and Baier, Hendrik and Mannion, Patrick and Roijers, Diederik M and Terry, Jordan K and Talbi, El-Ghazali and others},
+                journal={arXiv preprint arXiv:2407.16312},
+                year={2024}
+              }
+
+    - title: "Minigrid & miniworld: Modular & customizable reinforcement learning environments for goal-oriented tasks"
+      authors: "M. Chevalier-Boisvert, B. Dai, M. Towers, R. Perez-Vicente, L. Willems, S. Lahlou, S. Pal, P. S. Castro, J. K. Terry"
+      location: NeurIPS
+      date: "2024"
+      arxiv: "https://arxiv.org/abs/2306.13831"
+      bibtex: |-
+              @article{chevalier2024minigrid,
+                title={Minigrid \& miniworld: Modular \& customizable reinforcement learning environments for goal-oriented tasks},
+                author={Chevalier-Boisvert, Maxime and Dai, Bolun and Towers, Mark and Perez-Vicente, Rodrigo and Willems, Lucas and Lahlou, Salem and Pal, Suman and Castro, Pablo Samuel and Terry, Jordan},
+                journal={Advances in Neural Information Processing Systems},
+                volume={36},
+                year={2024}
+              }
+
+    - title: "Some Supervision Required: Incorporating Oracle Policies in Reinforcement Learning via Epistemic Uncertainty Metrics"
+      authors: "J. J. Tai, J. K. Terry, M. S. Innocente, J. Brusey, N. Horri"
+      location: arXiv
+      date: "2022"
+      arxiv: "https://arxiv.org/abs/2208.10533"
+      bibtex: |-
+              @article{Tai2022SomeSR,
+                title={Some Supervision Required: Incorporating Oracle Policies in Reinforcement Learning via Epistemic Uncertainty Metrics},
+                author={Jun Jet Tai and Jordan K. Terry and Mauro Sebasti{'a}n Innocente and James Brusey and Nadjim Horri},
+                journal={ArXiv},
+                year={2022},
+                volume={abs/2208.10533}
+              }
+    - title: "Cliff Diving: Exploring Reward Surfaces in Reinforcement Learning Environments"
+      authors: "R. Sullivan, J. K. Terry, B. Black, J. P. Dickerson"
+      location: ICML
+      date: "2021"
+      arxiv: "https://arxiv.org/abs/2205.07015"
+      bibtex: "@article{Sullivan2022CliffDE,
+                title={Cliff Diving: Exploring Reward Surfaces in Reinforcement Learning Environments},
+                author={Ryan Sullivan and J K. Terry and Benjamin Black and John P. Dickerson},
+                journal={ArXiv},
+                year={2022},
+                volume={abs/2205.07015}
+              }"
+    - title: Revisiting parameter sharing in multi-agent deep reinforcement learning
+      authors: "J. K. Terry, N. Grammel, A. Hari, L. Santos, B. Black"
+      location: arXiv
+      date: "2021"
+      arxiv: "https://arxiv.org/abs/2005.13625"
+      bibtex: "@article{Terry2020RevisitingPS,
+                title={Revisiting Parameter Sharing in Multi-Agent Deep Reinforcement Learning},
+                author={J K. Terry and Nathaniel Grammel and Ananth Hari and Luis Paulo Santos and Benjamin Black},
+                journal={arXiv: Learning},
+                year={2020}
+              }"
+    - title: "PettingZoo: Gym for multi-agent reinforcement learning"
+      authors: "J. K. Terry, B. Black, N. Grammel, M. Jayakumar, A. Hari, R. Sullivan, L. Santos, C. Dieffendahl, C. Horsch, R. Perez-Vicente, N. Williams, Y. Lokesh, P. Ravi"
+      location: NeurIPS
+      date: "2021"
+      arxiv: "https://arxiv.org/abs/2009.14471"
+      bibtex: "@inproceedings{terry2021pettingzoo,
+                title={PettingZoo: Gym for Multi-Agent Reinforcement Learning},
+                author={J K Terry and Benjamin J Black and Nathaniel Grammel and Mario Jayakumar and Ananth Hari and Ryan Sullivan and Luis Santos and Clemens Dieffendahl and Caroline Horsch and Rodrigo De Lazcano Perez-Vicente and Niall L Williams and Yashas Lokesh and Praveen Ravi},
+                booktitle={Advances in Neural Information Processing Systems},
+                editor={A. Beygelzimer and Y. Dauphin and P. Liang and J. Wortman Vaughan},
+                year={2021},
+                url={https://openreview.net/forum?id=fLnsj7fpbPI}
+              }"
+      link: ""
+      notes:
+        - "Accepted into AAMAS OptLearnMAS 2021 and NeurIPS Deep RL 2020 Workshops"
+    - title: "Understanding generalization through visualizations"
+      authors: W. R. Huang, Z. Emam, M. Goldblum, L. Fowl, J. K. Terry, F. Huang, and T. Goldstein
+      location: arXiv
+      date: "2021"
+      arxiv: "https://arxiv.org/abs/1906.03291"
+      bibtex: "@inproceedings{Huang2019UnderstandingGT,
+                title={Understanding Generalization through Visualizations},
+                author={W. Ronny Huang and Zeyad Ali Sami Emam and Micah Goldblum and Liam Fowl and  J. K. Terry and Furong Huang and Tom Goldstein},
+                booktitle={ICBINB@NeurIPS},
+                year={2019}
+              }"
+      link: ""
+      notes:
+        - "Accepted into NeurIPS ICBINB 2020 workshop, spotlight talk"
+    - title: Statistically Significant Stopping of Neural Network Training
+      authors: J. K. Terry, M. Jayakumar, K. De Alwis
+      location: arXiv
+      date: "2021"
+      arxiv: "https://arxiv.org/abs/2103.01205"
+      bibtex: "@article{Terry2021StatisticallySS,
+                title={Statistically Significant Stopping of Neural Network Training},
+                author={J. K. Terry and Mario Jayakumar and Kusal De Alwis},
+                journal={ArXiv},
+                year={2021},
+                volume={abs/2103.01205}
+              }"
+    - title: "Supersuit: Simple microwrappers for reinforcement learning environments"
+      authors: J. K. Terry, B. Black, A. Hari
+      location: arXiv
+      date: "2020"
+      arxiv: "https://arxiv.org/abs/2008.08932"
+      bibtex: "@article{Terry2020SuperSuitSM,
+                title={SuperSuit: Simple Microwrappers for Reinforcement Learning Environments},
+                author={J. K. Terry and Benjamin Black and Ananth Hari},
+                journal={ArXiv},
+                year={2020},
+                volume={abs/2008.08932}
+              }"
+    - title: "Multiplayer support for the arcade learning environment"
+      authors: J. K. Terry*, B. Black*, L. Santos
+      location: arXiv
+      date: "2020"
+      arxiv: "https://arxiv.org/abs/2009.09341"
+      bibtex: "@article{Terry2020MultiplayerSF,
+                title={Multiplayer Support for the Arcade Learning Environment},
+                author={J. K. Terry and Benjamin Black},
+                journal={ArXiv},
+                year={2020},
+                volume={abs/2009.09341}
+              }"
+      link: ""
+      notes:
+        - "Accepted into AAMAS OptLearnMAS 2021 Workshop"
+
+  Talks:
+    - title: "Exploring Reward Surfaces in Deep Reinforcement Learning"
+      location: K-KDD
+      date: "Oct 2021"
+      pdf: ""
+      video: ""
+
+  Teaching:
+    - title: "Introduction to Artificial Intelligence (Undergraduate) | CMSC421"
+      position: Teaching Assistant
+      date: Spring 2019
+    - title: Deep Learning (Graduate) | CMSC828L
+      position: Teaching Assistant
+      date: Fall 2018
+      notes:
+        - "* At the time of writing, this course number now corresponds to a different course"
+    - title: Applied Machine Learning (Undergraduate) | PHYS476
+      position: Instructor*
+      date: Spring 2018
+      notes:
+        - "* Invited by department to create and teach course; it has now become permanent and is offered annually"
+    - title: Machine Learning for Physicists
+      position: Speaker/Organizer
+      date: Spring 2017
+      notes:
+        - "* Semester long seminar"
