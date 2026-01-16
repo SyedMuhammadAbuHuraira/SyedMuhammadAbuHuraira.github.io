@@ -1,5 +1,5 @@
 ---
-layout: cv
+layout: CV
 title: Jordan K Terry
 permalink: /cv.html
 ---
