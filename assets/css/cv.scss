@@ -267,12 +267,12 @@ a.header-link {
     }
 }
 
-/* Main Content Wrapper - REDUCED LEFT PADDING */
+/* Main Content Wrapper - REDUCED LEFT PADDING, ADDED BOTTOM PADDING */
 .main-content-wrapper {
     flex: 1;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 0 40px 90px; /* REDUCED from 120px to 90px - text closer to sidebar */
+    padding: 40px 0 60px 90px; /* REDUCED left from 120px to 90px, ADDED 60px bottom */
     display: flex;
     justify-content: center;
 }
@@ -287,11 +287,15 @@ a.header-link {
     gap: 40px;
 }
 
-/* Section containers */
+/* Section containers - REDUCED MARGIN BETWEEN SECTIONS */
 .cv-section {
     padding: 0;
     background: transparent;
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* REDUCED from 40px to 30px */
+}
+
+.cv-section:last-child {
+    margin-bottom: 0;
 }
 
 .cv-section-title {
@@ -299,15 +303,15 @@ a.header-link {
     font-size: 36px;
     font-weight: 400;
     line-height: 44px;
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* REDUCED from 40px to 30px */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Education/Employment Items - ORIGINAL MOBILE STYLE */
+/* Education/Employment Items - REDUCED MARGIN BETWEEN ITEMS */
 .cv-item {
     display: flex;
     gap: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* REDUCED from 40px to 30px */
     align-items: flex-start;
 }
 
@@ -422,11 +426,11 @@ a.header-link {
     font-size: 16px;
 }
 
-/* Divider */
+/* Divider - REDUCED MARGIN */
 .divider {
     height: 1px;
     background: var(--border-color);
-    margin: 40px 0;
+    margin: 30px 0; /* REDUCED from 40px to 30px */
     opacity: 0.3;
 }
 
@@ -575,19 +579,20 @@ a.header-link {
     .cv-section {
         padding: 0;
         gap: 32px;
+        margin-bottom: 25px; /* Reduced on tablet */
     }
     
     .cv-section-title {
         font-size: 32px;
         line-height: 40px;
-        margin-bottom: 32px;
+        margin-bottom: 25px; /* Reduced on tablet */
     }
     
     /* ORIGINAL STYLE - DATES STAY ON SIDE ON TABLET (HORIZONTAL LAYOUT) */
     .cv-item {
         flex-direction: row; /* Keep horizontal layout on tablet */
         gap: 20px;
-        margin-bottom: 32px;
+        margin-bottom: 25px; /* Reduced on tablet */
         align-items: flex-start;
     }
     
@@ -614,6 +619,10 @@ a.header-link {
         font-size: 16px;
         line-height: 26px;
         letter-spacing: 0.32px;
+    }
+    
+    .divider {
+        margin: 25px 0; /* Reduced on tablet */
     }
 }
 
@@ -642,27 +651,27 @@ a.header-link {
     
     #cv-box {
         padding: 0;
-        gap: 32px;
+        gap: 28px; /* Reduced on mobile */
     }
     
     .cv-section {
         padding: 0;
         background: transparent;
         border: none;
-        margin-bottom: 32px;
+        margin-bottom: 25px; /* Reduced on mobile */
     }
     
     .cv-section-title {
         font-size: 26px;
         line-height: 34px;
-        margin-bottom: 32px;
+        margin-bottom: 25px; /* Reduced on mobile */
     }
     
     /* ORIGINAL STYLE - DATES STAY ON SIDE ON MOBILE (HORIZONTAL LAYOUT) */
     .cv-item {
         flex-direction: row; /* Keep horizontal on mobile too - ORIGINAL STYLE */
         gap: 16px; /* Reduced gap for mobile */
-        margin-bottom: 32px;
+        margin-bottom: 25px; /* Reduced on mobile */
         align-items: flex-start;
     }
     
@@ -692,6 +701,10 @@ a.header-link {
         line-height: 24px;
         letter-spacing: 0.30px;
     }
+    
+    .divider {
+        margin: 25px 0; /* Reduced on mobile */
+    }
 }
 
 /* Very Small Mobile (480px and below) - Stack only on very small screens */
@@ -699,7 +712,7 @@ a.header-link {
     .cv-item {
         flex-direction: row; /* STILL HORIZONTAL on very small screens */
         gap: 12px;
-        margin-bottom: 32px;
+        margin-bottom: 20px; /* Further reduced on very small */
     }
     
     .cv-item-date {
@@ -725,6 +738,14 @@ a.header-link {
         font-size: 14px;
         line-height: 22px;
         letter-spacing: 0.28px;
+    }
+    
+    .cv-section {
+        margin-bottom: 20px; /* Further reduced on very small */
+    }
+    
+    .cv-section-title {
+        margin-bottom: 20px; /* Further reduced on very small */
     }
 }
 
