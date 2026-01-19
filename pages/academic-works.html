@@ -26,119 +26,212 @@ permalink: /academic-works.html
 
     <!-- Main content area -->
     <div class="main-content-wrapper">
-        <div class="academic-section">
-            <div class="academic-header">
-                <h1 class="academic-title">Academic Works</h1>
-                <p class="academic-subtitle"><i>Asterisk (*) indicates equal contribution.</i></p>
-            </div>
+        <div class="academic-content">
+            <div class="academic-center-content">
+                <div class="academic-main-content">
+                    <div class="academic-section">
+                        <div class="academic-header">
+                            <h1 class="academic-title">Academic Works</h1>
+                            <p class="academic-subtitle"><i>Asterisk (*) indicates equal contribution.</i></p>
+                        </div>
 
-            <div class="academic-content">
-                {% for var in site.data.academic %}
-                {% assign type = var[0] %}
-                {% assign publications = var[1] %}
-                
-                <div class="publication-category" id="{{type | downcase}}">
-                    {% if type == "Publications" %}
-                    {% for pub in publications %}
-                    <div class="publication-item">
-                        <h2 class="publication-title">
-                            {% if pub.arxiv and pub.arxiv != "" %}
-                            <a href="{{pub.arxiv}}" class="publication-link">{{pub.title}}</a>
-                            {% else %}
-                            {{pub.title}}
-                            {% endif %}
-                        </h2>
-                        
-                        <div class="publication-authors">
-                            {% assign bold_author_name = '<strong>' | append: site.author_name | append: '</strong>' %}
-                            {{pub.authors | replace: site.author_name, bold_author_name}}
-                        </div>
-                        
-                        <div class="publication-meta">
-                            <span class="publication-venue">{{pub.location}}</span>
-                            <span class="publication-year">{{pub.date}}</span>
-                        </div>
-                        
-                        {% if pub.notes and pub.notes != "" %}
-                        <div class="publication-notes">
-                            {% if pub.notes contains ',' %}
-                                {% assign notes_array = pub.notes | split: ',' %}
-                                {% for note in notes_array %}
-                                <p class="publication-note">{{ note | strip }}</p>
-                                {% endfor %}
-                            {% else %}
-                            <p class="publication-note">{{ pub.notes }}</p>
-                            {% endif %}
+                        <!-- Publications Section - ALL PUBLICATIONS -->
+                        {% assign publications = site.data.academic.Publications %}
+                        {% if publications and publications.size > 0 %}
+                        <div class="publication-category" id="publications">
+                            <h2 class="category-title">Publications</h2>
+                            {% for pub in publications %}
+                            <div class="publication-item">
+                                <h3 class="publication-title">
+                                    {% if pub.arxiv %}
+                                        {% if pub.arxiv != "" %}
+                                        <a href="{{pub.arxiv}}" class="publication-link" target="_blank">{{pub.title}}</a>
+                                        {% else %}
+                                        {{pub.title}}
+                                        {% endif %}
+                                    {% elsif pub.link %}
+                                        {% if pub.link != "" %}
+                                        <a href="{{pub.link}}" class="publication-link" target="_blank">{{pub.title}}</a>
+                                        {% else %}
+                                        {{pub.title}}
+                                        {% endif %}
+                                    {% else %}
+                                    {{pub.title}}
+                                    {% endif %}
+                                </h3>
+                                
+                                <div class="publication-authors">
+                                    {% assign bold_author_name = '<strong>' | append: site.author_name | append: '</strong>' %}
+                                    {{pub.authors | replace: site.author_name, bold_author_name}}
+                                </div>
+                                
+                                <div class="publication-meta">
+                                    <span class="publication-venue">{{pub.location}}</span>
+                                    <span class="publication-year">{{pub.date}}</span>
+                                </div>
+                                
+                                {% if pub.notes and pub.notes != "" %}
+                                <div class="publication-notes">
+                                    {% if pub.notes contains ',' %}
+                                        {% assign notes_array = pub.notes | split: ',' %}
+                                        {% for note in notes_array %}
+                                        <p class="publication-note">{{ note | strip }}</p>
+                                        {% endfor %}
+                                    {% else %}
+                                    <p class="publication-note">{{ pub.notes }}</p>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                                
+                                {% if pub.link or pub.video or pub.pdf %}
+                                <div class="publication-links">
+                                    {% if pub.link and pub.link != "" %}
+                                    <a href="{{pub.link}}" class="publication-link-button" target="_blank">Link</a>
+                                    {% endif %}
+                                    {% if pub.video and pub.video != "" %}
+                                    <a href="{{pub.video}}" class="publication-link-button" target="_blank">Video</a>
+                                    {% endif %}
+                                    {% if pub.pdf and pub.pdf != "" %}
+                                    <a href="{{pub.pdf}}" class="publication-link-button" target="_blank">PDF</a>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
                         </div>
                         {% endif %}
-                        
-                        {% if pub.link or pub.video or pub.pdf %}
-                        <div class="publication-links">
-                            {% if pub.link and pub.link != "" %}
-                            <a href="{{pub.link}}" class="publication-link-button" target="_blank">Link</a>
-                            {% endif %}
-                            {% if pub.video and pub.video != "" %}
-                            <a href="{{pub.video}}" class="publication-link-button" target="_blank">Video</a>
-                            {% endif %}
-                            {% if pub.pdf and pub.pdf != "" %}
-                            <a href="{{pub.pdf}}" class="publication-link-button" target="_blank">PDF</a>
-                            {% endif %}
+
+                        <!-- Talks Section -->
+                        {% assign talks = site.data.academic.Talks %}
+                        {% if talks and talks.size > 0 %}
+                        <div class="talk-category" id="talks">
+                            <h2 class="category-title">Talks</h2>
+                            {% for talk in talks %}
+                            <div class="talk-item">
+                                <h3 class="talk-title">
+                                    {% if talk.arxiv %}
+                                        {% if talk.arxiv != "" %}
+                                        <a href="{{talk.arxiv}}" class="talk-link" target="_blank">{{talk.title}}</a>
+                                        {% else %}
+                                        {{talk.title}}
+                                        {% endif %}
+                                    {% elsif talk.link %}
+                                        {% if talk.link != "" %}
+                                        <a href="{{talk.link}}" class="talk-link" target="_blank">{{talk.title}}</a>
+                                        {% else %}
+                                        {{talk.title}}
+                                        {% endif %}
+                                    {% else %}
+                                    {{talk.title}}
+                                    {% endif %}
+                                </h3>
+                                
+                                <div class="talk-meta">
+                                    {% if talk.location %}
+                                    <span class="talk-location">{{talk.location}}</span>
+                                    {% endif %}
+                                    <span class="talk-date">{{talk.date}}</span>
+                                </div>
+                                
+                                {% if talk.notes and talk.notes != "" %}
+                                <div class="talk-notes">
+                                    {% if talk.notes contains ',' %}
+                                        {% assign notes_array = talk.notes | split: ',' %}
+                                        {% for note in notes_array %}
+                                        <p class="talk-note">{{ note | strip }}</p>
+                                        {% endfor %}
+                                    {% else %}
+                                    <p class="talk-note">{{ talk.notes }}</p>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                                
+                                {% if talk.link or talk.video or talk.pdf %}
+                                <div class="talk-links">
+                                    {% if talk.link and talk.link != "" %}
+                                    <a href="{{talk.link}}" class="publication-link-button" target="_blank">Link</a>
+                                    {% endif %}
+                                    {% if talk.video and talk.video != "" %}
+                                    <a href="{{talk.video}}" class="publication-link-button" target="_blank">Video</a>
+                                    {% endif %}
+                                    {% if talk.pdf and talk.pdf != "" %}
+                                    <a href="{{talk.pdf}}" class="publication-link-button" target="_blank">PDF</a>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <!-- Teaching Section -->
+                        {% assign teaching = site.data.academic.Teaching %}
+                        {% if teaching and teaching.size > 0 %}
+                        <div class="teaching-category" id="teaching">
+                            <h2 class="category-title">Teaching</h2>
+                            {% for item in teaching %}
+                            <div class="teaching-item">
+                                <h3 class="teaching-title">
+                                    {% if item.arxiv %}
+                                        {% if item.arxiv != "" %}
+                                        <a href="{{item.arxiv}}" class="teaching-link" target="_blank">{{item.title}}</a>
+                                        {% else %}
+                                        {{item.title}}
+                                        {% endif %}
+                                    {% elsif item.link %}
+                                        {% if item.link != "" %}
+                                        <a href="{{item.link}}" class="teaching-link" target="_blank">{{item.title}}</a>
+                                        {% else %}
+                                        {{item.title}}
+                                        {% endif %}
+                                    {% else %}
+                                    {{item.title}}
+                                    {% endif %}
+                                </h3>
+                                
+                                <div class="teaching-meta">
+                                    <span class="teaching-date">{{item.date}}</span>
+                                    {% if item.position %}
+                                    <span class="teaching-position">{{item.position}}</span>
+                                    {% endif %}
+                                </div>
+                                
+                                {% if item.notes and item.notes != "" %}
+                                <div class="teaching-notes">
+                                    {% if item.notes contains ',' %}
+                                        {% assign notes_array = item.notes | split: ',' %}
+                                        {% for note in notes_array %}
+                                        <p class="teaching-note">{{ note | strip }}</p>
+                                        {% endfor %}
+                                    {% else %}
+                                    <p class="teaching-note">{{ item.notes }}</p>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                                
+                                {% if item.link or item.video or item.pdf %}
+                                <div class="teaching-links">
+                                    {% if item.link and item.link != "" %}
+                                    <a href="{{item.link}}" class="publication-link-button" target="_blank">Link</a>
+                                    {% endif %}
+                                    {% if item.video and item.video != "" %}
+                                    <a href="{{item.video}}" class="publication-link-button" target="_blank">Video</a>
+                                    {% endif %}
+                                    {% if item.pdf and item.pdf != "" %}
+                                    <a href="{{item.pdf}}" class="publication-link-button" target="_blank">PDF</a>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
                         </div>
                         {% endif %}
                     </div>
-                    {% endfor %}
-                    
-                    {% elsif type == "Talks" or type == "Teaching" %}
-                    {% for pub in publications %}
-                    <div class="talk-item">
-                        <h2 class="talk-title">{{pub.title}}</h2>
-                        
-                        <div class="talk-meta">
-                            {% if pub.location %}
-                            <span class="talk-location">{{pub.location}}</span>
-                            {% endif %}
-                            <span class="talk-date">{{pub.date}}</span>
-                            {% if type == "Teaching" and pub.position %}
-                            <span class="teaching-position">{{pub.position}}</span>
-                            {% endif %}
-                        </div>
-                        
-                        {% if pub.notes and pub.notes != "" %}
-                        <div class="talk-notes">
-                            {% if pub.notes contains ',' %}
-                                {% assign notes_array = pub.notes | split: ',' %}
-                                {% for note in notes_array %}
-                                <p class="talk-note">{{ note | strip }}</p>
-                                {% endfor %}
-                            {% else %}
-                            <p class="talk-note">{{ pub.notes }}</p>
-                            {% endif %}
-                        </div>
-                        {% endif %}
-                        
-                        {% if pub.link or pub.video or pub.pdf %}
-                        <div class="talk-links">
-                            {% if pub.link and pub.link != "" %}
-                            <a href="{{pub.link}}" class="publication-link-button" target="_blank">Link</a>
-                            {% endif %}
-                            {% if pub.video and pub.video != "" %}
-                            <a href="{{pub.video}}" class="publication-link-button" target="_blank">Video</a>
-                            {% endif %}
-                            {% if pub.pdf and pub.pdf != "" %}
-                            <a href="{{pub.pdf}}" class="publication-link-button" target="_blank">PDF</a>
-                            {% endif %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    {% endfor %}
-                    {% endif %}
                 </div>
-                {% endfor %}
+                
+                <!-- Empty right sidebar for consistency with homepage -->
+                <div class="empty-sidebar" style="width: 220px; flex-shrink: 0;"></div>
             </div>
         </div>
     </div>
-
-    <!-- Right sidebar (empty on academic works page) -->
-    <aside class="sidebar profile-sidebar" style="display: none;"></aside>
 </main>
-
