@@ -25,69 +25,53 @@ permalink: /index.html
         </div>
     </aside>
 
-    <!-- Main content area -->
+    <!-- Main content wrapper -->
     <div class="main-content-wrapper">
-        <!-- Bio section -->
-        <section class="bio-section">
-            <h1 class="bio-title">Bio</h1>
-            <p class="bio-intro">Jordan Terry builds the open-source tools that power modern global reinforcement learning research.</p>
+        <!-- Center content container for text and image side by side -->
+        <div class="center-content">
+            <!-- Bio section (Left side) -->
+            <section class="bio-section">
+                <h1 class="bio-title">Bio</h1>
+                <p class="bio-intro">Jordan Terry builds the open-source tools that power modern global reinforcement learning research.</p>
+                
+                <!-- Founder & CEO section -->
+                <div class="bio-subsection">
+                    <h2 class="subsection-title">Founder & CEO, Farama Foundation</h2>
+                    <p class="subsection-content">
+                        Jordan Terry founded and leads the <a href="https://farama.org" class="underline-link">Farama Foundation</a>, whose reinforcement learning infrastructure powers AI research at Amazon, Google/DeepMind, Meta, Microsoft, and every major AI research organization globally, with over 250 million installations to date. OpenAI transferred stewardship of OpenAI Gym—their first flagship project—to the Foundation. The Foundation also maintains the Arcade Learning Environment, the benchmark that led Google to acquire DeepMind.
+                    </p>
+                </div>
+                
+                <!-- Industry section -->
+                <div class="bio-subsection">
+                    <h2 class="subsection-title">Industry</h2>
+                    <p class="subsection-content">
+                        She previously founded Swarm Labs, a venture-backed AI security company that developed a novel AI-assisted vulnerability search tool for deployed AI systems. The company was backed by technical leadership at OpenAI, Microsoft, Google, and HuggingFace.
+                    </p>
+                </div>
+                
+                <!-- Academic Background section -->
+                <div class="bio-subsection">
+                    <h2 class="subsection-title">Academic Background</h2>
+                    <p class="subsection-content">
+                        Jordan Terry also led teams using deep learning for embedded systems in intelligence applications at two major multinational defense contractors. She holds a bachelor's degree in Physics and a PhD in Computer Science from the University of Maryland. Her doctoral research developed a reinforcement learning interface that became industry standard and introduced new methods for modeling behavior in chaotic and economic systems using AI. She was advised by Dr. Dan Lathrop, a physicist specializing in chaos theory, and Dr. John Dickerson, a computer scientist working in AI and computational economics.
+                    </p>
+                </div>
+            </section>
             
-            <!-- Founder & CEO section -->
-            <div class="bio-subsection">
-                <h2 class="subsection-title">Founder & CEO, Farama Foundation</h2>
-                <p class="subsection-content">
-                    Jordan Terry founded and leads the <a href="https://farama.org" class="underline-link">Farama Foundation</a>, whose reinforcement learning infrastructure powers AI research at Amazon, Google/DeepMind, Meta, Microsoft, and every major AI research organization globally, with over 250 million installations to date. OpenAI transferred stewardship of OpenAI Gym—their first flagship project—to the Foundation. The Foundation also maintains the Arcade Learning Environment, the benchmark that led Google to acquire DeepMind.
-                </p>
-            </div>
-            
-            <!-- Industry section -->
-            <div class="bio-subsection">
-                <h2 class="subsection-title">Industry</h2>
-                <p class="subsection-content">
-                    She previously founded Swarm Labs, a venture-backed AI security company that developed a novel AI-assisted vulnerability search tool for deployed AI systems. The company was backed by technical leadership at OpenAI, Microsoft, Google, and HuggingFace.
-                </p>
-            </div>
-            
-            <!-- Academic Background section -->
-            <div class="bio-subsection">
-                <h2 class="subsection-title">Academic Background</h2>
-                <p class="subsection-content">
-                    Jordan Terry also led teams using deep learning for embedded systems in intelligence applications at two major multinational defense contractors. She holds a bachelor's degree in Physics and a PhD in Computer Science from the University of Maryland. Her doctoral research developed a reinforcement learning interface that became industry standard and introduced new methods for modeling behavior in chaotic and economic systems using AI. She was advised by Dr. Dan Lathrop, a physicist specializing in chaos theory, and Dr. John Dickerson, a computer scientist working in AI and computational economics.
-                </p>
-            </div>
-        </section>
+            <!-- Profile sidebar (Right side) -->
+            <aside class="profile-sidebar">
+                <div class="profile-card">
+                    <div class="profile-image-container">
+                        <img src="/jordan.jpg" 
+                             alt="Professional headshot of Dr. Jordan Terry"
+                             class="profile-image">
+                        <div class="image-blur"></div>
+                    </div>
+                    <h2 class="profile-name">Jordan Terry</h2>
+                    <p class="profile-email">{{site.email}}</p>
+                </div>
+            </aside>
+        </div>
     </div>
-
-    <!-- Right sidebar with profile (Desktop only) -->
-    <aside class="sidebar profile-sidebar">
-        <div class="profile-card">
-            <div class="profile-image-container">
-                <img src="/jordan.jpg" 
-                     alt="Professional headshot of Dr. Jordan Terry"
-                     class="profile-image">
-                <div class="image-blur"></div>
-            </div>
-            <h2 class="profile-name">Jordan Terry</h2>
-            <p class="profile-email">{{site.email}}</p>
-        </div>
-        
-        <!-- Social icons for tablet/mobile -->
-        <div class="mobile-social-icons">
-            <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
-                <img src="/assets/images/github.svg" alt="GitHub">
-            </a>
-            <a href="{{site.twitter}}" class="social-icon" aria-label="Twitter">
-                <img src="/assets/images/twitter.svg" alt="Twitter">
-            </a>
-            <a href="{{site.linkedin}}" class="social-icon" aria-label="LinkedIn">
-                <img src="/assets/images/linkedin.svg" alt="LinkedIn">
-            </a>
-            <a href="{{site.google-scholar}}" class="social-icon" aria-label="Google Scholar">
-                <img src="/assets/images/google-scholar.svg" alt="Google Scholar">
-            </a>
-            <a href="{{site.bluesky}}" class="social-icon" aria-label="Bluesky">
-                <img src="/assets/images/bluesky.svg" alt="Bluesky">
-            </a>
-        </div>
-    </aside>
 </main>
