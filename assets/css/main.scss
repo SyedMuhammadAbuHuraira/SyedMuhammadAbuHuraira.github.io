@@ -233,12 +233,11 @@ a.header-link {
 /* Main Content Container - PROPER LAYOUT */
 .content-container {
     display: flex;
-    min-height: calc(100vh - 80px);
     width: 100%;
     margin: 0;
     padding: 0;
     justify-content: center;
-    flex: 1;
+    flex: 1 0 auto; /* This grows to fill space and push footer down */
 }
 
 /* Sidebars */
@@ -445,8 +444,8 @@ a.header-link {
     display: none;
 }
 
-/* Footer Styles */
-.site-footer {
+/* Footer Styles - MOBILE/TABLET */
+.site-footer.mobile-footer {
     padding: 40px 160px;
     border-top: 0.5px solid var(--border-color);
     background: var(--bg-primary);
@@ -491,6 +490,43 @@ a.header-link {
     font-size: 14px;
     font-weight: 400;
     text-align: center;
+}
+
+/* Desktop-only Footer Styles */
+.site-footer.desktop-only-footer {
+    background: var(--bg-primary);
+    border-top: 0.5px solid;
+    border-image: linear-gradient(90deg, var(--border-color), transparent) 1;
+    padding: 40px 160px;
+    margin-top: auto; /* ← THIS IS CRITICAL - pushes to bottom */
+    flex-shrink: 0;
+    display: none; /* Hidden by default, shown via media query */
+}
+
+.site-footer.desktop-only-footer .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.site-footer.desktop-only-footer .copyright {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.site-footer.desktop-only-footer .copyright .year-range {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.site-footer.desktop-only-footer .copyright .company-name {
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 /* ACADEMIC WORKS PAGE - FIXED SPACING */
@@ -1134,10 +1170,41 @@ a.header-link {
     }
 }
 
-/* Desktop only: Hide footer */
+/* ============================ */
+/* UPDATED FOOTER RESPONSIVE RULES */
+/* ============================ */
+
+/* ============================ */
+/* FOOTER VISIBILITY FIX */
+/* ============================ */
+
+/* Desktop only: Show desktop footer, hide mobile footer */
 @media (min-width: 1025px) {
-    .site-footer {
+    .site-footer.mobile-footer {
         display: none;
+    }
+    
+    .site-footer.desktop-only-footer {
+        display: block;
+    }
+}
+
+/* Mobile/Tablet: Show mobile footer, hide desktop footer */
+@media (max-width: 1024px) {
+    .site-footer.mobile-footer {
+        display: block;
+        padding: 40px 40px;
+    }
+    
+    .site-footer.desktop-only-footer {
+        display: none;
+    }
+}
+
+/* Further adjustments for mobile */
+@media (max-width: 768px) {
+    .site-footer.mobile-footer {
+        padding: 40px 24px;
     }
 }
 
