@@ -221,15 +221,14 @@ a.header-link {
     }
 }
 
-/* Main Content Container */
+/* Main Content Container - FIXED FOR FOOTER */
 .content-container {
     display: flex;
-    min-height: calc(100vh - 80px);
     width: 100%;
     margin: 0;
     padding: 0;
     justify-content: center;
-    flex: 1;
+    flex: 1 0 auto; /* FIXED: Changed from min-height to flex grow */
 }
 
 /* Sidebars */
@@ -505,6 +504,43 @@ a.header-link {
     text-align: center;
 }
 
+/* NEW: Desktop-only Footer Styles */
+.cv-desktop-footer {
+    background: var(--bg-primary);
+    border-top: 0.5px solid;
+    border-image: linear-gradient(90deg, var(--border-color), transparent) 1;
+    padding: 40px 160px;
+    margin-top: auto; /* This pushes it to bottom */
+    flex-shrink: 0;
+    display: none; /* Hidden by default */
+}
+
+.cv-desktop-footer .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.cv-desktop-footer .copyright {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.cv-desktop-footer .copyright .year-range {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.cv-desktop-footer .copyright .company-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
 /* Responsive Design */
 
 /* FIX FOR 1021px-770px RANGE - NAVIGATION VISIBILITY */
@@ -583,6 +619,10 @@ a.header-link {
         order: 2;
     }
     
+    .cv-desktop-footer {
+        display: none !important; /* Hide desktop footer on tablet/mobile */
+    }
+    
     #cv-box {
         padding: 0;
         gap: 32px;
@@ -655,6 +695,10 @@ a.header-link {
     
     .cv-footer {
         padding: 40px 24px;
+    }
+    
+    .cv-desktop-footer {
+        display: none !important; /* Hide desktop footer on mobile */
     }
     
     .footer-social-icons {
@@ -773,6 +817,10 @@ a.header-link {
     
     .cv-footer {
         display: none;
+    }
+    
+    .cv-desktop-footer {
+        display: block; /* Show desktop footer on desktop */
     }
     
     .content-container {
