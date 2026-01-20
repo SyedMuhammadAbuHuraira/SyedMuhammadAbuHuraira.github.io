@@ -4,9 +4,9 @@
 /* CSS Variables for Dark Theme Only */
 :root {
     /* Dark Theme (Only) */
-    --bg-primary: #0B0B0B;
-    --bg-secondary: #121212;
-    --bg-tertiary: #161616;
+    --bg-primary: #0B0B0B;      /* 0% - This will be at the TOP with 180deg */
+    --bg-secondary: #121212;    /* 55% - Middle transition */
+    --bg-tertiary: #161616;     /* 100% - This will be at the BOTTOM with 180deg */
     --text-primary: #FAFAFA;
     --text-secondary: #D3D3D3;
     --text-tertiary: #A6A8AD;
@@ -29,7 +29,18 @@ body {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background: linear-gradient(360deg, var(--bg-primary) 0%, var(--bg-secondary) 55%, var(--bg-tertiary) 100%);
+    
+    /* CORRECTED GRADIENT: Top to bottom flow matching your stops */
+    /* Using 180deg: 0% at TOP, 100% at BOTTOM */
+    background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,      /* #0B0B0B */
+    var(--bg-primary) 25%,     /* Stay #0B0B0B for first quarter */
+    var(--bg-secondary) 55%,   /* Transition to #121212 */
+    var(--bg-secondary) 85%,   /* Stay #121212 */
+    var(--bg-tertiary) 100%    /* End with #161616 */
+);
+    
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -37,6 +48,7 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    background-attachment: fixed; /* Added: keeps gradient stationary */
 }
 
 /* Header/Navbar Styles - WITH LINEAR GRADIENT BORDER */
