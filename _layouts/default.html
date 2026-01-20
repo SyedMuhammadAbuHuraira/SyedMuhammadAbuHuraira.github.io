@@ -7,8 +7,8 @@
     
     {{ content }}
     
-    <!-- Footer with social icons for mobile/tablet -->
-    <footer class="site-footer">
+    <!-- Mobile/Tablet Footer (with social icons) -->
+    <footer class="site-footer mobile-footer">
         <div class="footer-content">
             <div class="footer-social-icons">
                 <a href="{{site.github}}" class="social-icon" aria-label="GitHub">
@@ -30,6 +30,15 @@
             <div class="footer-copyright">
                 © {% assign current_year = site.time | date: '%Y' %}{{ current_year }} Jordan Terry
             </div>
+        </div>
+    </footer>
+
+    <!-- Desktop-only Footer -->
+    <footer class="site-footer desktop-only-footer" role="contentinfo">
+        <div class="footer-content">
+            <p class="copyright">
+                &copy; <span class="year-range">2024-{% assign current_year = site.time | date: '%Y' %}{{ current_year }}</span> <span class="company-name">Farama Foundation</span>. All Rights Reserved.
+            </p>
         </div>
     </footer>
 </body>
