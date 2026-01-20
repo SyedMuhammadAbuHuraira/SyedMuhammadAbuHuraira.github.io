@@ -4,16 +4,15 @@
 /* CSS Variables for Dark Theme Only */
 :root {
     /* Dark Theme (Only) */
-    --bg-primary: #0B0B0B;
-    --bg-secondary: #121212;
-    --bg-tertiary: #161616;
+    --bg-primary: #0B0B0B;      /* 0% in your gradient */
+    --bg-secondary: #121212;    /* 55% in your gradient */
+    --bg-tertiary: #161616;     /* 100% in your gradient */
     --text-primary: #FAFAFA;
     --text-secondary: #D3D3D3;
     --text-tertiary: #A6A8AD;
     --border-color: #696A6B;
     --link-color: #FAFAFA;
     --card-bg: rgba(255, 255, 255, 0.05);
-    --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Reset CSS */
@@ -29,7 +28,29 @@ body {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background: linear-gradient(360deg, var(--bg-primary) 0%, var(--bg-secondary) 55%, var(--bg-tertiary) 100%);
+    
+    /* Updated gradient to match your specifications */
+    /* 0deg = #0B0B0B at bottom (0%), #161616 at top (100%) */
+    /* 180deg = #0B0B0B at top (0%), #161616 at bottom (100%) */
+    
+    /* Based on your stops, I recommend 0deg for bottom-to-top gradient */
+   background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,      /* #0B0B0B */
+    var(--bg-primary) 25%,     /* Stay #0B0B0B for first quarter */
+    var(--bg-secondary) 55%,   /* Transition to #121212 */
+    var(--bg-secondary) 85%,   /* Stay #121212 */
+    var(--bg-tertiary) 100%    /* End with #161616 */
+);
+    
+    /* If you prefer top-to-bottom gradient, use this instead: */
+    /* background: linear-gradient(
+        180deg,
+        var(--bg-tertiary) 0%,
+        var(--bg-secondary) 45%,
+        var(--bg-primary) 100%
+    ); */
+    
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -37,8 +58,8 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    background-attachment: fixed; /* Keeps gradient stationary */
 }
-
 /* Header/Navbar Styles - WITH LINEAR GRADIENT BORDER */
 .header-bar {
     height: 80px;
@@ -547,8 +568,8 @@ a.header-link {
 .publication-item {
     display: flex;
     flex-direction: column;
-    gap: 12px; /* Increased gap */
-    padding: 24px 0; /* Increased padding */
+    gap: 6px; /* REDUCED from 12px to 6px */
+    padding: 20px 0; /* REDUCED from 24px to 20px */
     border-bottom: 0.5px solid rgba(105, 106, 107, 0.3);
     
     &:last-child {
@@ -562,8 +583,7 @@ a.header-link {
     line-height: 30px;
     color: var(--text-primary);
     margin: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    margin-bottom: 2px; /* Small bottom margin */
 }
 
 .publication-link {
@@ -579,11 +599,10 @@ a.header-link {
 .publication-authors {
     font-size: 18px; /* Body large */
     font-weight: 400;
-    line-height: 28px;
+    line-height: 26px; /* Tighter line height */
     letter-spacing: 0.36px;
     color: var(--text-tertiary);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    margin-bottom: 2px; /* Small bottom margin */
     
     strong {
         font-weight: 600;
@@ -597,7 +616,7 @@ a.header-link {
     font-size: 18px; /* Body large */
     font-weight: 400;
     color: var(--text-tertiary);
-    flex-wrap: wrap;
+    margin-bottom: 4px; /* Small bottom margin */
 }
 
 .publication-venue {
@@ -611,8 +630,8 @@ a.header-link {
 .publication-notes {
     display: flex;
     flex-direction: column;
-    gap: 6px; /* Increased gap */
-    margin-top: 12px; /* Increased margin */
+    gap: 4px; /* REDUCED from 6px to 4px */
+    margin-top: 8px; /* REDUCED from 12px to 8px */
 }
 
 .publication-note {
@@ -621,12 +640,13 @@ a.header-link {
     color: var(--text-secondary);
     font-style: italic;
     margin: 0;
+    line-height: 20px; /* Tighter line height */
 }
 
 .publication-links {
     display: flex;
     gap: 12px;
-    margin-top: 16px; /* Increased margin */
+    margin-top: 12px; /* REDUCED from 16px to 12px */
 }
 
 .publication-link-button {
@@ -714,15 +734,15 @@ a.header-link {
 .talk-links {
     display: flex;
     gap: 12px;
-    margin-top: 16px; /* Increased margin */
+    margin-top: 12px; /* REDUCED from 16px to 12px */
 }
 
 /* Teaching Items */
 .teaching-item {
     display: flex;
     flex-direction: column;
-    gap: 12px; /* Increased gap */
-    padding: 24px 0; /* Increased padding */
+    gap: 6px; /* REDUCED from 12px to 6px */
+    padding: 20px 0; /* REDUCED from 24px to 20px */
     border-bottom: 0.5px solid rgba(105, 106, 107, 0.3);
     
     &:last-child {
@@ -736,8 +756,7 @@ a.header-link {
     line-height: 30px;
     color: var(--text-primary);
     margin: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    margin-bottom: 2px; /* Small bottom margin */
 }
 
 .teaching-link {
@@ -756,18 +775,17 @@ a.header-link {
     font-size: 18px; /* Body large */
     font-weight: 400;
     color: var(--text-tertiary);
-    flex-wrap: wrap;
+    margin-bottom: 4px; /* Small bottom margin */
 }
 
 .teaching-position {
     font-style: italic;
 }
-
 .teaching-notes {
     display: flex;
     flex-direction: column;
-    gap: 6px; /* Increased gap */
-    margin-top: 12px; /* Increased margin */
+    gap: 4px; /* REDUCED from 6px to 4px */
+    margin-top: 8px; /* REDUCED from 12px to 8px */
 }
 
 .teaching-note {
@@ -776,6 +794,7 @@ a.header-link {
     color: var(--text-secondary);
     font-style: italic;
     margin: 0;
+    line-height: 20px; /* Tighter line height */
 }
 
 /* Responsive Styles for Academic Works */
