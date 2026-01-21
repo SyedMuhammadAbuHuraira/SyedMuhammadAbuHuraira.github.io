@@ -279,19 +279,21 @@ a.header-link {
 }
 
 /* Main Content Wrapper - REDUCED LEFT PADDING, ADDED BOTTOM PADDING */
+/* Main Content Wrapper - REDUCED LEFT PADDING, ADDED BOTTOM PADDING */
 .main-content-wrapper {
     flex: 1;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 0 60px 90px; /* REDUCED left from 120px to 90px, ADDED 60px bottom */
+    padding: 40px 0 60px 70px; /* REDUCED left from 90px to 70px to be closer to sidebar */
     display: flex;
     justify-content: center;
 }
 
 /* CV Container - WIDER */
+/* CV Container - WIDER */
 #cv-box {
     width: 100%;
-    max-width: 950px; /* WIDER for better text distribution */
+    max-width: 1000px; /* WIDER: Changed from 950px to 1000px */
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -459,11 +461,23 @@ a.header-link {
 .cv-footer {
     display: none;
     padding: 40px 160px;
-    border-top: 0.5px solid var(--border-color);
-    background: var(--bg-primary);
+    border-top: 0.5px solid transparent; /* Make border invisible */
+    background: transparent; /* Remove background color */
     margin-top: auto;
     flex-shrink: 0;
+    /* Use the same gradient as body */
+    background: linear-gradient(
+        180deg,
+        var(--bg-primary) 0%,
+        var(--bg-primary) 25%,
+        var(--bg-secondary) 55%,
+        var(--bg-secondary) 85%,
+        var(--bg-tertiary) 100%
+    );
+    background-attachment: fixed; /* Match body's fixed attachment */
 }
+
+
 
 .footer-content {
     display: flex;
@@ -506,15 +520,27 @@ a.header-link {
 
 /* NEW: Desktop-only Footer Styles */
 .cv-desktop-footer {
-    background: var(--bg-primary);
-    border-top: 0.5px solid;
-    border-image: linear-gradient(90deg, var(--border-color), transparent) 1;
+    background: transparent; /* Remove solid background */
+    border-top: 0.5px solid transparent; /* Remove visible border */
     padding: 40px 160px;
-    margin-top: auto; /* This pushes it to bottom */
+    margin-top: auto;
     flex-shrink: 0;
-    display: none; /* Hidden by default */
+    display: none;
+    /* Use the exact same gradient as body */
+    background: linear-gradient(
+        180deg,
+        var(--bg-primary) 0%,
+        var(--bg-primary) 25%,
+        var(--bg-secondary) 55%,
+        var(--bg-secondary) 85%,
+        var(--bg-tertiary) 100%
+    );
+    background-attachment: fixed; /* Match body */
 }
 
+.cv-desktop-footer {
+    border-image: none;
+}
 .cv-desktop-footer .footer-content {
     display: flex;
     justify-content: center;
