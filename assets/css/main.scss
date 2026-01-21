@@ -494,9 +494,17 @@ a.header-link {
 
 /* Desktop-only Footer Styles */
 .site-footer.desktop-only-footer {
-    background: var(--bg-primary);
-    border-top: 0.5px solid;
-    border-image: linear-gradient(90deg, var(--border-color), transparent) 1;
+    /* Use the exact same gradient as body */
+    background: linear-gradient(
+        180deg,
+        var(--bg-primary) 0%,
+        var(--bg-primary) 25%,
+        var(--bg-secondary) 55%,
+        var(--bg-secondary) 85%,
+        var(--bg-tertiary) 100%
+    );
+    background-attachment: fixed; /* Match body */
+    border-top: 0.5px solid transparent; /* Make invisible */
     padding: 40px 160px;
     margin-top: auto; /* ← THIS IS CRITICAL - pushes to bottom */
     flex-shrink: 0;
