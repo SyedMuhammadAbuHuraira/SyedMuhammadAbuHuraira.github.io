@@ -404,14 +404,16 @@ a.header-link {
 }
 
 /* Main Content Wrapper - PROPER LAYOUT FIX */
+/* --- Update this section in your main.scss --- */
 .main-content-wrapper {
     flex: 1;
     max-width: 1200px;
-    margin: 0 auto;
-    /* REDUCED: Changed from 100px to 40px to pull content left */
-    padding: 40px 40px 0 40px; 
+    margin: 0; /* Changed from margin: 0 auto to keep it left-aligned with header */
+    
+    /* MATCH THE CV PAGE: 180px Top, 160px Left */
+    padding: 120px 40px 80px 120px; 
+    
     display: flex;
-    /* CHANGED: Align to the start (left) instead of center */
     justify-content: flex-start; 
 }
 
@@ -498,18 +500,21 @@ a.header-link {
     }
 }
 
+/* --- Update this section in your main.scss --- */
 .profile-sidebar {
     flex: 0 0 auto;
     width: 220px;
     position: sticky;
-    /* This keeps it sticky as you scroll, but 20px below the header */
-    top: 100px; 
+    
+    /* 180px matches the padding-top of the wrapper exactly 
+       so the photo and text start at the same height */
+    top: 180px; 
     height: fit-content;
     
-    /* ADD THIS: Pushes the image down slightly from the header on page load */
-    margin-top: 40px; 
+    /* REMOVE the margin-top that was pushing it away from the alignment line */
+    margin-top: 0; 
+    margin-left: 60px; /* Adds a clean gap between the text and the photo */
 }
-
 .profile-sidebar .profile-card {
     display: flex;
     flex-direction: column;
@@ -665,24 +670,12 @@ a.header-link {
     width: 100%;
     max-width: 1200px;
     margin: 0;
-    
-    /* 78px padding-left: 
-       This is 2px LESS than the sidebar width (80px),
-       forcing the text to touch or slightly overlap the border line. */
-    padding: 0px 0 40px 0px; 
-    
+    /* TOP: 120px (80px Header + 40px gap) 
+       LEFT: 120px (80px Sidebar + 40px gap) */
+    padding: 0px 40px 80px 20px; 
     display: flex;
     justify-content: flex-start; 
     flex: 1;
-}
-
-.academic-center-content {
-    width: 100%;
-    max-width: 1000px; 
-    display: flex;
-    justify-content: flex-start; 
-    align-items: flex-start;
-    gap: 0; 
 }
 
 .academic-main-content {
@@ -704,19 +697,14 @@ a.header-link {
 }
 
 .academic-header {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 24px 0;
+    padding: 0 0 48px 0; /* More space before the first category */
 }
 
 .academic-title {
-    font-size: 36px; /* h1 for academic page */
-    font-weight: 400;
-    line-height: 44px;
-    color: var(--text-primary);
-    margin: 0;
-    text-align: left;
+    font-size: 42px;    /* Increased from 36px */
+    font-weight: 600;   /* Slightly bolder */
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .academic-subtitle {
@@ -747,22 +735,16 @@ a.header-link {
 .publication-item {
     display: flex;
     flex-direction: column;
-    gap: 6px; /* REDUCED from 12px to 6px */
-    padding: 20px 0; /* REDUCED from 24px to 20px */
-    border-bottom: 0.5px solid rgba(105, 106, 107, 0.3);
-    
-    &:last-child {
-        border-bottom: none;
-    }
+    gap: 10px;        /* Increased from 6px */
+    padding: 32px 0;   /* Increased from 20px - give each paper room */
+    border-bottom: 0.5px solid rgba(105, 106, 107, 0.2);
 }
 
 .publication-title {
-    font-size: 22px; /* h3 */
+    font-size: 24px;   /* Bumped from 22px to hold the wide space */
     font-weight: 500;
-    line-height: 30px;
-    color: var(--text-primary);
-    margin: 0;
-    margin-bottom: 2px; /* Small bottom margin */
+    line-height: 1.3;
+    letter-spacing: -0.01em; /* Makes large text look cleaner */
 }
 
 .publication-link {
@@ -776,17 +758,9 @@ a.header-link {
 }
 
 .publication-authors {
-    font-size: 18px; /* Body large */
-    font-weight: 400;
-    line-height: 26px; /* Tighter line height */
-    letter-spacing: 0.36px;
-    color: var(--text-tertiary);
-    margin-bottom: 2px; /* Small bottom margin */
-    
-    strong {
-        font-weight: 600;
-        color: var(--text-secondary);
-    }
+    font-size: 17px;   /* Slightly smaller to create hierarchy vs title */
+    line-height: 1.5;
+    color: var(--text-secondary); /* Give authors more prominence than venue */
 }
 
 .publication-meta {
