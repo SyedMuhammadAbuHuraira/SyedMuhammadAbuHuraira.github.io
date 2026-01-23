@@ -419,11 +419,8 @@ a.header-link {
     flex: 1;
     max-width: 1200px;
     margin: 0; 
-    
-    /* 140px Top: 80px (Header) + 60px (Extra gap)
-       160px Left: 80px (Sidebar) + 80px (Extra gap) */
-    padding: 100px 0 80px 160px; 
-    
+    /* 140px Top (Header + 60px gap) | 160px Left (Sidebar + 80px gap) */
+    padding: 140px 60px 80px 160px; 
     display: flex;
     justify-content: flex-start;
 }
@@ -451,36 +448,38 @@ a.header-link {
 
 .cv-section-title {
     color: var(--text-primary);
-    font-size: 36px;
-    font-weight: 400;
-    line-height: 44px;
-    margin-bottom: 30px; /* REDUCED from 40px to 30px */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 32px; /* Slightly smaller for better hierarchy */
+    font-weight: 500;
+    margin-bottom: 40px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(105, 106, 107, 0.2); /* Faint line to anchor the section */
 }
 
 /* Education/Employment Items - REDUCED MARGIN BETWEEN ITEMS */
 .cv-item {
     display: flex;
-    gap: 24px;
-    margin-bottom: 30px; /* REDUCED from 40px to 30px */
+    /* Increase gap to balance the heavy left-side padding */
+    gap: 60px; 
+    margin-bottom: 48px; /* More space between entries */
     align-items: flex-start;
+}
+
+.cv-item-date {
+    width: 100px; /* Slightly narrower to give more room to text */
+    text-align: right;
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 400; /* Increased weight slightly for legibility */
+    line-height: 1.4;
+    flex-shrink: 0;
+    padding-top: 6px; /* Aligns visually with the first line of the title */
 }
 
 .cv-item:last-child {
     margin-bottom: 0;
 }
 
-.cv-item-date {
-    width: 120px; /* Fixed width for date column */
-    text-align: right;
-    color: var(--text-tertiary);
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 30px;
-    letter-spacing: 0.14px;
-    flex-shrink: 0;
-    padding-top: 2px;
-}
+
 
 .cv-item-content {
     flex: 1;
@@ -594,10 +593,10 @@ a.header-link {
 .profile-sidebar {
     width: 255px;
     flex-shrink: 0;
-    position: fixed;
+    position: sticky; /* Sticky is better than Fixed for CV layouts */
+    top: 140px;      /* Match the 140px from the main wrapper */
     right: 0;
-    top: 80px;
-    height: calc(100vh - 80px);
+    height: fit-content;
 }
 
 /* Footer Styles - Visible only on tablet/mobile for CV page */
