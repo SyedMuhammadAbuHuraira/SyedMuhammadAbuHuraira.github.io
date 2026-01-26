@@ -412,37 +412,36 @@ a.header-link {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
+/* FIXED: Main content wrapper spacing */
 .main-content-wrapper {
     flex: 1;
     max-width: 1200px;
     margin: 0; 
-    /* 140px Top (Header + 60px gap) | 160px Left (Sidebar + 80px gap) */
-    padding: 120px 60px 80px 160px; 
+    padding: 120px 40px 80px 160px; /* Changed right padding from 60px to 40px */
     display: flex;
     justify-content: flex-start;
 }
 
+/* FIXED: CV box spacing */
 #cv-box {
     width: 100%;
-    /* Keep max-width at 1000px so text remains readable on wide screens */
     max-width: 1000px; 
     margin: 0; 
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 40px; /* Match Figma gap between sections */
 }
 
-/* Section containers - REMOVED BACKGROUND BOX */
+/* FIXED: Section containers - NO BACKGROUND BOX */
 .cv-section {
-    padding: 0; /* REMOVED: 24px padding that was creating box */
-    background: transparent; /* REMOVED: var(--bg-secondary) background */
-    margin-bottom: 40px; /* ADDED: Margin between sections */
+    padding: 0; /* No padding since no background box */
+    background: transparent; /* Keep transparent */
+    margin-bottom: 0; /* Use gap in #cv-box instead */
+    display: flex;
+    flex-direction: column;
 }
 
-.cv-section:last-child {
-    margin-bottom: 0;
-}
-
+/* FIXED: Section title spacing */
 .cv-section-title {
     color: var(--text-primary);
     font-size: 36px; /* FIGMA: 36px for desktop */
@@ -453,11 +452,18 @@ a.header-link {
     border-bottom: none;
 }
 
+/* FIXED: Section content spacing */
+.cv-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* FIGMA: 40px gap between items */
+}
+
 /* Education/Employment Items - FIXED SPACING */
 .cv-item {
     display: flex;
     gap: 24px; /* FIGMA: 24px gap between date and content */
-    margin-bottom: 40px; /* FIGMA: 40px margin between items */
+    margin-bottom: 0; /* Use gap in cv-section-content instead */
     align-items: flex-start;
 }
 
@@ -465,6 +471,7 @@ a.header-link {
     margin-bottom: 0;
 }
 
+/* FIXED: Date container width and alignment */
 .cv-item-date {
     width: 100px; /* FIGMA: 100px width */
     text-align: right; /* FIGMA: right aligned */
@@ -475,9 +482,9 @@ a.header-link {
     letter-spacing: 0.14px; /* FIGMA: 0.14px letter spacing */
     flex-shrink: 0;
     padding-top: 0;
-    justify-content: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .cv-item-content {
@@ -525,7 +532,7 @@ a.header-link {
     display: flex;
     align-items: center;
     gap: 2px; /* FIGMA: 2px gap */
-    margin-top: 0; /* No margin in Figma */
+    margin-top: 0;
 }
 
 .cv-link-label {
@@ -769,7 +776,7 @@ a.header-link {
         padding: 0;
         background: transparent;
         margin-bottom: 32px; /* FIGMA: 32px gap between sections on tablet */
-        gap: 0; /* Remove gap property since we're using margin */
+        gap: 0;
     }
     
     .cv-section:last-child {
@@ -783,16 +790,16 @@ a.header-link {
         margin-bottom: 32px; /* FIGMA: 32px margin bottom on tablet */
     }
     
+    .cv-section-content {
+        gap: 32px; /* FIGMA: 32px gap between items on tablet */
+    }
+    
     /* TABLET STYLE - HORIZONTAL LAYOUT */
     .cv-item {
         flex-direction: row; /* Keep horizontal layout on tablet */
         gap: 20px; /* FIGMA: 20px gap on tablet */
-        margin-bottom: 32px; /* FIGMA: 32px margin between items on tablet */
-        align-items: flex-start;
-    }
-    
-    .cv-item:last-child {
         margin-bottom: 0;
+        align-items: flex-start;
     }
     
     .cv-item-date {
@@ -892,16 +899,16 @@ a.header-link {
         margin-bottom: 32px; /* FIGMA: 32px margin bottom on mobile */
     }
     
+    .cv-section-content {
+        gap: 32px; /* FIGMA: 32px gap between items on mobile */
+    }
+    
     /* MOBILE STYLE - HORIZONTAL LAYOUT */
     .cv-item {
         flex-direction: row; /* Keep horizontal on mobile */
         gap: 12px; /* FIGMA: 12px gap on mobile */
-        margin-bottom: 32px; /* FIGMA: 32px margin between items on mobile */
-        align-items: flex-start;
-    }
-    
-    .cv-item:last-child {
         margin-bottom: 0;
+        align-items: flex-start;
     }
     
     .cv-item-date {
@@ -985,10 +992,6 @@ a.header-link {
     .cv-item {
         flex-direction: row; /* Still horizontal on very small */
         gap: 12px;
-        margin-bottom: 32px;
-    }
-    
-    .cv-item:last-child {
         margin-bottom: 0;
     }
     
@@ -1023,6 +1026,10 @@ a.header-link {
     .cv-section-title {
         margin-bottom: 24px; /* Slightly smaller on very small mobile */
     }
+    
+    .cv-section-content {
+        gap: 24px; /* Smaller gap on very small mobile */
+    }
 }
 
 /* Desktop Styles (1025px and above) */
@@ -1048,8 +1055,36 @@ a.header-link {
         justify-content: space-between;
     }
     
+    /* Fixed spacing for desktop */
     #cv-box {
-        max-width: 950px;
+        max-width: 1000px;
+        gap: 40px; /* Exact Figma spacing between sections */
+    }
+    
+    .cv-section-title {
+        margin-bottom: 40px; /* Exact Figma spacing */
+    }
+    
+    .cv-item {
+        gap: 24px; /* Exact Figma spacing */
+        margin-bottom: 0;
+    }
+    
+    .cv-item-date {
+        width: 100px; /* Exact Figma width */
+        line-height: 30px; /* Exact Figma line height */
+    }
+    
+    .cv-item-content {
+        gap: 8px; /* Exact Figma spacing */
+    }
+    
+    .cv-item-header {
+        gap: 8px; /* Exact Figma spacing */
+    }
+    
+    .divider {
+        margin: 40px 0; /* Exact Figma spacing */
     }
 }
 
