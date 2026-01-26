@@ -417,7 +417,7 @@ a.header-link {
     flex: 1;
     max-width: 1200px;
     margin: 0; 
-    padding: 120px 40px 80px 160px; /* Changed right padding from 60px to 40px */
+    padding: 100px 40px 80px 200px; /* Changed right padding from 60px to 40px */
     display: flex;
     justify-content: flex-start;
 }
