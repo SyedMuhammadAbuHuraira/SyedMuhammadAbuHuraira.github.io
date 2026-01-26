@@ -513,7 +513,7 @@ a.header-link {
 }
 
 .social-sidebar {
-    width: 120px;
+    width: 80px;
     left: 0;
     padding: 60px 22px 80px 18px;
     display: flex;
@@ -567,7 +567,7 @@ a.header-link {
     flex: 1;
     max-width: 1200px;
     margin: 0;
-    padding: 120px 120px 80px 32px;
+    padding: 100px 120px 80px 16px;
     display: flex;
     justify-content: flex-start;
 }
@@ -736,7 +736,7 @@ a.header-link {
     width: 100%;
     max-width: 1200px;
     margin: 0;
-    padding: 80px 40px 80px 120px;
+    padding: 80px 40px 80px 112px;
     display: flex;
     justify-content: flex-start;
     flex: 1;
