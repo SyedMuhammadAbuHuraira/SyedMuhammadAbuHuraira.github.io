@@ -567,7 +567,7 @@ a.header-link {
     flex: 1;
     max-width: 1200px;
     margin: 0;
-    padding: 100px 120px 80px 16px;
+    padding: 100px 100px 80px 16px;
     display: flex;
     justify-content: flex-start;
 }
@@ -736,7 +736,7 @@ a.header-link {
     width: 100%;
     max-width: 1200px;
     margin: 0;
-    padding: 80px 40px 80px 112px;
+    padding: 80px 40px 80px 90px;
     display: flex;
     justify-content: flex-start;
     flex: 1;
