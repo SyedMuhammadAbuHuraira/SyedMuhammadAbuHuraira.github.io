@@ -417,7 +417,7 @@ a.header-link {
     max-width: 1200px;
     margin: 0; 
     /* 140px Top (Header + 60px gap) | 160px Left (Sidebar + 80px gap) */
-    padding: 140px 60px 80px 160px; 
+    padding: 120px 60px 80px 160px; 
     display: flex;
     justify-content: flex-start;
 }
