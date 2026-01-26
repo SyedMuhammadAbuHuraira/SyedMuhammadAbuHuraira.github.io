@@ -1,6 +1,3 @@
----
----
-
 /* CSS Variables for Dark Theme Only */
 :root {
     /* Dark Theme (Only) */
@@ -435,11 +432,11 @@ a.header-link {
     gap: 40px;
 }
 
-/* Section containers - REDUCED MARGIN BETWEEN SECTIONS */
+/* Section containers - REMOVED BACKGROUND BOX */
 .cv-section {
-    padding: 0;
-    background: transparent;
-    margin-bottom: 30px; /* REDUCED from 40px to 30px */
+    padding: 0; /* REMOVED: 24px padding that was creating box */
+    background: transparent; /* REMOVED: var(--bg-secondary) background */
+    margin-bottom: 40px; /* ADDED: Margin between sections */
 }
 
 .cv-section:last-child {
@@ -448,108 +445,109 @@ a.header-link {
 
 .cv-section-title {
     color: var(--text-primary);
-    font-size: 32px; /* Slightly smaller for better hierarchy */
-    font-weight: 500;
-    margin-bottom: 40px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(105, 106, 107, 0.2); /* Faint line to anchor the section */
+    font-size: 36px; /* FIGMA: 36px for desktop */
+    font-weight: 400; /* FIGMA: 400 weight */
+    line-height: 44px; /* FIGMA: 44px line height */
+    margin-bottom: 40px; /* FIGMA: 40px margin bottom */
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
-/* Education/Employment Items - REDUCED MARGIN BETWEEN ITEMS */
+/* Education/Employment Items - FIXED SPACING */
 .cv-item {
     display: flex;
-    /* Increase gap to balance the heavy left-side padding */
-    gap: 60px; 
-    margin-bottom: 48px; /* More space between entries */
+    gap: 24px; /* FIGMA: 24px gap between date and content */
+    margin-bottom: 40px; /* FIGMA: 40px margin between items */
     align-items: flex-start;
-}
-
-.cv-item-date {
-    width: 100px; /* Slightly narrower to give more room to text */
-    text-align: right;
-    color: var(--text-tertiary);
-    font-size: 14px;
-    font-weight: 400; /* Increased weight slightly for legibility */
-    line-height: 1.4;
-    flex-shrink: 0;
-    padding-top: 6px; /* Aligns visually with the first line of the title */
 }
 
 .cv-item:last-child {
     margin-bottom: 0;
 }
 
-
+.cv-item-date {
+    width: 100px; /* FIGMA: 100px width */
+    text-align: right; /* FIGMA: right aligned */
+    color: var(--text-secondary);
+    font-size: 14px; /* FIGMA: 14px */
+    font-weight: 300; /* FIGMA: 300 weight */
+    line-height: 30px; /* FIGMA: 30px line height */
+    letter-spacing: 0.14px; /* FIGMA: 0.14px letter spacing */
+    flex-shrink: 0;
+    padding-top: 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
 
 .cv-item-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px; /* FIGMA: 8px gap */
 }
 
 .cv-item-header {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px; /* FIGMA: 8px gap */
 }
 
 .cv-item-company {
     color: var(--text-primary);
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 30px;
+    font-size: 22px; /* FIGMA: 22px */
+    font-weight: 500; /* FIGMA: 500 weight */
+    line-height: 30px; /* FIGMA: 30px line height */
 }
 
 .cv-item-position {
     color: var(--text-primary);
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 28px;
-    letter-spacing: 0.4px;
+    font-size: 20px; /* FIGMA: 20px */
+    font-weight: 400; /* FIGMA: 400 weight */
+    line-height: 28px; /* FIGMA: 28px line height */
+    letter-spacing: 0.40px; /* FIGMA: 0.40px letter spacing */
 }
 
 .cv-item-description {
     color: var(--text-secondary);
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 28px;
-    letter-spacing: 0.36px;
+    font-size: 18px; /* FIGMA: 18px */
+    font-weight: 400; /* FIGMA: 400 weight */
+    line-height: 28px; /* FIGMA: 28px line height */
+    letter-spacing: 0.36px; /* FIGMA: 0.36px letter spacing */
     max-width: 100%;
     word-wrap: break-word;
-
-    /* FIXED: Remove text-justify to fix mobile/tablet word spacing */
-    text-align: left;       /* Changed from justify to left to fix word gaps */
-    hyphens: auto;         /* Breaks long words to prevent big gaps */
+    text-align: left;
+    hyphens: auto;
 }
 
-/* Link styling - SIMPLE UNDERLINE WITH ARROW */
+/* Link styling - MATCHING FIGMA */
 .cv-link {
     display: flex;
     align-items: center;
-    gap: 2px;
-    margin-top: 8px;
+    gap: 2px; /* FIGMA: 2px gap */
+    margin-top: 0; /* No margin in Figma */
 }
 
 .cv-link-label {
     color: var(--text-secondary);
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 22.4px;
-    letter-spacing: 0.48px;
+    font-size: 16px; /* FIGMA: 16px */
+    font-weight: 300; /* FIGMA: 300 weight */
+    line-height: 22.4px; /* FIGMA: 22.40px line height */
+    letter-spacing: 0.48px; /* FIGMA: 0.48px letter spacing */
 }
 
-/* REMOVED BUTTON STYLE - SIMPLE UNDERLINE WITH ARROW */
 .cv-link-button {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 8px; /* FIGMA: 8px gap */
     text-decoration: none;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     transition: all 0.3s ease;
-    padding: 0;
+    padding: 4px 0; /* FIGMA: padding-top/bottom: 4px */
     border: none;
     background: transparent;
+    border-radius: 21px; /* FIGMA: 21px border radius */
+    justify-content: center;
     
     &:hover {
         color: var(--text-secondary);
@@ -559,10 +557,10 @@ a.header-link {
 
 .cv-link-text {
     color: inherit;
-    font-size: 16px;
-    font-weight: 400;
-    text-decoration: underline;
-    letter-spacing: 0.32px;
+    font-size: 16px; /* FIGMA: 16px */
+    font-weight: 400; /* FIGMA: 400 weight */
+    text-decoration: underline; /* FIGMA: underline */
+    letter-spacing: 0.32px; /* FIGMA: 0.32px letter spacing */
 }
 
 .cv-link-icon {
@@ -580,13 +578,14 @@ a.header-link {
     font-size: 16px;
 }
 
-/* Divider - REDUCED MARGIN */
+/* Divider - MATCHING FIGMA */
 .divider {
-    height: 1px;
-    background: var(--border-color);
-    /* Reduced from 30px to 15px top/bottom */
-    margin: 15px 0; 
-    opacity: 0.3;
+    height: 0px; /* FIGMA: 0px height but with outline */
+    outline: 0.30px solid #A4A4A4; /* FIGMA: #A4A4A4 outline */
+    outline-offset: -0.15px; /* FIGMA: -0.15px outline offset */
+    background: none; /* No background in Figma */
+    margin: 40px 0; /* FIGMA: 40px margin top/bottom */
+    opacity: 1; /* Full opacity in Figma */
 }
 
 /* Right sidebar - Empty (for layout spacing) */
@@ -618,8 +617,6 @@ a.header-link {
     );
     background-attachment: fixed; /* Match body's fixed attachment */
 }
-
-
 
 .footer-content {
     display: flex;
@@ -711,35 +708,7 @@ a.header-link {
 
 /* Responsive Design */
 
-/* FIX FOR 1021px-770px RANGE - NAVIGATION VISIBILITY */
-@media screen and (max-width: 1024px) and (min-width: 771px) {
-    .header-bar {
-        height: 60px;
-        padding: 0 40px;
-    }
-    
-    .header-bar .row {
-        height: 60px;
-    }
-    
-    .hamburger-menu {
-        display: flex !important; /* Force show hamburger */
-        order: 3;
-    }
-    
-    .header-link-container {
-        display: none !important; /* Hide desktop links */
-    }
-    
-    /* Show mobile navigation in this range */
-    .mobile-nav-overlay {
-        .mobile-nav-content {
-            padding: 40px;
-        }
-    }
-}
-
-/* Tablet (1024px and below) */
+/* Tablet (1024px and below) - MATCHING FIGMA TABLET SPECS */
 @media screen and (max-width: 1024px) {
     .header-bar {
         height: 60px;
@@ -775,7 +744,7 @@ a.header-link {
     .main-content-wrapper {
         width: 100%;
         max-width: 100%;
-        padding: 30px 40px; /* Reduced padding */
+        padding: 40px; /* FIGMA: 40px padding */
         margin: 0;
         order: 1;
     }
@@ -793,64 +762,86 @@ a.header-link {
     
     #cv-box {
         padding: 0;
-        gap: 32px;
+        gap: 40px; /* FIGMA: 40px gap */
     }
     
- .cv-section {
-    padding: 0;
-    background: transparent;
-    /* Reduced from 30px to 10px because the divider adds its own space */
-    margin-bottom: 10px; 
-}
+    .cv-section {
+        padding: 0;
+        background: transparent;
+        margin-bottom: 32px; /* FIGMA: 32px gap between sections on tablet */
+        gap: 0; /* Remove gap property since we're using margin */
+    }
+    
+    .cv-section:last-child {
+        margin-bottom: 0;
+    }
     
     .cv-section-title {
-        font-size: 32px;
-        line-height: 40px;
-        margin-bottom: 25px; /* Reduced on tablet */
+        font-size: 32px; /* FIGMA: 32px on tablet */
+        line-height: 40px; /* FIGMA: 40px line height on tablet */
+        font-weight: 400; /* FIGMA: 400 weight */
+        margin-bottom: 32px; /* FIGMA: 32px margin bottom on tablet */
     }
     
-    /* ORIGINAL STYLE - DATES STAY ON SIDE ON TABLET (HORIZONTAL LAYOUT) */
+    /* TABLET STYLE - HORIZONTAL LAYOUT */
     .cv-item {
         flex-direction: row; /* Keep horizontal layout on tablet */
-        gap: 20px;
-        margin-bottom: 25px; /* Reduced on tablet */
+        gap: 20px; /* FIGMA: 20px gap on tablet */
+        margin-bottom: 32px; /* FIGMA: 32px margin between items on tablet */
         align-items: flex-start;
     }
     
+    .cv-item:last-child {
+        margin-bottom: 0;
+    }
+    
     .cv-item-date {
-        width: 100px; /* Slightly narrower on tablet */
+        width: 100px; /* FIGMA: 100px width on tablet */
         text-align: right;
-        font-size: 14px;
-        line-height: 28px;
-        padding-top: 2px;
+        font-size: 14px; /* FIGMA: 14px on tablet */
+        line-height: 28px; /* FIGMA: 28px line height on tablet */
+        font-weight: 300; /* FIGMA: 300 weight */
+        letter-spacing: 0.14px; /* FIGMA: 0.14px letter spacing */
     }
     
     .cv-item-company {
-        font-size: 20px;
-        line-height: 28px;
+        font-size: 20px; /* FIGMA: 20px on tablet */
+        line-height: 28px; /* FIGMA: 28px line height on tablet */
+        font-weight: 500; /* FIGMA: 500 weight */
     }
     
     .cv-item-position {
-        font-size: 18px;
-        line-height: 26px;
-        letter-spacing: 0.36px;
+        font-size: 18px; /* FIGMA: 18px on tablet */
+        line-height: 26px; /* FIGMA: 26px line height on tablet */
+        letter-spacing: 0.36px; /* FIGMA: 0.36px letter spacing on tablet */
+        font-weight: 400; /* FIGMA: 400 weight */
     }
     
     .cv-item-description {
-        font-size: 16px;
-        line-height: 26px;
-        letter-spacing: 0.32px;
-        /* FIX: Remove text-justify on tablet to fix word spacing */
+        font-size: 16px; /* FIGMA: 16px on tablet */
+        line-height: 26px; /* FIGMA: 26px line height on tablet */
+        letter-spacing: 0.32px; /* FIGMA: 0.32px letter spacing on tablet */
+        font-weight: 400; /* FIGMA: 400 weight */
         text-align: left;
-        text-justify: initial; /* Remove text justification */
+        text-justify: initial;
+    }
+    
+    .cv-item-content {
+        gap: 4px; /* FIGMA: 4px gap on tablet */
+    }
+    
+    .cv-item-header {
+        gap: 4px; /* FIGMA: 4px gap on tablet */
     }
     
     .divider {
-        margin: 25px 0; /* Reduced on tablet */
+        margin: 32px 0; /* FIGMA: 32px margin on tablet */
+        outline: 0.30px solid #A4A4A4; /* Same as desktop */
+        outline-offset: -0.15px;
     }
 }
 
-/* Mobile (768px and below) - ORIGINAL STYLE WITH DATES ON SIDE */
+/* Mobile (768px and below) - MATCHING FIGMA MOBILE SPECS */
 @media screen and (max-width: 768px) {
     .header-bar {
         padding: 0 24px;
@@ -862,7 +853,7 @@ a.header-link {
     }
     
     .main-content-wrapper {
-        padding: 20px 24px; /* Reduced padding */
+        padding: 40px 24px; /* FIGMA: 40px top/bottom, 24px left/right */
     }
     
     .cv-footer {
@@ -879,38 +870,134 @@ a.header-link {
     
     #cv-box {
         padding: 0;
-        gap: 28px; /* Reduced on mobile */
+        gap: 40px; /* FIGMA: 40px gap on mobile */
     }
     
     .cv-section {
         padding: 0;
         background: transparent;
         border: none;
-        margin-bottom: 25px; /* Reduced on mobile */
+        margin-bottom: 32px; /* FIGMA: 32px gap between sections on mobile */
+        gap: 0;
+    }
+    
+    .cv-section:last-child {
+        margin-bottom: 0;
     }
     
     .cv-section-title {
-        font-size: 26px;
-        line-height: 34px;
-        margin-bottom: 25px; /* Reduced on mobile */
+        font-size: 26px; /* FIGMA: 26px on mobile */
+        line-height: 34px; /* FIGMA: 34px line height on mobile */
+        font-weight: 400; /* FIGMA: 400 weight */
+        margin-bottom: 32px; /* FIGMA: 32px margin bottom on mobile */
     }
     
-    /* ORIGINAL STYLE - DATES STAY ON SIDE ON MOBILE (HORIZONTAL LAYOUT) */
+    /* MOBILE STYLE - HORIZONTAL LAYOUT */
     .cv-item {
-        flex-direction: row; /* Keep horizontal on mobile too - ORIGINAL STYLE */
-        gap: 16px; /* Reduced gap for mobile */
-        margin-bottom: 25px; /* Reduced on mobile */
+        flex-direction: row; /* Keep horizontal on mobile */
+        gap: 12px; /* FIGMA: 12px gap on mobile */
+        margin-bottom: 32px; /* FIGMA: 32px margin between items on mobile */
         align-items: flex-start;
     }
     
+    .cv-item:last-child {
+        margin-bottom: 0;
+    }
+    
     .cv-item-date {
-        width: 80px; /* Fixed width for dates */
-        text-align: right; /* Right aligned */
+        width: 88px; /* FIGMA: 88px width on mobile */
+        text-align: right;
+        font-size: 12px; /* FIGMA: 12px on mobile */
+        line-height: 24px; /* FIGMA: 24px line height on mobile */
+        letter-spacing: 0.12px; /* FIGMA: 0.12px letter spacing on mobile */
+        font-weight: 300; /* FIGMA: 300 weight */
+        padding-top: 0;
+    }
+    
+    .cv-item-company {
+        font-size: 17px; /* FIGMA: 17px on mobile */
+        line-height: 24px; /* FIGMA: 24px line height on mobile */
+        font-weight: 500; /* FIGMA: 500 weight */
+    }
+    
+    .cv-item-position {
+        font-size: 16px; /* FIGMA: 16px on mobile */
+        line-height: 24px; /* FIGMA: 24px line height on mobile */
+        letter-spacing: 0.32px; /* FIGMA: 0.32px letter spacing on mobile */
+        font-weight: 400; /* FIGMA: 400 weight */
+    }
+    
+    .cv-item-description {
+        font-size: 15px; /* FIGMA: 15px on mobile */
+        line-height: 24px; /* FIGMA: 24px line height on mobile */
+        letter-spacing: 0.30px; /* FIGMA: 0.30px letter spacing on mobile */
+        font-weight: 400; /* FIGMA: 400 weight */
+        text-align: left;
+        text-justify: initial;
+        word-spacing: normal;
+    }
+    
+    .cv-item-content {
+        gap: 4px; /* FIGMA: 4px gap on mobile */
+    }
+    
+    .cv-item-header {
+        gap: 4px; /* FIGMA: 4px gap on mobile */
+    }
+    
+    .divider {
+        margin: 32px 0; /* FIGMA: 32px margin on mobile */
+        outline: 0.30px solid #A4A4A4; /* Same as desktop and tablet */
+        outline-offset: -0.15px;
+    }
+}
+
+/* FIX FOR 1021px-770px RANGE - NAVIGATION VISIBILITY */
+@media screen and (max-width: 1024px) and (min-width: 771px) {
+    .header-bar {
+        height: 60px;
+        padding: 0 40px;
+    }
+    
+    .header-bar .row {
+        height: 60px;
+    }
+    
+    .hamburger-menu {
+        display: flex !important; /* Force show hamburger */
+        order: 3;
+    }
+    
+    .header-link-container {
+        display: none !important; /* Hide desktop links */
+    }
+    
+    /* Show mobile navigation in this range */
+    .mobile-nav-overlay {
+        .mobile-nav-content {
+            padding: 40px;
+        }
+    }
+}
+
+/* Very Small Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+    .cv-item {
+        flex-direction: row; /* Still horizontal on very small */
+        gap: 12px;
+        margin-bottom: 32px;
+    }
+    
+    .cv-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .cv-item-date {
+        width: 88px;
+        text-align: right;
         font-size: 12px;
         line-height: 24px;
-        letter-spacing: 0.12px;
         padding-top: 0;
-        flex-shrink: 0; /* Prevent shrinking */
     }
     
     .cv-item-company {
@@ -928,60 +1015,13 @@ a.header-link {
         font-size: 15px;
         line-height: 24px;
         letter-spacing: 0.30px;
-        /* FIX: Remove text-justify on mobile to fix word spacing */
         text-align: left;
-        text-justify: initial; /* Remove text justification */
-        word-spacing: normal; /* Ensure normal word spacing */
-    }
-    
-    .divider {
-        margin: 25px 0; /* Reduced on mobile */
-    }
-}
-
-/* Very Small Mobile (480px and below) - Stack only on very small screens */
-@media screen and (max-width: 480px) {
-    .cv-item {
-        flex-direction: row; /* STILL HORIZONTAL on very small screens */
-        gap: 12px;
-        margin-bottom: 20px; /* Further reduced on very small */
-    }
-    
-    .cv-item-date {
-        width: 70px; /* Even narrower but still fixed width */
-        text-align: right; /* Still right aligned */
-        font-size: 11px;
-        line-height: 20px;
-        padding-top: 0;
-    }
-    
-    .cv-item-company {
-        font-size: 16px;
-        line-height: 22px;
-    }
-    
-    .cv-item-position {
-        font-size: 15px;
-        line-height: 22px;
-        letter-spacing: 0.30px;
-    }
-    
-    .cv-item-description {
-        font-size: 14px;
-        line-height: 22px;
-        letter-spacing: 0.28px;
-        /* FIX: Remove text-justify on very small mobile to fix word spacing */
-        text-align: left;
-        text-justify: initial; /* Remove text justification */
-        word-spacing: normal; /* Ensure normal word spacing */
-    }
-    
-    .cv-section {
-        margin-bottom: 20px; /* Further reduced on very small */
+        text-justify: initial;
+        word-spacing: normal;
     }
     
     .cv-section-title {
-        margin-bottom: 20px; /* Further reduced on very small */
+        margin-bottom: 24px; /* Slightly smaller on very small mobile */
     }
 }
 
@@ -1009,7 +1049,7 @@ a.header-link {
     }
     
     #cv-box {
-        max-width: 950px; /* Wider text area */
+        max-width: 950px;
     }
 }
 
