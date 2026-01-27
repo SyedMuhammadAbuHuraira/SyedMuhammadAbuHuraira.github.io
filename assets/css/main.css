@@ -815,12 +815,21 @@ a.header-link {
 }
 
 .academic-subtitle {
-    /* FIX: Remove fixed width */
     max-width: 100%;
     color: var(--text-tertiary);
     font-size: 14px;
     font-style: italic;
-    margin-top: 10px;
+    
+    /* 1. Remove the positive margin */
+    margin-top: 0; 
+    
+    /* 2. Add a negative margin to 'pull' it up towards the title.
+       If your .academic-header gap is 32px, use -28px to leave a 4px space. 
+       If your gap is 40px, use -36px. */
+    margin-top: -28px !important; 
+    
+    /* 3. Ensure no default padding is pushing it down */
+    padding-top: 0;
 }
 
 .publication-item {
