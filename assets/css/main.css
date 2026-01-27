@@ -246,17 +246,18 @@
     background-color: var(--bg-primary);
   }
   
-  /* Fix for 1440p scaling */
+  /* FIXED: Remove centering and keep left-aligned */
   .center-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: none; /* Remove max-width constraint */
+    margin: 0; /* Remove auto centering */
+    padding: 0; /* Remove padding */
+    justify-content: flex-start; /* Ensure content stays left */
   }
   
   .academic-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 80px 20px;
+    max-width: none; /* Remove max-width constraint */
+    margin: 0; /* Remove auto centering */
+    padding: 80px 20px 80px 112px; /* Keep left padding consistent */
   }
   
   /* Enhanced typography for 1440p */
@@ -508,7 +509,7 @@ a.header-link {
     width: 100%;
     margin: 0;
     padding: 0;
-    justify-content: center;
+    justify-content: flex-start; /* Changed from center to flex-start */
     flex: 1 0 auto;
 }
 
@@ -565,31 +566,33 @@ a.header-link {
 /* ========== HOMEPAGE DESKTOP (FIXED FOR ALL SCREEN SIZES) ========== */
 .main-content-wrapper {
     flex: 1;
-    max-width: 1400px; /* Increased from 1200px */
-    margin: 0 auto; /* Center it */
-    padding: 120px 40px 80px 112px; /* FIXED: 112px = 80px sidebar + 32px gap */
+    max-width: none;
+    margin: 0;
+    /* Keeps the left padding consistent with your sidebar layout */
+    padding: 100px 40px 80px 200px; 
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Ensure the wrapper itself starts from left */
     width: 100%;
     box-sizing: border-box;
 }
 
 .center-content {
     width: 100%;
-    max-width: 1400px; /* Increased from 1200px */
+    max-width: 1100px; /* Optional: Sets a reasonable max width so text doesn't stretch forever */
     display: flex;
-    justify-content: space-between;
+    /* CHANGE: changed from space-between to flex-start */
+    justify-content: flex-start; 
     align-items: flex-start;
-    gap: 32px;
-    margin: 0 auto; /* Center it */
+    /* CHANGE: This gap controls how close the profile pic is to the text */
+    gap: 60px; 
+    margin: 0; 
 }
 
 .bio-section {
-    flex: 1;
+    flex: 0 1 732px; /* Allow it to grow, but stay based on 732px */
     display: flex;
     flex-direction: column;
     gap: 24px;
-    max-width: 732px;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
@@ -664,14 +667,14 @@ a.header-link {
 }
 
 .profile-sidebar {
-    flex: 0 0 auto;
-    width: 255px;
+    flex: 0 0 255px;
     position: sticky;
     top: 120px;
     height: 412px;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* REMOVED: margin-left: auto; (This was likely pushing it right) */
 }
 
 .profile-sidebar .profile-card {
@@ -737,18 +740,18 @@ a.header-link {
 /* ========== ACADEMIC WORKS PAGE DESKTOP (FIXED FOR ALL SCREEN SIZES) ========== */
 .academic-content {
     width: 100%;
-    max-width: 1400px; /* Increased from 1200px */
-    margin: 0 auto; /* Center it */
-    padding: 80px 40px 80px 112px; /* FIXED: 112px = 80px sidebar + 32px gap */
+    max-width: none; /* Remove max-width constraint */
+    margin: 0; /* Remove auto centering */
+    padding: 70px 40px 80px 180px; /* FIXED: 112px = 80px sidebar + 32px gap */
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Ensure content stays left */
     flex: 1;
     box-sizing: border-box;
 }
 
 .academic-main-content {
     flex: 1;
-    max-width: 1400px; /* Increased from 1200px */
+    max-width: none; /* Remove max-width constraint */
     margin-left: 0;
     padding-left: 0;
     width: 100%;
@@ -1142,7 +1145,7 @@ a.header-link {
     
     .center-content {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start; /* Changed from center to flex-start */
         gap: 32px;
     }
     
@@ -1679,11 +1682,11 @@ html, body {
 /* ========== 1440px AND LARGER SCREENS ========== */
 @media (min-width: 1440px) {
     .center-content {
-        max-width: 1400px;
+        max-width: none; /* Remove max-width constraint */
     }
     
     .academic-content {
-        max-width: 1400px;
+        max-width: none; /* Remove max-width constraint */
     }
     
     .bio-title {
@@ -1701,11 +1704,11 @@ html, body {
 @media (min-width: 1920px) {
     .main-content-wrapper,
     .academic-content {
-        max-width: 1600px; /* Allow more content on very large screens */
+        max-width: none; /* Remove max-width constraint */
     }
     
     .center-content {
-        max-width: 1600px;
+        max-width: none; /* Remove max-width constraint */
     }
     
     .bio-section {
