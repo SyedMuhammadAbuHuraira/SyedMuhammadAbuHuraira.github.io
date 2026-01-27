@@ -10,10 +10,6 @@
     --border-color: #696A6B;
     --link-color: #FAFAFA;
     --card-bg: rgba(255, 255, 255, 0.05);
-      --desktop-side-padding: clamp(40px, 8vw, 160px);
-    --tablet-side-padding: clamp(24px, 5vw, 40px);
-    --mobile-side-padding: 24px;
-    --content-max-width: 1200px;
 }
 
 /* HDR GRADIENT FIX - Added for HDR displays like modern MacBooks */
@@ -421,7 +417,7 @@ body {
 /* ========== DESKTOP HEADER ========== */
 .header-bar {
     height: 80px;
-    padding: 0 var(--desktop-side-padding);
+    padding: 0 160px;
     background-color: var(--bg-primary);
     position: fixed;
     top: 0;
@@ -519,7 +515,7 @@ a.header-link {
 .social-sidebar {
     width: 80px;
     left: 0;
-    padding: 40px var(--desktop-side-padding);
+    padding: 60px 22px 80px 18px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -571,7 +567,7 @@ a.header-link {
     flex: 1;
     max-width: 1200px;
     margin: 0;
-    padding: 100px var(--desktop-side-padding) 80px var(--desktop-side-padding);
+    padding: 100px 100px 80px 16px;
     display: flex;
     justify-content: flex-start;
 }
@@ -740,7 +736,7 @@ a.header-link {
     width: 100%;
     max-width: 1200px;
     margin: 0;
-    padding: 80px var(--desktop-side-padding) 80px var(--desktop-side-padding);
+    padding: 80px 40px 80px 90px;
     display: flex;
     justify-content: flex-start;
     flex: 1;
@@ -891,7 +887,7 @@ a.header-link {
     );
     background-attachment: fixed;
     border-top: 0.5px solid transparent;
-    padding: 40px var(--desktop-side-padding);
+    padding: 40px 160px;
     margin-top: auto;
     flex-shrink: 0;
     display: none;
