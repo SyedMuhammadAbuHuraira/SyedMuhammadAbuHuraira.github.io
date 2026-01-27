@@ -159,17 +159,17 @@
   
   /* Enhanced card backgrounds with subtle HDR glow - REMOVED BLUR */
   .profile-card {
-    background: transparent; /* Changed from rgba(22, 22, 22, 0.95) */
-    backdrop-filter: none; /* Removed blur */
-    -webkit-backdrop-filter: none; /* Removed blur */
-    border: none; /* Removed border */
-    box-shadow: none; /* Removed box-shadow */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
   }
   
   /* Enhanced image rendering for HDR - REMOVED FILTERS */
   .profile-image {
-    filter: none; /* Removed brightness/contrast filters */
-    image-rendering: auto; /* Changed from crisp-edges */
+    filter: none;
+    image-rendering: auto;
   }
   
   /* Social icons with HDR glow effect */
@@ -186,13 +186,13 @@
   .publication-item {
     border-bottom: 0.5px solid var(--border-color-hdr);
     transition: background-color 0.3s ease;
-    background: transparent; /* Changed from rgba(18, 18, 18, 0.7) */
-    backdrop-filter: none; /* Removed blur */
-    -webkit-backdrop-filter: none; /* Removed blur */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   
   .publication-item:hover {
-    background: transparent; /* Changed from rgba(22, 22, 22, 0.9) */
+    background: transparent;
   }
   
   /* Enhanced links with HDR glow */
@@ -224,7 +224,7 @@
   
   .underline-link:hover,
   .publication-link:hover {
-    text-shadow: none; /* Removed glow effect */
+    text-shadow: none;
   }
   
   /* Enhanced noise texture for HDR */
@@ -241,20 +241,20 @@
   /* Enhanced blur effects for depth - REMOVED */
   .header-bar,
   .social-sidebar {
-    backdrop-filter: none; /* Removed blur */
-    -webkit-backdrop-filter: none; /* Removed blur */
-    background-color: var(--bg-primary); /* Changed from rgba(11, 11, 11, 0.9) */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: var(--bg-primary);
   }
   
   /* Fix for 1440p scaling */
   .center-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
   }
   
   .academic-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 80px 20px;
   }
@@ -375,12 +375,12 @@
   /* Enhanced text contrast */
   .bio-title,
   .academic-title {
-    font-weight: 450; /* Semi-bold for better readability on high-res */
+    font-weight: 450;
   }
   
   /* Subtle shadows for depth - REMOVED */
   .profile-card {
-    box-shadow: none; /* Removed box-shadow */
+    box-shadow: none;
   }
 }
 
@@ -562,23 +562,26 @@ a.header-link {
     }
 }
 
-/* ========== HOMEPAGE DESKTOP (MATCHING FIGMA) ========== */
+/* ========== HOMEPAGE DESKTOP (FIXED FOR ALL SCREEN SIZES) ========== */
 .main-content-wrapper {
     flex: 1;
-    max-width: 1200px;
-    margin: 0;
-    padding: 100px 100px 80px 16px;
+    max-width: 1400px; /* Increased from 1200px */
+    margin: 0 auto; /* Center it */
+    padding: 120px 40px 80px 112px; /* FIXED: 112px = 80px sidebar + 32px gap */
     display: flex;
     justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .center-content {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px; /* Increased from 1200px */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 32px;
+    margin: 0 auto; /* Center it */
 }
 
 .bio-section {
@@ -731,20 +734,21 @@ a.header-link {
     padding: 4px 0; /* FIGMA: padding-top/bottom: 4px */
 }
 
-/* ========== ACADEMIC WORKS PAGE DESKTOP (MATCHING FIGMA) ========== */
+/* ========== ACADEMIC WORKS PAGE DESKTOP (FIXED FOR ALL SCREEN SIZES) ========== */
 .academic-content {
     width: 100%;
-    max-width: 1200px;
-    margin: 0;
-    padding: 80px 40px 80px 90px;
+    max-width: 1400px; /* Increased from 1200px */
+    margin: 0 auto; /* Center it */
+    padding: 80px 40px 80px 112px; /* FIXED: 112px = 80px sidebar + 32px gap */
     display: flex;
     justify-content: flex-start;
     flex: 1;
+    box-sizing: border-box;
 }
 
 .academic-main-content {
     flex: 1;
-    max-width: 1200px;
+    max-width: 1400px; /* Increased from 1200px */
     margin-left: 0;
     padding-left: 0;
     width: 100%;
@@ -1217,9 +1221,9 @@ a.header-link {
             top: 0;
             left: 0;
             color: #FAFAFA;
+            font-weight: 400;
             text-align: center;
             width: 100%;
-            font-weight: 400;
             padding: 4px 0;
         }
     }
@@ -1690,6 +1694,22 @@ html, body {
     .academic-title {
         font-size: 38px;
         line-height: 46px;
+    }
+}
+
+/* ========== VERY LARGE SCREENS (1920px and above) ========== */
+@media (min-width: 1920px) {
+    .main-content-wrapper,
+    .academic-content {
+        max-width: 1600px; /* Allow more content on very large screens */
+    }
+    
+    .center-content {
+        max-width: 1600px;
+    }
+    
+    .bio-section {
+        max-width: 850px; /* Allow bio text to take more space */
     }
 }
 
