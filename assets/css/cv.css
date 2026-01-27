@@ -429,34 +429,37 @@ a.header-link {
     margin: 0; 
     display: flex;
     flex-direction: column;
-    gap: 40px; /* Match Figma gap between sections */
+    /* This ensures a strict 40px gap between every child (section, divider, etc) */
+    gap: 40px; 
 }
 
 /* FIXED: Section containers - NO BACKGROUND BOX */
 .cv-section {
-    padding: 0; /* No padding since no background box */
-    background: transparent; /* Keep transparent */
-    margin-bottom: 0; /* Use gap in #cv-box instead */
+    padding: 0;
+    background: transparent;
+    margin: 0; /* Removed margin-bottom to let #cv-box gap handle it */
     display: flex;
     flex-direction: column;
+    /* Strict 40px gap between the Title and the first CV Item */
+    gap: 30px; 
 }
 
 /* FIXED: Section title spacing */
 .cv-section-title {
     color: var(--text-primary);
-    font-size: 36px; /* FIGMA: 36px for desktop */
-    font-weight: 400; /* FIGMA: 400 weight */
-    line-height: 44px; /* FIGMA: 44px line height */
-    margin-bottom: 40px; /* FIGMA: 40px margin bottom */
-    padding-bottom: 0;
-    border-bottom: none;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 44px;
+    margin: 0; /* Reset margins; gaps are handled by the parents */
+    padding: 0;
 }
 
 /* FIXED: Section content spacing */
 .cv-section-content {
     display: flex;
     flex-direction: column;
-    gap: 40px; /* FIGMA: 40px gap between items */
+    /* Strict 40px gap between entries (Figma Spec) */
+    gap: 40px; 
 }
 
 /* Education/Employment Items - FIXED SPACING */
