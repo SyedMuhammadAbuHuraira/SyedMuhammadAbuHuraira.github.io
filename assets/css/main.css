@@ -755,7 +755,7 @@ a.header-link {
     width: 100%;
     margin: 0;
     /* Desktop Padding - We will override this for mobile below */
-    padding: 70px 40px 80px 180px; 
+    padding: 75px 40px 80px 194px; 
     display: flex;
     justify-content: flex-start;
     flex: 1;
