@@ -770,7 +770,7 @@ a.header-link {
 .academic-section {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 15px;
     width: 100%;
 }
 
