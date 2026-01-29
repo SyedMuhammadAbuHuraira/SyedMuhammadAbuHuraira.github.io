@@ -767,7 +767,7 @@ a.header-link {
 .academic-section {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
     /* CHANGE: This ensures the container only grows as wide as the text */
     width: fit-content; 
     max-width: 100%; /* Prevents it from going off-screen on mobile */
@@ -830,21 +830,52 @@ a.header-link {
     padding-top: 0;
 }
 
+/* --- UNIFIED PUBLICATION ITEM STYLES --- */
+/* --- UNIFIED PUBLICATION ITEM STYLES --- */
 .publication-item {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 16px 0; /* Vertical padding only */
+    gap: 8px; /* Internal spacing between title, authors, and meta */
+    
+    /* 1. Space between the text and the line (above the line) */
+    padding-bottom: 16px; 
+    
+    /* 2. The Line itself */
     border-bottom: 0.30px solid #A4A4A4;
-    word-wrap: break-word; /* Ensure long titles don't break layout */
+    
+    /* 3. THE GAP: Space AFTER the separator line before next item start */
+    margin-bottom: 16px; 
+    
+    word-wrap: break-word; 
     overflow-wrap: break-word;
 }
 
+/* DESKTOP DESIGN: Adjusts spacing above the line, but keeps 16px below it */
+@media screen and (min-width: 1025px) {
+    .publication-item {
+        padding-bottom: 24px; /* More breathing room above the line on desktop */
+        margin-bottom: 16px;  /* Maintains the strict 16px gap after the line */
+    }
+}
+
+/* CLEANUP: Ensure no extra margins/borders on the last item */
+.publication-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* First item doesn't need top padding to stay close to section title */
+.publication-item:first-child {
+    padding-top: 0;
+}
+
+/* --- TYPOGRAPHY --- */
 .publication-title {
-    font-size: 22px; /* FIGMA: 22px */
-    font-weight: 500; /* FIGMA: 500 */
-    line-height: 30px; /* FIGMA: 30px */
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 30px;
     color: var(--text-primary);
     margin: 0;
 }
@@ -852,38 +883,36 @@ a.header-link {
 .publication-link {
     color: var(--text-primary);
     text-decoration: none;
-    
-    &:hover {
-        text-decoration: underline;
-        color: var(--text-primary);
-    }
+    transition: opacity 0.2s ease;
+}
+
+.publication-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
 }
 
 .publication-authors {
-    color: #D3D3D3; /* FIGMA: #D3D3D3 */
-    font-size: 18px; /* FIGMA: 18px */
-    font-weight: 400; /* FIGMA: 400 */
-    line-height: 28px; /* FIGMA: 28px */
-    letter-spacing: 0.36px; /* FIGMA: 0.36px */
+    color: #D3D3D3;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.36px;
 }
 
 .publication-authors span {
-    font-weight: 600; /* FIGMA: 600 for J. K. Terry */
+    font-weight: 600; /* Highlighting J. K. Terry */
 }
 
 .publication-meta {
-    font-size: 18px; /* FIGMA: 18px */
-    font-weight: 400; /* FIGMA: 400 */
-    line-height: 28px; /* FIGMA: 28px */
-    letter-spacing: 0.36px; /* FIGMA: 0.36px */
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.36px;
     color: var(--text-secondary);
     margin: 0;
 }
 
-.publication-venue {
-    font-style: normal;
-}
-
+/* --- NOTES SECTION --- */
 .publication-notes {
     display: flex;
     flex-direction: column;
@@ -892,12 +921,27 @@ a.header-link {
 }
 
 .publication-note {
-    font-style: italic; /* FIGMA: italic */
-    color: #D3D3D3; /* FIGMA: #D3D3D3 */
-    font-weight: 400; /* FIGMA: 400 */
-    font-size: 18px; /* FIGMA: 18px */
-    line-height: 28px; /* FIGMA: 28px */
-    letter-spacing: 0.36px; /* FIGMA: 0.36px */
+    font-style: italic;
+    color: #D3D3D3;
+    font-weight: 400; 
+    font-size: 18px; 
+    line-height: 28px; 
+    letter-spacing: 0.36px;
+}
+
+/* MOBILE TYPOGRAPHY (768px and below) */
+@media screen and (max-width: 768px) {
+    .publication-title {
+        font-size: 20px;
+        line-height: 28px;
+    }
+    
+    .publication-authors, 
+    .publication-meta, 
+    .publication-note {
+        font-size: 16px;
+        line-height: 24px;
+    }
 }
 
 /* ========== FOOTER WITH GRADIENT ========== */
