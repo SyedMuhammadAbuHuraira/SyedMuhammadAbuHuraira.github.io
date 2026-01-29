@@ -585,15 +585,12 @@ a.header-link {
     gap: 60px; /* Space between growing text and profile pic */
     margin: 0;
 }
-
 .bio-section {
-    /* flex: 1 allows the text box to grow and fill all available space */
-    flex: 1; 
     display: flex;
+    width: 732px;
     flex-direction: column;
-    gap: 30px;
-    /* Ensure text looks good as it grows */
-    max-width: 1000px; 
+    align-items: flex-start;
+    gap: 24px;
 }
 @media (min-width: 1800px) {
     .bio-title {
@@ -1383,43 +1380,60 @@ a.header-link {
         align-items: center;
     }
     
-    /* FIXED: Ensure hamburger is visible and properly aligned on mobile */
+  /* Container */
+/* Update your Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative; /* Essential for children positioning */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px; /* Slightly thicker for better visibility */
+    background-color: var(--text-primary);
+    transition: all 0.3s ease-in-out;
+    display: block;
+    position: relative; /* Keeps them in flow when not expanded */
+}
+
+/* THE FIX: Absolute positioning on expanded state */
+.hamburger-menu[aria-expanded="true"] {
+    gap: 0;
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-line {
+    position: absolute; /* This stacks them perfectly on top of each other */
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px); /* Slides out smoothly */
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+/* Visibility */
+@media screen and (max-width: 1024px) {
     .hamburger-menu {
-        display: flex !important;
-        width: 24px;
-        height: 24px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        flex-direction: column;
-        justify-content: center;
-        gap: 4px;
-        z-index: 1002;
-        position: relative;
-        right: 0;
-        margin: 0;
-        
-        .hamburger-line {
-            width: 100%;
-            height: 2px;
-            background-color: var(--text-primary);
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        
-        &[aria-expanded="true"] {
-            .hamburger-line:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-            
-            .hamburger-line:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .hamburger-line:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-        }
+        display: flex;
+        order: 3;
     }
     
     .header-left a {
@@ -1433,39 +1447,106 @@ a.header-link {
     .header-link-container {
         display: none !important;
     }
+}
+
+/* Mobile Navigation Overlay - Refined for Figma Fidelity */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 60px; /* Start exactly where the mobile header ends */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    /* High-contrast HDR black */
+    background: var(--bg-primary); 
+    z-index: 999;
+    display: none;
+    overflow-y: auto;
+}
+
+.mobile-nav-overlay.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* FIX: Show the mobile nav header */
+.mobile-nav-overlay .mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px; /* Add some padding */
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-overlay .mobile-nav-logo {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* FIX: Style the close button */
+.mobile-nav-overlay .mobile-nav-close {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 32px; /* Larger for better tap target */
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.mobile-nav-overlay .mobile-nav-close:hover,
+.mobile-nav-overlay .mobile-nav-close:active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Remove top padding from links since header is now visible */
+.mobile-nav-overlay .mobile-nav-content {
+    padding: 0; /* Remove top padding to satisfy "no gap on top" */
+    width: 100%;
+}
+
+.mobile-nav-overlay .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* STRICT: No gaps between items */
+    padding-top: 0; 
+}
+
+.mobile-nav-overlay .mobile-nav-link {
+    color: var(--text-primary);
+    font-size: 16px; /* FIGMA: 16px everywhere */
+    font-weight: 400;
+    letter-spacing: 0.32px;
+    text-decoration: none;
     
-    /* Mobile Navigation - MORE TRANSPARENT, CLEANER */
-    .mobile-nav-overlay {
-        .mobile-nav-content {
-            padding: 24px;
-        }
-        
-        .mobile-nav-links {
-            gap: 24px;
-            padding: 10px 0 0 0;
-        }
-        
-        /* FIXED: Mobile nav links - CLEANER ON MOBILE */
-        .mobile-nav-link {
-            padding: 16px 0;
-            text-align: left;
-            font-size: 18px;
-            border-bottom: none;
-            
-            &:hover {
-                padding-left: 8px;
-            }
-        }
-    }
+    /* The "Spacer": Internal padding creates the height without using gap */
+    padding: 24px 40px; 
     
-    .main-content-wrapper {
-        padding: 40px 24px !important;
-    }
-    
-    .center-content {
-        gap: 32px;
-    }
-    
+    width: 100%;
+    display: block;
+    /* Hairline border for HDR depth */
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08); 
+    transition: background 0.2s ease;
+}
+
+.mobile-nav-overlay .mobile-nav-link:active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Your existing responsive styles */
+.main-content-wrapper {
+    padding: 40px 24px !important;
+}
+
+.center-content {
+    gap: 32px;
+}
     /* FIXED: HOMEPAGE MOBILE - PROFILE IMAGE CENTER ALIGNED */
     .profile-sidebar {
         padding: 0 0 20px 0;
