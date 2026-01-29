@@ -464,7 +464,7 @@ a.header-link:hover {
 /* FIXED: Section title spacing */
 .cv-section-title {
     color: var(--text-primary);
-    font-size: 44px;
+    font-size: 36px;
     font-weight: 400;
     line-height: 44px;
     margin: 0; /* Reset margins; gaps are handled by the parents */
