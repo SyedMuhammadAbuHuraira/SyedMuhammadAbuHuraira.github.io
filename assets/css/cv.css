@@ -463,20 +463,23 @@ a.header-link:hover {
 
 /* FIXED: Section title spacing */
 .cv-section-title {
-    color: var(--text-primary);
+    color: #FAFAFA; /* Exact Figma color */
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 36px;
+    font-style: normal;
     font-weight: 400;
-    line-height: 44px;
+    line-height: 44px; /* 122.222% */
+    letter-spacing: -0.36px;
     margin: 0; /* Reset margins; gaps are handled by the parents */
     padding: 0;
 }
-
 /* FIXED: Section content spacing */
 .cv-section-content {
     display: flex;
     flex-direction: column;
-    /* Strict 40px gap between entries (Figma Spec) */
-    gap: 40px; 
+    align-items: flex-start;
+    gap: 40px;
+    align-self: stretch;
 }
 
 /* Education/Employment Items - FIXED SPACING */
