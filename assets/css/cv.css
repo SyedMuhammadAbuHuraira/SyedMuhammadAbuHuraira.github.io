@@ -171,31 +171,6 @@ body {
 }
 
 /* Header/Navbar Styles - WITH LINEAR GRADIENT BORDER */
-.header-bar {
-    height: 80px;
-    padding: 0 160px;
-    /* CHANGE: Fixed positioning */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Higher than sidebars */
-    
-    /* ADD: Background color to prevent transparency issues when scrolling */
-    background-color: var(--bg-primary); 
-    
-    box-shadow: none;
-    flex-shrink: 0;
-    border-bottom: 0.5px solid;
-    border-image: linear-gradient(90deg, var(--border-color), transparent) 1;
-}
-
-.container {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 /* Header Layout Adjustment */
 .header-bar .row {
     display: flex;
@@ -228,120 +203,162 @@ a.header-link {
     padding: 2px;
     text-decoration: none;
     transition: opacity 0.3s ease;
-    
-    &:hover {
-        color: var(--link-color);
-        opacity: 0.8;
-    }
 }
 
-/* Hamburger Menu Styles */
+a.header-link:hover {
+    color: var(--link-color);
+    opacity: 0.8;
+}
+
+/* Update your Hamburger Menu Styles */
 .hamburger-menu {
-    display: none; /* Hidden by default */
+    display: none;
     width: 24px;
     height: 24px;
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
+    position: relative; /* Essential for children positioning */
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 4px;
-    order: 3;
-    
-    .hamburger-line {
-        width: 100%;
-        height: 2px;
-        background-color: var(--text-primary);
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    
-    &[aria-expanded="true"] {
-        .hamburger-line:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .hamburger-line:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger-line:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px; /* Slightly thicker for better visibility */
+    background-color: var(--text-primary);
+    transition: all 0.3s ease-in-out;
+    display: block;
+    position: relative; /* Keeps them in flow when not expanded */
+}
+
+/* THE FIX: Absolute positioning on expanded state */
+.hamburger-menu[aria-expanded="true"] {
+    gap: 0;
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-line {
+    position: absolute; /* This stacks them perfectly on top of each other */
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px); /* Slides out smoothly */
+}
+
+.hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+/* Visibility */
+@media screen and (max-width: 1024px) {
+    .hamburger-menu {
+        display: flex;
+        order: 3;
     }
 }
 
-/* Mobile Navigation Overlay */
+/* Mobile Navigation Overlay - Refined for Figma Fidelity */
 .mobile-nav-overlay {
     position: fixed;
-    top: 0;
+    top: 60px; /* Start exactly where the mobile header ends */
     left: 0;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(360deg, var(--bg-primary) 0%, var(--bg-secondary) 55%, var(--bg-tertiary) 100%);
+    height: calc(100% - 60px);
+    /* High-contrast HDR black */
+    background: var(--bg-primary); 
     z-index: 999;
     display: none;
+    overflow-y: auto;
+}
+
+.mobile-nav-overlay.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* FIX: Show the mobile nav header */
+.mobile-nav-overlay .mobile-nav-header {
+    display: flex; /* CHANGED FROM display: none - REMOVE THE CONFLICTING STYLE BELOW */
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px; /* Add some padding */
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-overlay .mobile-nav-logo {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* FIX: Style the close button */
+.mobile-nav-overlay .mobile-nav-close {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 32px; /* Larger for better tap target */
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.mobile-nav-overlay .mobile-nav-close:hover,
+.mobile-nav-overlay .mobile-nav-close:active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Remove top padding from links since header is now visible */
+.mobile-nav-overlay .mobile-nav-content {
+    padding: 0; /* Remove top padding to satisfy "no gap on top" */
+    width: 100%;
+}
+
+/* REMOVE THIS CONFLICTING RULE - it's overriding the display: flex above */
+/* .mobile-nav-overlay .mobile-nav-header {
+    display: none; 
+} */
+
+.mobile-nav-overlay .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* STRICT: No gaps between items */
+    padding-top: 0; 
+}
+
+.mobile-nav-overlay .mobile-nav-link {
+    color: var(--text-primary);
+    font-size: 16px; /* FIGMA: 16px everywhere */
+    font-weight: 400;
+    letter-spacing: 0.32px;
+    text-decoration: none;
     
-    &.active {
-        display: flex;
-        flex-direction: column;
-    }
+    /* The "Spacer": Internal padding creates the height without using gap */
+    padding: 24px 40px; 
     
-    .mobile-nav-content {
-        padding: 40px;
-        width: 100%;
-    }
-    
-    .mobile-nav-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 16px;
-        border-bottom: 0.5px solid var(--border-color);
-        margin-bottom: 32px;
-    }
-    
-    .mobile-nav-logo {
-        color: var(--text-primary);
-        font-size: 20px;
-        font-weight: 600;
-        text-decoration: none;
-    }
-    
-    .mobile-nav-close {
-        background: transparent;
-        border: none;
-        color: var(--text-primary);
-        font-size: 32px;
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-    }
-    
-    .mobile-nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-    
-    .mobile-nav-link {
-        color: var(--text-primary);
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: 0.32px;
-        text-decoration: none;
-        padding: 16px 40px;
-        transition: background-color 0.3s ease;
-        border-radius: 4px;
-        
-        &:hover {
-            background-color: var(--card-bg);
-        }
-    }
+    width: 100%;
+    display: block;
+    /* Hairline border for HDR depth */
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08); 
+    transition: background 0.2s ease;
+}
+
+.mobile-nav-overlay .mobile-nav-link:active {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Main Content Container - FIXED FOR FOOTER */
@@ -447,7 +464,7 @@ a.header-link {
 /* FIXED: Section title spacing */
 .cv-section-title {
     color: var(--text-primary);
-    font-size: 36px;
+    font-size: 44px;
     font-weight: 400;
     line-height: 44px;
     margin: 0; /* Reset margins; gaps are handled by the parents */
@@ -521,7 +538,7 @@ a.header-link {
 .cv-item-description {
     color: var(--text-secondary);
     font-size: 18px; /* FIGMA: 18px */
-    font-weight: 400; /* FIGMA: 400 weight */
+    font-weight: 300; /* FIGMA: 400 weight */
     line-height: 28px; /* FIGMA: 28px line height */
     letter-spacing: 0.36px; /* FIGMA: 0.36px letter spacing */
     max-width: 100%;
