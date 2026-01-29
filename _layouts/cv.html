@@ -17,14 +17,8 @@
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay" id="mobileNav">
         <div class="mobile-nav-content">
-            <div class="mobile-nav-header">
-                <a href="/" class="mobile-nav-logo">Jordan Terry</a>
-                <button class="mobile-nav-close" id="closeMobileNav" aria-label="Close navigation">
-                    ×
-                </button>
-            </div>
+            <!-- REMOVED: mobile-nav-header -->
             <nav class="mobile-nav-links">       
-                
                 <a href="/cv.html" class="mobile-nav-link">CV</a>
                 <a href="/academic-works.html" class="mobile-nav-link">Academic Works</a>
             </nav>
@@ -103,41 +97,146 @@
     </footer>
 
     <!-- Add JavaScript for mobile navigation -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburgerMenu = document.querySelector('.hamburger-menu');
-            const closeMobileNav = document.getElementById('closeMobileNav');
-            const mobileNav = document.getElementById('mobileNav');
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav-overlay');
+    const closeMobileNav = document.querySelector('.mobile-nav-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    
+    console.log('Hamburger menu:', hamburgerMenu);
+    console.log('Mobile nav:', mobileNav);
+    console.log('Close button:', closeMobileNav);
+    console.log('Nav links:', mobileNavLinks.length);
+    
+    // Toggle mobile nav when hamburger is clicked
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', function() {
+            console.log('Hamburger clicked');
             
-            if (hamburgerMenu) {
-                hamburgerMenu.addEventListener('click', function() {
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    this.setAttribute('aria-expanded', !isExpanded);
-                    mobileNav.classList.toggle('active');
-                });
-            }
+            // FIX: Get the current state directly from the element
+            const currentState = this.getAttribute('aria-expanded');
+            console.log('Current state:', currentState);
             
-            if (closeMobileNav) {
-                closeMobileNav.addEventListener('click', function() {
+            if (currentState === 'true') {
+                // Close menu
+                this.setAttribute('aria-expanded', 'false');
+                if (mobileNav) {
                     mobileNav.classList.remove('active');
-                    if (hamburgerMenu) {
-                        hamburgerMenu.setAttribute('aria-expanded', 'false');
-                    }
-                });
+                }
+                document.body.style.overflow = '';
+                console.log('Closing menu - aria-expanded set to false');
+            } else {
+                // Open menu
+                this.setAttribute('aria-expanded', 'true');
+                if (mobileNav) {
+                    mobileNav.classList.add('active');
+                }
+                document.body.style.overflow = 'hidden';
+                console.log('Opening menu - aria-expanded set to true');
             }
-            
-            // Close mobile nav when clicking on a link
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileNav.classList.remove('active');
-                    if (hamburgerMenu) {
-                        hamburgerMenu.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
         });
-    </script>
+    }
+    
+    // Close mobile nav when close button is clicked
+    if (closeMobileNav) {
+        closeMobileNav.addEventListener('click', function() {
+            console.log('Close button clicked');
+            if (hamburgerMenu) {
+                hamburgerMenu.setAttribute('aria-expanded', 'false');
+            }
+            if (mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Close mobile nav when clicking on a link
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('Nav link clicked');
+            if (hamburgerMenu) {
+                hamburgerMenu.setAttribute('aria-expanded', 'false');
+            }
+            if (mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+        });
+    });
+    
+    console.log('Initial aria-expanded:', hamburgerMenu ? hamburgerMenu.getAttribute('aria-expanded') : 'No hamburger');
+});
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav-overlay');
+    const closeMobileNav = document.querySelector('.mobile-nav-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    
+    // Debug: Log elements to console to check if they exist
+    console.log('Hamburger menu:', hamburgerMenu);
+    console.log('Mobile nav:', mobileNav);
+    console.log('Close button:', closeMobileNav);
+    console.log('Nav links:', mobileNavLinks.length);
+    
+    // Toggle mobile nav when hamburger is clicked
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', function() {
+            console.log('Hamburger clicked');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            console.log('Is expanded before:', isExpanded);
+            
+            if (isExpanded) {
+                // Close menu
+                this.setAttribute('aria-expanded', 'false');
+                if (mobileNav) {
+                    mobileNav.classList.remove('active');
+                }
+                document.body.style.overflow = '';
+                console.log('Closing menu');
+            } else {
+                // Open menu
+                this.setAttribute('aria-expanded', 'true');
+                if (mobileNav) {
+                    mobileNav.classList.add('active');
+                }
+                document.body.style.overflow = 'hidden';
+                console.log('Opening menu');
+            }
+            
+            console.log('Is expanded after:', this.getAttribute('aria-expanded') === 'true');
+        });
+    }
+    
+    // Close mobile nav when close button is clicked
+    if (closeMobileNav) {
+        closeMobileNav.addEventListener('click', function() {
+            console.log('Close button clicked');
+            if (hamburgerMenu) {
+                hamburgerMenu.setAttribute('aria-expanded', 'false');
+            }
+            if (mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Close mobile nav when clicking on a link
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('Nav link clicked');
+            if (hamburgerMenu) {
+                hamburgerMenu.setAttribute('aria-expanded', 'false');
+            }
+            if (mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+        });
+    });
+    
+</script>
 </body>
 
 </html>
