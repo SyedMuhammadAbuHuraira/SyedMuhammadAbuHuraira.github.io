@@ -473,6 +473,7 @@ a.header-link:hover {
     margin: 0; /* Reset margins; gaps are handled by the parents */
     padding: 0;
 }
+
 /* FIXED: Section content spacing */
 .cv-section-content {
     display: flex;
@@ -799,7 +800,7 @@ a.header-link:hover {
         padding: 0;
         background: transparent;
         margin-bottom: 32px; /* FIGMA: 32px gap between sections on tablet */
-        gap: 0;
+        gap: 32px;
     }
     
     .cv-section:last-child {
@@ -908,7 +909,7 @@ a.header-link:hover {
         background: transparent;
         border: none;
         margin-bottom: 32px; /* FIGMA: 32px gap between sections on mobile */
-        gap: 0;
+        gap: 32px;
     }
     
     .cv-section:last-child {
@@ -1050,8 +1051,8 @@ a.header-link:hover {
         margin-bottom: 24px; /* Slightly smaller on very small mobile */
     }
     
-    .cv-section-content {
-        gap: 24px; /* Smaller gap on very small mobile */
+ .cv-section-content {
+        gap: 32px !important;
     }
 }
 
