@@ -708,7 +708,7 @@ a.header-link:hover {
 }
 
 .cv-desktop-footer .copyright .company-name {
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text-primary);
 }
 
