@@ -1,138 +1,119 @@
-/* CSS Variables for Dark Theme Only */
+/* ============================================================
+   UNIFIED DARK + HDR BACKGROUND SYSTEM (CLEAN & STABLE)
+   ============================================================ */
+
+/* ========== 1. GLOBAL VARIABLES & DARK THEME ========== */
 :root {
-    /* Dark Theme (Only) */
-    --bg-primary: #0B0B0B;      /* 0% - This will be at the TOP with 180deg */
-    --bg-secondary: #121212;    /* 55% - Middle transition */
-    --bg-tertiary: #161616;     /* 100% - This will be at the BOTTOM with 180deg */
+    /* Base (SDR) colors */
+    --bg-primary: #0B0B0B;      /* TOP */
+    --bg-secondary: #121212;    /* MIDDLE */
+    --bg-tertiary: #161616;     /* BOTTOM */
+
     --text-primary: #FAFAFA;
     --text-secondary: #D3D3D3;
     --text-tertiary: #A6A8AD;
+
     --border-color: #696A6B;
     --link-color: #FAFAFA;
+
     --card-bg: rgba(255, 255, 255, 0.05);
     --shadow-color: rgba(0, 0, 0, 0.5);
+
+    /* SINGLE SOURCE OF TRUTH */
+    --bg-gradient: linear-gradient(
+        in oklab,
+        var(--bg-primary) 0%,
+        var(--bg-primary) 25%,
+        var(--bg-secondary) 55%,
+        var(--bg-secondary) 85%,
+        var(--bg-tertiary) 100%
+    );
 }
 
-/* HDR GRADIENT FIX - Added for HDR displays like modern MacBooks */
-/* HDR gradient using oklch for better color handling */
+/* ========== 2. BODY — ONLY BACKGROUND OWNER ========== */
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: var(--bg-gradient);
+    background-attachment: fixed !important;
+
+    color: var(--text-primary);
+}
+
+/* ========== 3. REMOVE NOISE / OVERLAYS (HDR CLEANUP) ========== */
+body::before,
+.social-sidebar::before,
+.cv-footer::before,
+.cv-desktop-footer::before,
+.site-footer::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* ========== 4. NO-SEAMS TRANSPARENCY FIX ========== */
+.social-sidebar,
+.cv-footer,
+.cv-desktop-footer,
+.site-footer {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+/* Sidebar vertical divider ONLY */
+.social-sidebar {
+    border: none !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+/* ========== 5. HDR COLOR UPGRADE (VARIABLE SWAP ONLY) ========== */
+/* Same gradient. Same structure. Only values change. */
+
 @supports (color: oklch(0% 0 0)) {
-  :root {
-    /* Define HDR-optimized gradient colors in oklch space */
-    --hdr-bg-primary: oklch(0% 0 0);       /* #0B0B0B equivalent */
-    --hdr-bg-secondary: oklch(10% 0 0);    /* #121212 equivalent */
-    --hdr-bg-tertiary: oklch(15% 0 0);     /* #161616 equivalent */
-  }
-  
-  body {
-    /* Use oklch gradients for HDR displays */
-    background: linear-gradient(
-      180deg,
-      var(--hdr-bg-primary) 0%,
-      var(--hdr-bg-primary) 25%,
-      var(--hdr-bg-secondary) 55%,
-      var(--hdr-bg-secondary) 85%,
-      var(--hdr-bg-tertiary) 100%
-    );
-  }
-  
-  .social-sidebar,
-  .cv-footer,
-  .cv-desktop-footer {
-    background: linear-gradient(
-      180deg,
-      var(--hdr-bg-primary) 0%,
-      var(--hdr-bg-primary) 25%,
-      var(--hdr-bg-secondary) 55%,
-      var(--hdr-bg-secondary) 85%,
-      var(--hdr-bg-tertiary) 100%
-    );
-  }
+    @media (dynamic-range: high) {
+        :root {
+            --bg-primary: oklch(0% 0 0);
+            --bg-secondary: oklch(10% 0 0);
+            --bg-tertiary: oklch(15% 0 0);
+
+            --text-primary: oklch(100% 0 0);
+            --text-secondary: oklch(85% 0 0);
+            --text-tertiary: oklch(65% 0 0);
+
+            --border-color: oklch(45% 0 0);
+        }
+    }
 }
 
-/* Dithering fix for gradient banding on HDR */
-@supports (background: linear-gradient(in oklab, black, white)) {
-  body,
-  .social-sidebar,
-  .cv-footer,
-  .cv-desktop-footer {
-    /* Use oklab color space for smoother gradients */
-    background: linear-gradient(
-      in oklab,
-      var(--bg-primary) 0%,
-      var(--bg-primary) 25%,
-      var(--bg-secondary) 55%,
-      var(--bg-secondary) 85%,
-      var(--bg-tertiary) 100%
-    );
-  }
+/* ========== 6. DISPLAY-P3 (MACBOOK PRO / MINI-LED) ========== */
+@supports (color: color(display-p3 1 1 1)) {
+    @media (dynamic-range: high) {
+        :root {
+            --bg-primary: color(display-p3 0.03 0.03 0.03);
+            --bg-secondary: color(display-p3 0.06 0.06 0.06);
+            --bg-tertiary: color(display-p3 0.09 0.09 0.09);
+
+            --text-primary: color(display-p3 0.98 0.98 0.98);
+        }
+    }
 }
 
-/* Alternative: Add subtle noise texture to break up banding */
-@media (dynamic-range: high) {
-  body::before,
-  .social-sidebar::before,
-  .cv-footer::before,
-  .cv-desktop-footer::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.02;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
-}
-
-/* Increase gradient steps for smoother transitions on HDR */
-@media (dynamic-range: high) {
-  body {
-    background: linear-gradient(
-      180deg,
-      var(--bg-primary) 0%,
-      color-mix(in srgb, var(--bg-primary) 90%, var(--bg-secondary) 10%) 10%,
-      color-mix(in srgb, var(--bg-primary) 70%, var(--bg-secondary) 30%) 25%,
-      color-mix(in srgb, var(--bg-primary) 50%, var(--bg-secondary) 50%) 40%,
-      var(--bg-secondary) 55%,
-      color-mix(in srgb, var(--bg-secondary) 80%, var(--bg-tertiary) 20%) 70%,
-      color-mix(in srgb, var(--bg-secondary) 60%, var(--bg-tertiary) 40%) 85%,
-      var(--bg-tertiary) 100%
-    );
-  }
-  
-  .cv-footer,
-  .cv-desktop-footer {
-    background: linear-gradient(
-      180deg,
-      var(--bg-primary) 0%,
-      color-mix(in srgb, var(--bg-primary) 90%, var(--bg-secondary) 10%) 10%,
-      color-mix(in srgb, var(--bg-primary) 70%, var(--bg-secondary) 30%) 25%,
-      color-mix(in srgb, var(--bg-primary) 50%, var(--bg-secondary) 50%) 40%,
-      var(--bg-secondary) 55%,
-      color-mix(in srgb, var(--bg-secondary) 80%, var(--bg-tertiary) 20%) 70%,
-      color-mix(in srgb, var(--bg-secondary) 60%, var(--bg-tertiary) 40%) 85%,
-      var(--bg-tertiary) 100%
-    );
-  }
-}
-
-/* Optional: Add CSS dithering for extreme cases */
-@supports (background: paint(something)) {
-  /* Future-proof for when CSS dithering is supported */
-}
-
-/* Fix for Safari HDR rendering */
+/* ========== 7. SAFARI HDR STABILITY (SUBTLE FIX) ========== */
 @supports (-webkit-backdrop-filter: blur(1px)) and (dynamic-range: high) {
-  body,
-  .social-sidebar,
-  .cv-footer,
-  .cv-desktop-footer {
-    -webkit-backdrop-filter: blur(0.5px);
-    backdrop-filter: blur(0.5px);
-  }
+    .social-sidebar,
+    .cv-footer,
+    .cv-desktop-footer {
+        -webkit-backdrop-filter: blur(0.2px);
+        backdrop-filter: blur(0.2px);
+    }
 }
+
+/* ========== 8. FUTURE-PROOFING (NO EFFECT TODAY) ========== */
+@supports (background: paint(something)) {
+    /* Ready for native browser dithering */
+}
+
 
 /* Reset CSS */
 *, *::before, *::after {
