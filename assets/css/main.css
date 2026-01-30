@@ -1,50 +1,57 @@
-/* CSS Variables for Dark Theme Only */
 /* ============================================================
-   HDR UNIFIED BACKGROUND SYSTEM (FINAL – PRODUCTION SAFE)
+   HDR UNIFIED BACKGROUND SYSTEM
+   (GLOBAL — BIO / ACADEMIC / CV — 1:1 MATCH)
    ============================================================ */
 
-/* ========== 1. GLOBAL VARIABLES ========== */
+/* ========== 1. GLOBAL VARIABLES (SDR BASE) ========== */
 :root {
-  --bg-primary: #0B0B0B;
+  --bg-primary: #0b0b0b;
   --bg-secondary: #121212;
   --bg-tertiary: #161616;
 
-  --text-primary: #FAFAFA;
-  --text-secondary: #D3D3D3;
-  --text-tertiary: #A6A8AD;
+  --text-primary: #fafafa;
+  --text-secondary: #d3d3d3;
+  --text-tertiary: #a6a8ad;
 
-  --border-color: #696A6B;
+  --border-color: #696a6b;
 
   /* SINGLE SOURCE OF TRUTH */
   --bg-gradient: linear-gradient(
     in oklab,
     var(--bg-primary) 0%,
-    var(--bg-primary) 25%,
-    var(--bg-secondary) 55%,
-    var(--bg-secondary) 85%,
+    var(--bg-primary) 30%,
+    var(--bg-secondary) 65%,
     var(--bg-tertiary) 100%
   );
 }
 
-/* ========== 2. BODY – THE ONLY BACKGROUND ========== */
+/* ========== 2. BODY — ONLY BACKGROUND OWNER ========== */
+html,
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100%;
+}
+
+body {
   background: var(--bg-gradient);
   background-attachment: fixed;
   color: var(--text-primary);
 }
 
-/* REMOVE HDR NOISE / DIRTY ARTIFACTS */
+/* ========== 3. HARD RESET — REMOVE ALL OVERLAYS ========== */
 body::before,
 body::after,
+.site-footer::before,
+.site-footer::after,
 .social-sidebar::before,
-.site-footer::before {
+.social-sidebar::after,
+.academic-content::before,
+.academic-content::after {
   content: none !important;
   display: none !important;
 }
 
-/* ========== 3. NO-SEAMS LAYOUT UNIFICATION ========== */
+/* ========== 4. SINGLE-PLANE TRANSPARENCY (CRITICAL FIX) ========== */
 .social-sidebar,
 .site-footer,
 .site-footer.desktop-only-footer,
@@ -53,79 +60,73 @@ body::after,
 .main-content-wrapper,
 .center-content,
 .profile-card,
-.publication-item {
-  background: transparent !important;
+.publication-item,
+.cv-content,
+.bio-content {
+  background-color: transparent !important;
   background-image: none !important;
+  box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  box-shadow: none !important;
 }
 
-/* HEADER STAYS SOLID */
+/* ========== 5. STRUCTURAL ELEMENTS ONLY ========== */
 .header-bar {
   background-color: var(--bg-primary);
   border-bottom: 0.5px solid var(--border-color);
 }
 
-/* ========== 4. HDR MODE (COLOR UPGRADE ONLY) ========== */
-@media (min-width: 1440px) and (dynamic-range: high) {
-  :root {
-    --bg-primary: oklch(0% 0 0);
-    --bg-secondary: oklch(8% 0.01 260);
-    --bg-tertiary: oklch(12% 0.02 260);
-
-    --text-primary: oklch(100% 0 0);
-    --text-secondary: oklch(85% 0.01 260);
-    --text-tertiary: oklch(65% 0.02 260);
-
-    --border-color: oklch(50% 0.03 260);
-  }
-
-  .header-bar {
-    background-color: var(--bg-primary);
-    border-bottom-color: var(--border-color);
-  }
-
-  /* TYPOGRAPHY – YOUR DESIGN PRESERVED */
-  .bio-title,
-  .academic-title {
-    font-size: 42px;
-    line-height: 50px;
-    letter-spacing: -0.5px;
-  }
-
-  .bio-intro {
-    font-size: 22px;
-    line-height: 32px;
-    letter-spacing: 0.2px;
-  }
-
-  .center-content {
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    justify-content: flex-start;
-  }
-
-  .academic-content {
-    max-width: none;
-    margin: 0;
-    padding: 80px 20px 80px 112px;
-  }
+.social-sidebar {
+  border-right: 1px solid var(--border-color);
 }
 
-/* ========== 5. DISPLAY-P3 (MACBOOK PRO HDR) ========== */
-@supports (color: color(display-p3 1 1 1)) {
-  @media (min-width: 1440px) and (dynamic-range: high) {
+/* Footer MUST stay transparent — no color lock */
+.site-footer {
+  position: relative;
+  border-top: 0.5px solid var(--border-color);
+}
+
+/* ========== 6. HDR MODE — VARIABLE SWAP ONLY ========== */
+@supports (color: oklch(0% 0 0)) {
+  @media (dynamic-range: high) {
     :root {
-      --text-primary: color(display-p3 0.98 0.98 0.98);
-      --text-secondary: color(display-p3 0.83 0.83 0.83);
-      --border-color: color(display-p3 0.41 0.415 0.42);
+      --bg-primary: oklch(0% 0 0);
+      --bg-secondary: oklch(10% 0 0);
+      --bg-tertiary: oklch(15% 0 0);
+
+      --text-primary: oklch(100% 0 0);
+      --text-secondary: oklch(85% 0 0);
+      --text-tertiary: oklch(65% 0 0);
+
+      --border-color: oklch(45% 0 0);
     }
   }
 }
 
-/* ========== 6. PERFORMANCE (SAFE) ========== */
+/* ========== 7. DISPLAY-P3 — SAME SYSTEM, NO NEW COLORS ========== */
+@supports (color: color(display-p3 1 1 1)) {
+  @media (dynamic-range: high) {
+    :root {
+      --bg-primary: color(display-p3 0.03 0.03 0.03);
+      --bg-secondary: color(display-p3 0.06 0.06 0.06);
+      --bg-tertiary: color(display-p3 0.09 0.09 0.09);
+
+      --text-primary: color(display-p3 0.98 0.98 0.98);
+      --text-secondary: color(display-p3 0.83 0.83 0.83);
+    }
+  }
+}
+
+/* ========== 8. SAFARI HDR STABILITY (NON-VISUAL) ========== */
+@supports (-webkit-backdrop-filter: blur(1px)) and (dynamic-range: high) {
+  .social-sidebar,
+  .site-footer {
+    -webkit-backdrop-filter: blur(0.2px);
+    backdrop-filter: blur(0.2px);
+  }
+}
+
+/* ========== 9. PERFORMANCE SAFETY ========== */
 .header-bar,
 .social-sidebar,
 .profile-card,
@@ -133,6 +134,9 @@ body::after,
   transform: none;
   will-change: auto;
 }
+
+
+
 
 /* Reset CSS */
 *, *::before, *::after {
