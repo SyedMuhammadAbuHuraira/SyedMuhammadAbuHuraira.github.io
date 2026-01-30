@@ -1,388 +1,137 @@
 /* CSS Variables for Dark Theme Only */
+/* ============================================================
+   HDR UNIFIED BACKGROUND SYSTEM (FINAL – PRODUCTION SAFE)
+   ============================================================ */
+
+/* ========== 1. GLOBAL VARIABLES ========== */
 :root {
-    /* Dark Theme (Only) */
-    --bg-primary: #0B0B0B;      /* 0% in your gradient */
-    --bg-secondary: #121212;    /* 55% in your gradient */
-    --bg-tertiary: #161616;     /* 100% in your gradient */
-    --text-primary: #FAFAFA;
-    --text-secondary: #D3D3D3;
-    --text-tertiary: #A6A8AD;
-    --border-color: #696A6B;
-    --link-color: #FAFAFA;
-    --card-bg: rgba(255, 255, 255, 0.05);
+  --bg-primary: #0B0B0B;
+  --bg-secondary: #121212;
+  --bg-tertiary: #161616;
+
+  --text-primary: #FAFAFA;
+  --text-secondary: #D3D3D3;
+  --text-tertiary: #A6A8AD;
+
+  --border-color: #696A6B;
+
+  /* SINGLE SOURCE OF TRUTH */
+  --bg-gradient: linear-gradient(
+    in oklab,
+    var(--bg-primary) 0%,
+    var(--bg-primary) 25%,
+    var(--bg-secondary) 55%,
+    var(--bg-secondary) 85%,
+    var(--bg-tertiary) 100%
+  );
 }
 
-/* HDR GRADIENT FIX - Added for HDR displays like modern MacBooks */
-@supports (color: oklch(0% 0 0)) {
-  :root {
-    --hdr-bg-primary: oklch(0% 0 0);
-    --hdr-bg-secondary: oklch(10% 0 0);
-    --hdr-bg-tertiary: oklch(15% 0 0);
-  }
-  
-  body {
-    background: linear-gradient(
-      180deg,
-      var(--hdr-bg-primary) 0%,
-      var(--hdr-bg-primary) 25%,
-      var(--hdr-bg-secondary) 55%,
-      var(--hdr-bg-secondary) 85%,
-      var(--hdr-bg-tertiary) 100%
-    );
-  }
-  
-  .social-sidebar,
-  .site-footer.desktop-only-footer,
-  .site-footer.mobile-footer {
-    background: linear-gradient(
-      180deg,
-      var(--hdr-bg-primary) 0%,
-      var(--hdr-bg-primary) 25%,
-      var(--hdr-bg-secondary) 55%,
-      var(--hdr-bg-secondary) 85%,
-      var(--hdr-bg-tertiary) 100%
-    );
-  }
+/* ========== 2. BODY – THE ONLY BACKGROUND ========== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
 }
 
-@supports (background: linear-gradient(in oklab, black, white)) {
-  body,
-  .social-sidebar,
-  .site-footer.desktop-only-footer,
-  .site-footer.mobile-footer {
-    background: linear-gradient(
-      in oklab,
-      var(--bg-primary) 0%,
-      var(--bg-primary) 25%,
-      var(--bg-secondary) 55%,
-      var(--bg-secondary) 85%,
-      var(--bg-tertiary) 100%
-    );
-  }
+/* REMOVE HDR NOISE / DIRTY ARTIFACTS */
+body::before,
+body::after,
+.social-sidebar::before,
+.site-footer::before {
+  content: none !important;
+  display: none !important;
 }
 
-@media (dynamic-range: high) {
-  body::before,
-  .social-sidebar::before,
-  .site-footer.desktop-only-footer::before,
-  .site-footer.mobile-footer::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.02;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
+/* ========== 3. NO-SEAMS LAYOUT UNIFICATION ========== */
+.social-sidebar,
+.site-footer,
+.site-footer.desktop-only-footer,
+.site-footer.mobile-footer,
+.academic-content,
+.main-content-wrapper,
+.center-content,
+.profile-card,
+.publication-item {
+  background: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
 }
 
-@supports (-webkit-backdrop-filter: blur(1px)) and (dynamic-range: high) {
-  body,
-  .social-sidebar,
-  .site-footer.desktop-only-footer,
-  .site-footer.mobile-footer {
-    -webkit-backdrop-filter: blur(0.5px);
-    backdrop-filter: blur(0.5px);
-  }
+/* HEADER STAYS SOLID */
+.header-bar {
+  background-color: var(--bg-primary);
+  border-bottom: 0.5px solid var(--border-color);
 }
 
-/* ========== ENHANCED 1440p HDR SUPPORT ========== */
+/* ========== 4. HDR MODE (COLOR UPGRADE ONLY) ========== */
 @media (min-width: 1440px) and (dynamic-range: high) {
   :root {
-    /* Enhanced HDR color variables with wider gamut */
-    --bg-primary-hdr: oklch(0% 0 0);
-    --bg-secondary-hdr: oklch(8% 0.01 260);
-    --bg-tertiary-hdr: oklch(12% 0.02 260);
-    --text-primary-hdr: oklch(100% 0 0);
-    --text-secondary-hdr: oklch(85% 0.01 260);
-    --text-tertiary-hdr: oklch(65% 0.02 260);
-    --border-color-hdr: oklch(50% 0.03 260);
+    --bg-primary: oklch(0% 0 0);
+    --bg-secondary: oklch(8% 0.01 260);
+    --bg-tertiary: oklch(12% 0.02 260);
+
+    --text-primary: oklch(100% 0 0);
+    --text-secondary: oklch(85% 0.01 260);
+    --text-tertiary: oklch(65% 0.02 260);
+
+    --border-color: oklch(50% 0.03 260);
   }
-  
-  body {
-    background: linear-gradient(
-      in oklab,
-      var(--bg-primary-hdr) 0%,
-      var(--bg-primary-hdr) 25%,
-      var(--bg-secondary-hdr) 55%,
-      var(--bg-secondary-hdr) 85%,
-      var(--bg-tertiary-hdr) 100%
-    );
-    color: var(--text-primary-hdr);
-  }
-  
+
   .header-bar {
-    background-color: var(--bg-primary-hdr);
-    border-bottom: 0.5px solid var(--border-color-hdr);
-  }
-  
-  .social-sidebar,
-  .site-footer.desktop-only-footer,
-  .site-footer.mobile-footer {
-    background: linear-gradient(
-      in oklab,
-      var(--bg-primary-hdr) 0%,
-      var(--bg-primary-hdr) 25%,
-      var(--bg-secondary-hdr) 55%,
-      var(--bg-secondary-hdr) 85%,
-      var(--bg-tertiary-hdr) 100%
-    );
-    border-color: var(--border-color-hdr);
-  }
-  
-  /* Enhanced text rendering for HDR */
-  .bio-title,
-  .bio-intro,
-  .subsection-title,
-  .subsection-content,
-  .academic-title,
-  .publication-title,
-  .publication-authors,
-  .publication-meta {
-    color: var(--text-primary-hdr);
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: subpixel-antialiased;
-  }
-  
-  .bio-subsection .subsection-content,
-  .academic-subtitle,
-  .publication-note {
-    color: var(--text-secondary-hdr);
-  }
-  
-  .text-tertiary {
-    color: var(--text-tertiary-hdr);
-  }
-  
-  /* Enhanced card backgrounds with subtle HDR glow - REMOVED BLUR */
-  .profile-card {
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: none;
-    box-shadow: none;
-  }
-  
-  /* Enhanced image rendering for HDR - REMOVED FILTERS */
-  .profile-image {
-    filter: none;
-    image-rendering: auto;
-  }
-  
-  /* Social icons with HDR glow effect */
-  .social-icon img {
-    filter: brightness(0) saturate(100%) invert(71%) sepia(6%) saturate(259%) hue-rotate(180deg) brightness(92%) contrast(86%);
-    transition: filter 0.3s ease;
-  }
-  
-  .social-icon:hover img {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-  }
-  
-  /* Enhanced publication items */
-  .publication-item {
-    border-bottom: 0.5px solid var(--border-color-hdr);
-    transition: background-color 0.3s ease;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-  
-  .publication-item:hover {
-    background: transparent;
-  }
-  
-  /* Enhanced links with HDR glow */
-  .underline-link,
-  .publication-link {
-    color: var(--text-primary-hdr);
-    text-decoration: none;
-    position: relative;
-    transition: all 0.3s ease;
-  }
-  
-  .underline-link::after,
-  .publication-link::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--text-primary-hdr);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-  }
-  
-  .underline-link:hover::after,
-  .publication-link:hover::after {
-    transform: scaleX(1);
-  }
-  
-  .underline-link:hover,
-  .publication-link:hover {
-    text-shadow: none;
-  }
-  
-  /* Enhanced noise texture for HDR */
-  @media (dynamic-range: high) {
-    body::before,
-    .social-sidebar::before,
-    .site-footer.desktop-only-footer::before,
-    .site-footer.mobile-footer::before {
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-  }
-  
-  /* Enhanced blur effects for depth - REMOVED */
-  .header-bar,
-  .social-sidebar {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
     background-color: var(--bg-primary);
+    border-bottom-color: var(--border-color);
   }
-  
-  /* FIXED: Remove centering and keep left-aligned */
-  .center-content {
-    max-width: none; /* Remove max-width constraint */
-    margin: 0; /* Remove auto centering */
-    padding: 0; /* Remove padding */
-    justify-content: flex-start; /* Ensure content stays left */
-  }
-  
-  .academic-content {
-    max-width: none; /* Remove max-width constraint */
-    margin: 0; /* Remove auto centering */
-    padding: 80px 20px 80px 112px; /* Keep left padding consistent */
-  }
-  
-  /* Enhanced typography for 1440p */
-  .bio-title {
-    font-size: 42px;
-    line-height: 50px;
-    letter-spacing: -0.5px;
-  }
-  
+
+  /* TYPOGRAPHY – YOUR DESIGN PRESERVED */
+  .bio-title,
   .academic-title {
     font-size: 42px;
     line-height: 50px;
     letter-spacing: -0.5px;
   }
-  
+
   .bio-intro {
     font-size: 22px;
     line-height: 32px;
     letter-spacing: 0.2px;
   }
+
+  .center-content {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .academic-content {
+    max-width: none;
+    margin: 0;
+    padding: 80px 20px 80px 112px;
+  }
 }
 
-/* ========== SPECIFIC FIXES FOR MACBOOK PRO HDR ========== */
+/* ========== 5. DISPLAY-P3 (MACBOOK PRO HDR) ========== */
 @supports (color: color(display-p3 1 1 1)) {
   @media (min-width: 1440px) and (dynamic-range: high) {
     :root {
-      /* P3 color space for wider gamut */
-      --p3-bg-primary: color(display-p3 0.043 0.043 0.043);
-      --p3-bg-secondary: color(display-p3 0.071 0.071 0.071);
-      --p3-bg-tertiary: color(display-p3 0.086 0.086 0.086);
-      --p3-text-primary: color(display-p3 0.98 0.98 0.98);
-      --p3-text-secondary: color(display-p3 0.83 0.83 0.83);
-      --p3-border-color: color(display-p3 0.41 0.415 0.42);
-    }
-    
-    body {
-      background: linear-gradient(
-        in oklab,
-        var(--p3-bg-primary) 0%,
-        var(--p3-bg-primary) 25%,
-        var(--p3-bg-secondary) 55%,
-        var(--p3-bg-secondary) 85%,
-        var(--p3-bg-tertiary) 100%
-      );
-    }
-    
-    .header-bar {
-      background-color: var(--p3-bg-primary);
-      border-bottom-color: var(--p3-border-color);
-    }
-    
-    /* Apply P3 colors to text elements */
-    .bio-title,
-    .bio-intro,
-    .subsection-title,
-    .subsection-content,
-    .academic-title,
-    .publication-title,
-    .publication-authors,
-    .publication-meta,
-    .header-left a,
-    a.header-link {
-      color: var(--p3-text-primary);
-    }
-    
-    .text-tertiary {
-      color: var(--p3-text-secondary);
-    }
-    
-    /* Enhanced border colors */
-    .border-color {
-      border-color: var(--p3-border-color);
+      --text-primary: color(display-p3 0.98 0.98 0.98);
+      --text-secondary: color(display-p3 0.83 0.83 0.83);
+      --border-color: color(display-p3 0.41 0.415 0.42);
     }
   }
 }
 
-/* ========== PERFORMANCE OPTIMIZATIONS FOR HDR ========== */
-@media (min-width: 1440px) and (dynamic-range: high) {
-  /* Reduce animation complexity for smoother HDR rendering */
-  * {
-    scroll-behavior: smooth;
-  }
-  
-  /* Optimize GPU usage */
-  .header-bar,
-  .social-sidebar,
-  .profile-card,
-  .publication-item {
-    transform: translateZ(0);
-    will-change: transform;
-    backface-visibility: hidden;
-    perspective: 1000;
-  }
-  
-  /* Optimize image rendering */
-  .profile-image {
-    backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-/* ========== FALLBACK FOR NON-HDR 1440p DISPLAYS ========== */
-@media (min-width: 1440px) and (not (dynamic-range: high)) {
-  /* Slightly enhanced contrast for high-res non-HDR */
-  body {
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--bg-primary) 100%, black 5%) 0%,
-      color-mix(in srgb, var(--bg-primary) 100%, black 5%) 25%,
-      color-mix(in srgb, var(--bg-secondary) 100%, black 3%) 55%,
-      color-mix(in srgb, var(--bg-secondary) 100%, black 3%) 85%,
-      color-mix(in srgb, var(--bg-tertiary) 100%, black 2%) 100%
-    );
-  }
-  
-  /* Enhanced text contrast */
-  .bio-title,
-  .academic-title {
-    font-weight: 450;
-  }
-  
-  /* Subtle shadows for depth - REMOVED */
-  .profile-card {
-    box-shadow: none;
-  }
+/* ========== 6. PERFORMANCE (SAFE) ========== */
+.header-bar,
+.social-sidebar,
+.profile-card,
+.publication-item {
+  transform: none;
+  will-change: auto;
 }
 
 /* Reset CSS */
