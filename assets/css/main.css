@@ -335,7 +335,7 @@ a.header-link {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 60px; /* Space between growing text and profile pic */
+    gap: 80px; /* Space between growing text and profile pic */
     margin: 0;
 }
 .bio-section {
@@ -510,11 +510,16 @@ a.header-link {
     justify-content: flex-start;
     flex: 1;
     box-sizing: border-box;
+    /* CRITICAL: Remove background inheritance issues */
+    background: transparent !important;
+    background-image: none !important;
 }
 
 .academic-main-content {
     flex: 1;
     width: 100%;
+    background: transparent !important;
+    background-image: none !important;
 }
 
 .academic-section {
@@ -524,6 +529,8 @@ a.header-link {
     /* CHANGE: This ensures the container only grows as wide as the text */
     width: fit-content; 
     max-width: 100%; /* Prevents it from going off-screen on mobile */
+    background: transparent !important;
+    background-image: none !important;
 }
 
 .academic-header {
