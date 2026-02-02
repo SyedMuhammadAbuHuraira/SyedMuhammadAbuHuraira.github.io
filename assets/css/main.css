@@ -180,25 +180,32 @@ body {
 
 /* ========== DESKTOP HEADER ========== */
 .header-bar {
-  height: 80px;
-  padding: 0 160px;
-  background-color: var(--bg-primary);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 0.5px solid var(--border-color);
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--bg-primary);
+    border-bottom: 0.5px solid var(--border-color);
+    display: flex;
+    justify-content: flex-start; /* Keeps the container anchored left */
 }
 
+/* 2. THE INNER CONTAINER - THE KEY FIX */
 .header-bar .container {
-  max-width: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+    margin: 0; /* Prevents centering on zoom-out */
+    width: 100%;
+    /* Set this to the total width where you want the CV link to stop drifting */
+    max-width: 1400px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* THE MAGIC NUMBER: Set this to match the padding-left of your 
+       main content (e.g., 160px or 200px) so it aligns with your text below */
+    padding-left: 160px; 
+    padding-right: 40px; 
 }
 
 .header-bar .row {
@@ -210,35 +217,32 @@ body {
 }
 
 .header-left {
-  flex: 0 0 auto;
-  padding-left: 0;
+    flex: 0 0 auto;
 }
 
 .header-left a {
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  font-family: 'SF Pro Display', sans-serif;
-  text-decoration: none;
-  display: block;
-  height: 80px;
-  display: flex;
-  align-items: center;
-
-  &:hover {
-    opacity: 0.9;
-    color: white;
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'SF Pro Display', sans-serif;
     text-decoration: none;
-  }
+    height: 80px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    
+    &:hover {
+        opacity: 0.8;
+        text-decoration: none;
+    }
 }
 
 .header-link-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: nowrap;
-  height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+    height: 80px;
 }
 
 a.header-link {
@@ -270,10 +274,23 @@ a.header-link {
 .content-container {
   display: flex;
   width: 100%;
-  margin: 0;
+  
+  /* Matches your header's max-width for perfect vertical alignment.
+     This ensures the site feels like a single, cohesive unit on 4K screens. */
+  max-width: 1400px; 
+  
+  /* Keep it anchored to the left so it aligns with your header name */
+  margin: 0; 
   padding: 0;
+  
+  /* Ensures all children (Sidebar + Main Content) start from the left */
   justify-content: flex-start;
+  
+  /* Prevents the container from collapsing if content is short */
   flex: 1 0 auto;
+  
+  /* Technical safety: Ensures padding doesn't push the width past 1400px */
+  box-sizing: border-box;
 }
 
 .social-sidebar {
@@ -330,33 +347,51 @@ a.header-link {
 .main-content-wrapper {
   flex: 1;
   width: 100%;
+  /* Keep margin at 0 to stay pinned to the sidebar/left edge */
   margin: 0;
+  /* Keep your specific padding to maintain the visual 'home' position */
   padding: 100px 80px 80px 200px;
   display: flex;
+  /* Crucial: ensures children (Bio/Academic content) start at the left padding */
   justify-content: flex-start;
+  align-items: flex-start;
   box-sizing: border-box;
-}
 
+  /* Constrain the wrapper so it matches the Header and Content Container */
+  max-width: 1400px;
+  
+  /* Buffer on the right to push empty space away on ultrawide screens */
+  margin-right: auto;
+}
 .center-content {
   width: 100%;
-  max-width: 1600px;
+  /* Reduced to 1200px to keep the profile image from drifting too far 
+     away from the bio text on ultrawide monitors */
+  max-width: 1200px; 
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 
-  /* Gap grows on big screens, same on normal screens */
-  gap: clamp(80px, 6vw, 160px);
+  /* Gap grows slightly but stays anchored within a professional range */
+  gap: clamp(80px, 5vw, 120px);
 
+  /* Keeps the content pinned to your left padding/sidebar alignment */
   margin: 0;
+  
+  /* Buffer on the right to push empty space away from the content */
+  margin-right: auto; 
 }
-
 
 .bio-section {
   display: flex;
-  width: 732px;
+  /* Use max-width instead of width to stay responsive on smaller windows */
+  width: 100%;
+  max-width: 732px; 
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
+  /* Prevents the text box from stretching past the Figma design spec */
+  flex-shrink: 1; 
 }
 
 @media (min-width: 1800px) {
@@ -514,25 +549,35 @@ a.header-link {
 .academic-content {
   width: 100%;
   margin: 0;
-  padding: 75px 40px 80px 194px;
+  /* Keep your exact padding to maintain the position of the text */
+  padding: 75px 40px 80px 194px; 
   display: flex;
-  justify-content: flex-start;
+  /* Ensures the 'main-content' stays pinned to the left padding */
+  justify-content: flex-start; 
+  align-items: flex-start;
   flex: 1;
   box-sizing: border-box;
 
+  /* Functionality: Background transparency preserved */
   background: transparent !important;
   background-image: none !important;
-
   isolation: auto;
 }
 
 .academic-main-content {
-  flex: 1;
+  /* Prevent the flex child from shrinking below its content */
+  flex: 0 1 auto; 
   width: 100%;
+  /* Max-width as requested to avoid unreadably long lines on ultrawide */
   max-width: 820px;
 
+  /* Functionality: Background transparency preserved */
   background: transparent !important;
   background-image: none !important;
+  
+  /* Ensures that if the screen is wider than 820px, it stays on the left */
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .academic-section {
@@ -1541,22 +1586,33 @@ html, body {
   height: 100%;
 }
 
-/* ========== 1440px AND LARGER SCREENS ========== */
+/* ===== FINAL WIDE-SCREEN CONTENT LOCK (CLIENT REQUIREMENT) ===== */
 @media (min-width: 1440px) {
-  .center-content {
-    max-width: none;
+  /* 1. Limit the text width for readability */
+  .bio-section {
+    max-width: 732px;
+    margin-right: auto;
+    margin-left: 0;
   }
 
-  .academic-content {
-    max-width: none;
+  .academic-main-content {
+    max-width: 820px;
+    margin-right: auto;
+    margin-left: 0;
   }
 
-  .bio-title {
-    font-size: 38px;
-    line-height: 46px;
+  /* 2. Constrain the containers so they align with your 1400px header */
+  .center-content,
+  .academic-content,
+  .main-content-wrapper {
+    max-width: 1400px; 
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    width: 100%;
   }
 
-  .academic-title {
+  /* 3. Keep your title size updates */
+  .bio-title, .academic-title {
     font-size: 38px;
     line-height: 46px;
   }
@@ -1564,17 +1620,31 @@ html, body {
 
 /* ========== VERY LARGE SCREENS (1920px and above) ========== */
 @media (min-width: 1920px) {
+  /* 1. Structural Constraints: Match the header's lock-point */
   .main-content-wrapper,
-  .academic-content {
-    max-width: none;
-  }
-
+  .academic-content,
   .center-content {
-    max-width: none;
+    /* Change from 'none' to '1400px' to keep the menu tabs in reach */
+    max-width: 1400px;
+    width: 100%;
+    /* Anchor to the left so it stays aligned with 'Dr. Jordan Terry' */
+    margin-left: 0;
+    margin-right: auto;
   }
 
+  /* 2. Readability Constraints: Optimal line length for large text */
   .bio-section {
+    /* 850px is great for 1920px screens to keep text legible */
     max-width: 850px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .academic-main-content {
+    /* Keep academic citations slightly tighter for scanning */
+    max-width: 900px;
+    margin-left: 0;
+    margin-right: auto;
   }
 }
 
@@ -1707,3 +1777,6 @@ a:hover {
   color: var(--link-color);
   text-decoration: underline;
 }
+
+
+
