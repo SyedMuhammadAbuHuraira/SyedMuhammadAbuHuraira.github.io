@@ -343,9 +343,13 @@ a.header-link {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 80px;
+
+  /* Gap grows on big screens, same on normal screens */
+  gap: clamp(80px, 6vw, 160px);
+
   margin: 0;
 }
+
 
 .bio-section {
   display: flex;
