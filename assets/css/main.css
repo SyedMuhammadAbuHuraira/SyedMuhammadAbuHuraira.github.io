@@ -274,15 +274,16 @@ a.header-link {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    background: linear-gradient(
-        180deg,
-        var(--bg-primary) 0%,
-        var(--bg-primary) 25%,
-        var(--bg-secondary) 55%,
-        var(--bg-secondary) 85%,
-        var(--bg-tertiary) 100%
-    );
-    background-attachment: fixed;
+    
+    /* CRITICAL HDR FIX: Remove the background entirely */
+    /* This allows the body's gradient to show through perfectly */
+    background: transparent !important;
+    background-image: none !important;
+    
+    /* Remove any filters that might trigger a separate layer on HDR */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
     position: fixed;
     top: 80px;
     height: calc(100vh - 80px);
@@ -290,30 +291,33 @@ a.header-link {
     z-index: 90;
     border-right: 0.5px solid var(--border-color);
     
-    .social-icons {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-    
-    .social-icon {
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        img {
-            width: 100%;
-            height: 100%;
-            filter: brightness(0) saturate(100%) invert(71%) sepia(6%) saturate(259%) hue-rotate(180deg) brightness(92%) contrast(86%);
-            transition: filter 0.3s ease;
-        }
-        
-        &:hover img {
-            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-        }
-    }
+    /* Helps prevent the browser from creating a mismatched "backing store" */
+    isolation: auto; 
+}
+
+.social-sidebar .social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.social-sidebar .social-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-sidebar .social-icon img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) saturate(100%) invert(71%) sepia(6%) saturate(259%) hue-rotate(180deg) brightness(92%) contrast(86%);
+    transition: filter 0.3s ease;
+}
+
+.social-sidebar .social-icon:hover img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
 /* ========== HOMEPAGE DESKTOP (FIXED FOR ALL SCREEN SIZES) ========== */
@@ -500,67 +504,76 @@ a.header-link {
     padding: 4px 0; /* FIGMA: padding-top/bottom: 4px */
 }
 
-/* ========== ACADEMIC WORKS PAGE DESKTOP (FIXED FOR ALL SCREEN SIZES) ========== */
 .academic-content {
     width: 100%;
     margin: 0;
-    /* Desktop Padding - We will override this for mobile below */
-    padding: 75px 40px 80px 194px; 
+    padding: 75px 40px 80px 194px;
     display: flex;
     justify-content: flex-start;
     flex: 1;
     box-sizing: border-box;
-    /* CRITICAL: Remove background inheritance issues */
+
+    /* FORCE TRANSPARENCY */
     background: transparent !important;
     background-image: none !important;
+
+    /* THE HDR STABILIZER: Prevents the "box" effect around content */
+    isolation: auto; 
 }
 
+/* FULL-WIDTH LAYOUT PLANE (FIXES HDR SPLIT) */
 .academic-main-content {
     flex: 1;
     width: 100%;
+
+    /* Text column width — SAFE way */
+    max-width: 820px;
+
     background: transparent !important;
     background-image: none !important;
 }
 
+/* SECTION MUST NEVER BE FIT-CONTENT */
 .academic-section {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    /* CHANGE: This ensures the container only grows as wide as the text */
-    width: fit-content; 
-    max-width: 100%; /* Prevents it from going off-screen on mobile */
+
+    /* HDR FIX */
+    width: 100%;
+    max-width: 100%;
+
     background: transparent !important;
     background-image: none !important;
 }
 
+/* ---------- HEADER ---------- */
+
 .academic-header {
     width: 100%;
-    padding: 24px 0; /* Changed to 0 on sides to prevent double padding */
+    padding: 24px 0;
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
 .academic-title-container {
-    /* FIX: Changed width to max-width */
-    max-width: 100%; 
-    width: fit-content;
+    max-width: 100%;
+    width: 100%;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
 }
 
 .academic-title-row {
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px; /* FIGMA: gap: 8px */
     display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .academic-title {
-    /* FIX: Remove fixed width, use max-width */
-    max-width: 600px; 
+    max-width: 600px;
     width: 100%;
     font-size: 36px;
     line-height: 1.2;
@@ -570,68 +583,57 @@ a.header-link {
 }
 
 .academic-subtitle-row {
-    margin-top: 10px; /* FIGMA: gap: 10px */
+    margin-top: 10px;
 }
+
 .academic-subtitle {
-    max-width: 100%;
     color: var(--text-tertiary);
     font-size: 14px;
     font-style: italic;
-    
-    /* 1. Remove the positive margin */
-    margin-top: 0; 
-    
-    /* 2. Add a negative margin to 'pull' it up towards the title.
-       If your .academic-header gap is 32px, use -28px to leave a 4px space. 
-       If your gap is 40px, use -36px. */
-    margin-top: -28px !important; 
-    
-    /* 3. Ensure no default padding is pushing it down */
+
+    margin-top: -28px !important;
     padding-top: 0;
 }
 
-/* --- UNIFIED PUBLICATION ITEM STYLES --- */
-/* --- UNIFIED PUBLICATION ITEM STYLES --- */
+/* ---------- PUBLICATION ITEMS ---------- */
+
 .publication-item {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Internal spacing between title, authors, and meta */
-    
-    /* 1. Space between the text and the line (above the line) */
-    padding-bottom: 16px; 
-    
-    /* 2. The Line itself */
-    border-bottom: 0.30px solid #A4A4A4;
-    
-    /* 3. THE GAP: Space AFTER the separator line before next item start */
-    margin-bottom: 16px; 
-    
-    word-wrap: break-word; 
+    gap: 8px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+
+    /* CHANGE: Use your variable which is HDR-optimized */
+    border-bottom: 0.5px solid var(--border-color);
+
+    word-wrap: break-word;
     overflow-wrap: break-word;
+    background: transparent !important;
 }
 
-/* DESKTOP DESIGN: Adjusts spacing above the line, but keeps 16px below it */
+/* Desktop spacing */
 @media screen and (min-width: 1025px) {
     .publication-item {
-        padding-bottom: 24px; /* More breathing room above the line on desktop */
-        margin-bottom: 16px;  /* Maintains the strict 16px gap after the line */
+        padding-bottom: 24px;
+        margin-bottom: 16px;
     }
 }
 
-/* CLEANUP: Ensure no extra margins/borders on the last item */
+/* Cleanup */
 .publication-item:last-child {
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-/* First item doesn't need top padding to stay close to section title */
 .publication-item:first-child {
     padding-top: 0;
 }
 
-/* --- TYPOGRAPHY --- */
+/* ---------- TYPOGRAPHY ---------- */
+
 .publication-title {
     font-size: 22px;
     font-weight: 500;
@@ -652,7 +654,7 @@ a.header-link {
 }
 
 .publication-authors {
-    color: #D3D3D3;
+    color: var(--text-secondary);
     font-size: 18px;
     font-weight: 400;
     line-height: 28px;
@@ -660,7 +662,7 @@ a.header-link {
 }
 
 .publication-authors span {
-    font-weight: 600; /* Highlighting J. K. Terry */
+    font-weight: 600;
 }
 
 .publication-meta {
@@ -672,7 +674,8 @@ a.header-link {
     margin: 0;
 }
 
-/* --- NOTES SECTION --- */
+/* ---------- NOTES ---------- */
+
 .publication-notes {
     display: flex;
     flex-direction: column;
@@ -682,10 +685,10 @@ a.header-link {
 
 .publication-note {
     font-style: italic;
-    color: #D3D3D3;
-    font-weight: 400; 
-    font-size: 18px; 
-    line-height: 28px; 
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
     letter-spacing: 0.36px;
 }
 
@@ -741,20 +744,15 @@ a.header-link {
 
 /* Mobile/Tablet Footer - FIXED WITH SAME GRADIENT */
 .site-footer.mobile-footer {
-    background: linear-gradient(
-        180deg,
-        var(--bg-primary) 0%,
-        var(--bg-primary) 25%,
-        var(--bg-secondary) 55%,
-        var(--bg-secondary) 85%,
-        var(--bg-tertiary) 100%
-    );
-    background-attachment: fixed;
+    /* REMOVE the linear-gradient and background-attachment */
+    background: transparent !important;
+    background-image: none !important;
+    
+    /* Keep the structural styling */
     border-top: 0.5px solid var(--border-color);
     padding: 40px 160px;
     margin-top: auto;
     flex-shrink: 0;
-    display: none; /* Hidden by default, shown via media query */
 }
 
 .footer-content {
