@@ -837,31 +837,78 @@ a.header-link {
 }
 
 /* ========== TABLET STYLES (1024px and below) ========== */
+/* ========== TABLET & MOBILE STYLES (1024px and below) ========== */
 @media (max-width: 1024px) {
   body {
     padding-top: 60px;
+    /* Fix for "white box" flash on fast scroll */
+    background-color: var(--bg-primary); 
+    overflow-x: hidden;
   }
 
+  /* 1. HIDE ALL DESKTOP NAV ELEMENTS */
+  /* This prevents CV and Academic Works from appearing on the main bar */
+  .header-link-container,
+  .nav-links,
+  .header-right,
+  .desktop-menu {
+    display: none !important;
+  }
+
+  /* 2. HEADER BAR STRUCTURE */
   .header-bar {
     height: 60px;
-    padding: 0 40px;
+    padding: 0 24px; /* Global mobile/tablet side margin */
     border-bottom: 0.5px solid var(--border-color);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between !important; /* Pushes Name Left, Hamburger Right */
+    background-color: var(--bg-primary);
+    width: 100% !important;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
   }
 
+  /* 3. INTERNAL CONTAINER RESET */
+  .header-bar .container,
   .header-bar .row {
-    height: 60px;
-    width: 100%;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
     align-items: center;
-    position: relative;
+    height: 100%;
   }
 
+  /* 4. NAME (DR. JORDAN TERRY) - LEFT ANCHOR */
+  .header-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 1 auto;
+  }
+
+  .header-left a {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    padding-left: 0 !important;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+
+  /* 5. HAMBURGER MENU - RIGHT ANCHOR */
   .hamburger-menu {
-    display: flex !important;
+    display: flex !important; /* Forces icon visibility */
     width: 24px;
     height: 24px;
     background: transparent;
@@ -873,60 +920,48 @@ a.header-link {
     gap: 4px;
     z-index: 1002;
     position: relative;
-    margin: 0;
-    right: 0;
+    margin-left: auto !important; /* Pushes it to the far right edge */
 
     .hamburger-line {
       width: 100%;
       height: 2px;
       background-color: var(--text-primary);
       transition: transform 0.3s ease, opacity 0.3s ease;
+      border-radius: 2px;
     }
 
+    /* Animation for the "X" when menu is open */
     &[aria-expanded="true"] {
       .hamburger-line:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: rotate(45deg) translate(4px, 4px);
       }
-
       .hamburger-line:nth-child(2) {
         opacity: 0;
       }
-
       .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+        transform: rotate(-45deg) translate(4px, -4px);
       }
     }
   }
 
-  .header-link-container {
-    display: none !important;
-  }
-
-  .header-left a {
-    font-size: 18px;
-    position: relative;
-    z-index: 1002;
-    height: 60px;
-    display: flex;
-    align-items: center;
-  }
-
+  /* 6. MOBILE NAVIGATION OVERLAY */
   .mobile-nav-overlay {
     position: fixed;
     top: 60px;
     left: 0;
     width: 100%;
-    height: calc(100% - 60px);
+    height: calc(100vh - 60px); 
+    background: var(--bg-primary); 
     background: linear-gradient(180deg,
-      rgba(11, 11, 11, 0.98) 0%,
-      rgba(18, 18, 18, 0.95) 55%,
-      rgba(22, 22, 22, 0.92) 100%
+      rgba(11, 11, 11, 0.99) 0%,
+      rgba(18, 18, 18, 0.98) 100%
     );
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     z-index: 1001;
-    display: none;
+    display: none; /* Controlled by JS */
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     &.active {
       display: flex;
@@ -934,52 +969,42 @@ a.header-link {
     }
 
     .mobile-nav-content {
-      padding: 40px;
+      padding: 20px 24px;
       width: 100%;
-      flex: 1;
       display: flex;
       flex-direction: column;
-    }
-
-    .mobile-nav-header {
-      display: none !important;
     }
 
     .mobile-nav-links {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 8px;
       padding: 20px 0;
-      margin-top: 0;
     }
 
     .mobile-nav-link {
       color: var(--text-primary);
       font-size: 20px;
       font-weight: 400;
-      letter-spacing: 0.32px;
       text-decoration: none;
-      padding: 16px 0;
-      transition: all 0.3s ease;
+      padding: 20px 0;
       display: block;
       text-align: left;
-      border-bottom: none;
-      position: relative;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
 
-      &:hover {
-        padding-left: 12px;
-        opacity: 0.9;
-      }
-
-      &:active {
-        opacity: 0.7;
+      &:last-child {
+        border-bottom: none;
       }
     }
+  
 
-    .mobile-nav-close {
-      display: none !important;
-    }
+  /* Ensure closing/secondary buttons don't clutter the UI */
+  .mobile-nav-header, 
+  .mobile-nav-close {
+    display: none !important;
   }
+}
+  
 
   .content-container {
     flex-direction: column;
@@ -1201,18 +1226,58 @@ a.header-link {
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
+    background-color: var(--bg-primary); /* Fix for white flash scroll */
   }
 
+  /* 1. HIDE DESKTOP NAV - Ensures CV/Academic links don't crowd the bar */
+  .header-link-container,
+  .nav-links,
+  .header-right {
+    display: none !important;
+  }
+
+  /* 2. HEADER BAR - Absolute Left/Right Anchor */
   .header-bar {
-    padding: 0 24px;
+    height: 60px;
+    padding: 0 20px; /* Tighter padding for small mobile screens */
     border-bottom: 0.5px solid var(--border-color);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
+    align-items: center;
+    background-color: var(--bg-primary);
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* 3. ROW RESET - Kills the centering "auto" margins */
+  .header-bar .row,
+  .header-bar .container {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 4. NAME ALIGNMENT */
+  .header-left {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .header-left a {
+    font-size: 17px; /* Slightly smaller for small phones */
+    font-weight: 600;
+    padding-left: 0 !important;
+    display: flex;
     align-items: center;
   }
 
+  /* 5. HAMBURGER MENU - Fixed Visibility and Positioning */
   .hamburger-menu {
-    display: none;
+    display: flex !important; /* Changed from 'none' to show on mobile */
     width: 24px;
     height: 24px;
     background: transparent;
@@ -1224,7 +1289,8 @@ a.header-link {
     justify-content: center;
     align-items: center;
     gap: 4px;
-    z-index: 1001;
+    z-index: 1002;
+    margin-left: auto !important; /* Pushes to far right */
   }
 
   .hamburger-line {
@@ -1233,28 +1299,35 @@ a.header-link {
     background-color: var(--text-primary);
     transition: all 0.3s ease-in-out;
     display: block;
-    position: relative;
+    border-radius: 2px;
   }
 
+  /* 6. HAMBURGER ANIMATION (X STATE) */
   .hamburger-menu[aria-expanded="true"] {
     gap: 0;
   }
 
-  .hamburger-menu[aria-expanded="true"] .hamburger-line {
-    position: absolute;
-  }
-
   .hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(1) {
-    transform: rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
   }
 
   .hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(2) {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-10px);
   }
 
   .hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg);
+    transform: translateY(-2px) rotate(-45deg);
+  }
+
+  /* 7. OVERLAY ADJUSTMENTS FOR SMALL SCREENS */
+  .mobile-nav-overlay .mobile-nav-content {
+    padding: 30px 20px; /* Matches the header padding */
+  }
+
+  .mobile-nav-link {
+    font-size: 19px;
+    padding: 15px 0;
   }
 
   @media screen and (max-width: 1024px) {
