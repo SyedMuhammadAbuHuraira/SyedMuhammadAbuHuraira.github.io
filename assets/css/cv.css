@@ -765,10 +765,19 @@ a.header-link:hover {
     }
     
     /* Show footer on tablet and mobile */
-    .cv-footer {
+  .cv-footer {
         display: block;
-        padding: 40px 40px;
+        padding: 40px 24px; /* Standardized mobile padding */
         order: 2;
+        
+        /* THE FIX: Change transparent to your border variable */
+        border-top: 0.5px solid var(--border-color) !important; 
+        
+        /* CLEANUP: Remove the separate gradient so it doesn't "cut" the body background */
+        background: transparent !important; 
+        background-attachment: scroll; 
+        
+        margin-top: 40px; /* Space between content and the line */
     }
     
     .cv-desktop-footer {
