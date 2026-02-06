@@ -480,21 +480,52 @@ a.header-link {
 .profile-sidebar {
   flex: 0 0 255px;
   width: 255px;
-  position: sticky;
-  top: 120px;
+  position: relative;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* FIXED PROFILE CARD ON DESKTOP ONLY (1025px and above) */
+@media (min-width: 1025px) {
+  .profile-sidebar .profile-card {
+    width: 255px;
+    height: 412px;
+    position: fixed;
+    top: 180px; /* Adjust this value as needed */
+    z-index: 1;
+    background: transparent;
+  }
+}
+
+/* TABLET AND MOBILE - KEEP ORIGINAL LAYOUT */
+@media (max-width: 1024px) {
+  .profile-sidebar .profile-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100%;
+    max-width: 255px;
+    height: auto;
+  }
+  
+  .profile-sidebar {
+    position: static;
+    width: 100%;
+    padding: 0 0 30px 0;
+  }
+}
+
 .profile-sidebar .profile-card {
   width: 255px;
   height: 412px;
-  position: relative;
+  /* Make the card itself fixed */
+  position: fixed;
+  top: 170px;
+  z-index: 1;
   background: transparent;
 }
-
 .profile-sidebar .profile-image-container {
   width: 247px;
   height: 318px;
