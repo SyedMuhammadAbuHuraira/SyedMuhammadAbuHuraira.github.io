@@ -82,7 +82,7 @@ permalink: /cv.html
                 <div class="cv-item-position">Machine Learning Engineer</div>
             </div>
             <div class="cv-item-description">
-                Lead teams using for deep learning in embedded systems for intelligence applications. Later served in a consulting capacity for complex AI challenges.
+                Led teams using for deep learning in embedded systems for intelligence applications. Later served in a consulting capacity for complex AI challenges.
             </div>
         </div>
     </div>
