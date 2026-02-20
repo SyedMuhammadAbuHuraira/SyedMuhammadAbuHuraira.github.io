@@ -16,13 +16,11 @@
   --border-color: #696a6b;
 
   /* SINGLE SOURCE OF TRUTH (used by body everywhere) */
-  --bg-gradient: linear-gradient(
-    in oklab,
-    var(--bg-primary) 0%,
-    var(--bg-primary) 30%,
-    var(--bg-secondary) 65%,
-    var(--bg-tertiary) 100%
-  );
+  --bg-gradient: linear-gradient(in oklab,
+      var(--bg-primary) 0%,
+      var(--bg-primary) 30%,
+      var(--bg-secondary) 65%,
+      var(--bg-tertiary) 100%);
 }
 
 /* ========== 2. BODY — ONLY BACKGROUND OWNER ========== */
@@ -104,13 +102,11 @@ body::after,
 
       /* ✅ IMPORTANT: HDR swaps the SAME single gradient variable.
          No extra background painters anywhere. */
-      --bg-gradient: linear-gradient(
-        in oklab,
-        var(--bg-primary) 0%,
-        var(--bg-primary) 30%,
-        var(--bg-secondary) 65%,
-        var(--bg-tertiary) 100%
-      );
+      --bg-gradient: linear-gradient(in oklab,
+          var(--bg-primary) 0%,
+          var(--bg-primary) 30%,
+          var(--bg-secondary) 65%,
+          var(--bg-tertiary) 100%);
     }
   }
 }
@@ -127,13 +123,11 @@ body::after,
       --text-secondary: color(display-p3 0.83 0.83 0.83);
 
       /* ✅ keep single gradient consistent */
-      --bg-gradient: linear-gradient(
-        in oklab,
-        var(--bg-primary) 0%,
-        var(--bg-primary) 30%,
-        var(--bg-secondary) 65%,
-        var(--bg-tertiary) 100%
-      );
+      --bg-gradient: linear-gradient(in oklab,
+          var(--bg-primary) 0%,
+          var(--bg-primary) 30%,
+          var(--bg-secondary) 65%,
+          var(--bg-tertiary) 100%);
     }
   }
 }
@@ -153,7 +147,9 @@ body::after,
 }
 
 /* Reset CSS */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -180,32 +176,34 @@ body {
 
 /* ========== DESKTOP HEADER ========== */
 .header-bar {
-    height: 80px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    background-color: var(--bg-primary);
-    border-bottom: 0.5px solid var(--border-color);
-    display: flex;
-    justify-content: flex-start; /* Keeps the container anchored left */
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: var(--bg-primary);
+  border-bottom: 0.5px solid var(--border-color);
+  display: flex;
+  justify-content: flex-start;
+  /* Keeps the container anchored left */
 }
 
 /* 2. THE INNER CONTAINER - THE KEY FIX */
 .header-bar .container {
-    margin: 0; /* Prevents centering on zoom-out */
-    width: 100%;
-    /* Set this to the total width where you want the CV link to stop drifting */
-    max-width: 1400px; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    /* THE MAGIC NUMBER: Set this to match the padding-left of your 
+  margin: 0;
+  /* Prevents centering on zoom-out */
+  width: 100%;
+  /* Set this to the total width where you want the CV link to stop drifting */
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* THE MAGIC NUMBER: Set this to match the padding-left of your 
        main content (e.g., 160px or 200px) so it aligns with your text below */
-    padding-left: 160px; 
-    padding-right: 40px; 
+  padding-left: 160px;
+  padding-right: 40px;
 }
 
 .header-bar .row {
@@ -217,32 +215,32 @@ body {
 }
 
 .header-left {
-    flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 .header-left a {
-    color: var(--text-primary);
-    font-size: 20px;
-    font-weight: 600;
-    font-family: 'SF Pro Display', sans-serif;
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'SF Pro Display', sans-serif;
+  text-decoration: none;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
     text-decoration: none;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    transition: opacity 0.3s ease;
-    
-    &:hover {
-        opacity: 0.8;
-        text-decoration: none;
-    }
+  }
 }
 
 .header-link-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 40px;
-    height: 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+  height: 80px;
 }
 
 a.header-link {
@@ -274,21 +272,21 @@ a.header-link {
 .content-container {
   display: flex;
   width: 100%;
-  
+
   /* Matches your header's max-width for perfect vertical alignment.
      This ensures the site feels like a single, cohesive unit on 4K screens. */
-  max-width: 1400px; 
-  
+  max-width: 1400px;
+
   /* Keep it anchored to the left so it aligns with your header name */
-  margin: 0; 
+  margin: 0;
   padding: 0;
-  
+
   /* Ensures all children (Sidebar + Main Content) start from the left */
   justify-content: flex-start;
-  
+
   /* Prevents the container from collapsing if content is short */
   flex: 1 0 auto;
-  
+
   /* Technical safety: Ensures padding doesn't push the width past 1400px */
   box-sizing: border-box;
 }
@@ -359,15 +357,16 @@ a.header-link {
 
   /* Constrain the wrapper so it matches the Header and Content Container */
   max-width: 1400px;
-  
+
   /* Buffer on the right to push empty space away on ultrawide screens */
   margin-right: auto;
 }
+
 .center-content {
   width: 100%;
   /* Reduced to 1200px to keep the profile image from drifting too far 
      away from the bio text on ultrawide monitors */
-  max-width: 1200px; 
+  max-width: 1200px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -377,21 +376,21 @@ a.header-link {
 
   /* Keeps the content pinned to your left padding/sidebar alignment */
   margin: 0;
-  
+
   /* Buffer on the right to push empty space away from the content */
-  margin-right: auto; 
+  margin-right: auto;
 }
 
 .bio-section {
   display: flex;
   /* Use max-width instead of width to stay responsive on smaller windows */
   width: 100%;
-  max-width: 732px; 
+  max-width: 732px;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
   /* Prevents the text box from stretching past the Figma design spec */
-  flex-shrink: 1; 
+  flex-shrink: 1;
 }
 
 @media (min-width: 1800px) {
@@ -399,10 +398,12 @@ a.header-link {
     font-size: 48px;
     line-height: 56px;
   }
+
   .bio-intro {
     font-size: 24px;
     line-height: 34px;
   }
+
   .subsection-content {
     font-size: 20px;
     line-height: 32px;
@@ -410,23 +411,26 @@ a.header-link {
 }
 
 /* FIGMA: Bio title row with gap: 24px */
-.bio-section > :first-child {
+.bio-section> :first-child {
   margin-bottom: 0;
 }
 
 .bio-title {
-  font-size: 36px;
+  font-size: 28px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 44px;
+  line-height: 40px;
+  /* 142.857% */
   color: var(--text-primary);
   margin: 0;
 }
 
 .bio-intro {
-  font-size: 20px;
+  font-size: 17px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 0.40px;
+  line-height: normal;
+  letter-spacing: 0.17px;
   color: var(--text-primary);
   margin: 0;
 }
@@ -445,18 +449,20 @@ a.header-link {
 }
 
 .subsection-title {
-  font-size: 22px;
+  font-size: 19px;
+  font-style: normal;
   font-weight: 500;
-  line-height: 30px;
+  line-height: 26px;
   color: var(--text-primary);
   margin: 0;
   flex: 1;
 }
 
 .subsection-content {
-  font-size: 18px;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 28px;
+  line-height: normal;
   letter-spacing: 0.36px;
   color: var(--text-primary);
   margin: 0;
@@ -493,7 +499,8 @@ a.header-link {
     width: 255px;
     height: 412px;
     position: fixed;
-    top: 180px; /* Adjust this value as needed */
+    top: 180px;
+    /* Adjust this value as needed */
     z-index: 1;
     background: transparent;
   }
@@ -509,7 +516,7 @@ a.header-link {
     max-width: 255px;
     height: auto;
   }
-  
+
   .profile-sidebar {
     position: static;
     width: 100%;
@@ -526,6 +533,7 @@ a.header-link {
   z-index: 1;
   background: transparent;
 }
+
 .profile-sidebar .profile-image-container {
   width: 247px;
   height: 318px;
@@ -581,10 +589,10 @@ a.header-link {
   width: 100%;
   margin: 0;
   /* Keep your exact padding to maintain the position of the text */
-  padding: 75px 40px 80px 194px; 
+  padding: 75px 40px 80px 194px;
   display: flex;
   /* Ensures the 'main-content' stays pinned to the left padding */
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: flex-start;
   flex: 1;
   box-sizing: border-box;
@@ -597,7 +605,7 @@ a.header-link {
 
 .academic-main-content {
   /* Prevent the flex child from shrinking below its content */
-  flex: 0 1 auto; 
+  flex: 0 1 auto;
   width: 100%;
   /* Max-width as requested to avoid unreadably long lines on ultrawide */
   max-width: 820px;
@@ -605,7 +613,7 @@ a.header-link {
   /* Functionality: Background transparency preserved */
   background: transparent !important;
   background-image: none !important;
-  
+
   /* Ensures that if the screen is wider than 820px, it stays on the left */
   margin-left: 0;
   margin-right: auto;
@@ -651,9 +659,11 @@ a.header-link {
 .academic-title {
   max-width: 600px;
   width: 100%;
-  font-size: 36px;
-  line-height: 1.2;
+  font-size: 28px;
+  font-style: normal;
   font-weight: 400;
+  line-height: 40px;
+  /* 142.857% */
   color: var(--text-primary);
   margin: 0;
 }
@@ -666,7 +676,9 @@ a.header-link {
   color: var(--text-tertiary);
   font-size: 14px;
   font-style: italic;
-
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.14px;
   margin-top: -28px !important;
   padding-top: 0;
 }
@@ -675,9 +687,11 @@ a.header-link {
 
 .publication-item {
   width: 100%;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 10px;
   padding-bottom: 16px;
   margin-bottom: 16px;
 
@@ -718,6 +732,9 @@ a.header-link {
 }
 
 .publication-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--text-primary);
   text-decoration: none;
   transition: opacity 0.2s ease;
@@ -730,9 +747,10 @@ a.header-link {
 
 .publication-authors {
   color: var(--text-secondary);
-  font-size: 18px;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 28px;
+  line-height: normal;
   letter-spacing: 0.36px;
 }
 
@@ -741,9 +759,10 @@ a.header-link {
 }
 
 .publication-meta {
-  font-size: 18px;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 28px;
+  line-height: normal;
   letter-spacing: 0.36px;
   color: var(--text-secondary);
   margin: 0;
@@ -754,7 +773,9 @@ a.header-link {
 .publication-notes {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
   margin-top: 8px;
 }
 
@@ -762,8 +783,8 @@ a.header-link {
   font-style: italic;
   color: var(--text-secondary);
   font-weight: 400;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 17px;
+  line-height: 27px;
   letter-spacing: 0.36px;
 }
 
@@ -785,14 +806,12 @@ a.header-link {
 /* ========== FOOTER WITH GRADIENT ========== */
 /* Desktop Footer */
 .site-footer.desktop-only-footer {
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    var(--bg-primary) 25%,
-    var(--bg-secondary) 55%,
-    var(--bg-secondary) 85%,
-    var(--bg-tertiary) 100%
-  );
+  background: linear-gradient(180deg,
+      var(--bg-primary) 0%,
+      var(--bg-primary) 25%,
+      var(--bg-secondary) 55%,
+      var(--bg-secondary) 85%,
+      var(--bg-tertiary) 100%);
   background-attachment: fixed;
   border-top: 0.5px solid transparent;
   padding: 40px 160px;
@@ -873,7 +892,7 @@ a.header-link {
   body {
     padding-top: 60px;
     /* Fix for "white box" flash on fast scroll */
-    background-color: var(--bg-primary); 
+    background-color: var(--bg-primary);
     overflow-x: hidden;
   }
 
@@ -889,11 +908,13 @@ a.header-link {
   /* 2. HEADER BAR STRUCTURE */
   .header-bar {
     height: 60px;
-    padding: 0 24px; /* Global mobile/tablet side margin */
+    padding: 0 24px;
+    /* Global mobile/tablet side margin */
     border-bottom: 0.5px solid var(--border-color);
     display: flex;
     align-items: center;
-    justify-content: space-between !important; /* Pushes Name Left, Hamburger Right */
+    justify-content: space-between !important;
+    /* Pushes Name Left, Hamburger Right */
     background-color: var(--bg-primary);
     width: 100% !important;
     box-sizing: border-box;
@@ -922,13 +943,13 @@ a.header-link {
     align-items: center;
     justify-content: flex-start !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0!important;
     flex: 0 1 auto;
   }
 
   .header-left a {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-primary);
     text-decoration: none;
     padding-left: 0 !important;
@@ -939,7 +960,8 @@ a.header-link {
 
   /* 5. HAMBURGER MENU - RIGHT ANCHOR */
   .hamburger-menu {
-    display: flex !important; /* Forces icon visibility */
+    display: flex !important;
+    /* Forces icon visibility */
     width: 24px;
     height: 24px;
     background: transparent;
@@ -951,7 +973,8 @@ a.header-link {
     gap: 4px;
     z-index: 1002;
     position: relative;
-    margin-left: auto !important; /* Pushes it to the far right edge */
+    margin-left: auto !important;
+    /* Pushes it to the far right edge */
 
     .hamburger-line {
       width: 100%;
@@ -966,9 +989,11 @@ a.header-link {
       .hamburger-line:nth-child(1) {
         transform: rotate(45deg) translate(4px, 4px);
       }
+
       .hamburger-line:nth-child(2) {
         opacity: 0;
       }
+
       .hamburger-line:nth-child(3) {
         transform: rotate(-45deg) translate(4px, -4px);
       }
@@ -981,16 +1006,16 @@ a.header-link {
     top: 60px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 60px); 
-    background: var(--bg-primary); 
+    height: calc(100vh - 60px);
+    background: var(--bg-primary);
     background: linear-gradient(180deg,
-      rgba(11, 11, 11, 0.99) 0%,
-      rgba(18, 18, 18, 0.98) 100%
-    );
+        rgba(11, 11, 11, 0.99) 0%,
+        rgba(18, 18, 18, 0.98) 100%);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     z-index: 1001;
-    display: none; /* Controlled by JS */
+    display: none;
+    /* Controlled by JS */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
@@ -1000,7 +1025,7 @@ a.header-link {
     }
 
     .mobile-nav-content {
-      padding: 20px 24px;
+      padding: 0px 0px;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -1013,29 +1038,32 @@ a.header-link {
       padding: 20px 0;
     }
 
-    .mobile-nav-link {
-      color: var(--text-primary);
-      font-size: 20px;
-      font-weight: 400;
-      text-decoration: none;
-      padding: 20px 0;
-      display: block;
-      text-align: left;
-      border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+.mobile-nav-link {
+    display: flex;
+    padding: 14px 40px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    text-align: left;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
 
-      &:last-child {
+    &:last-child {
         border-bottom: none;
-      }
     }
-  
-
-  /* Ensure closing/secondary buttons don't clutter the UI */
-  .mobile-nav-header, 
-  .mobile-nav-close {
-    display: none !important;
-  }
 }
-  
+
+
+    /* Ensure closing/secondary buttons don't clutter the UI */
+    .mobile-nav-header,
+    .mobile-nav-close {
+      display: none !important;
+    }
+  }
+
 
   .content-container {
     flex-direction: column;
@@ -1116,7 +1144,7 @@ a.header-link {
 
     .profile-name {
       position: relative;
-      font-size: 22px;
+      font-size: 21px;
       letter-spacing: 0.44px;
       margin: 16px 0 4px 0;
       top: 0;
@@ -1129,7 +1157,7 @@ a.header-link {
 
     .profile-email {
       position: relative;
-      font-size: 16px;
+      font-size: 15px;
       letter-spacing: 0.32px;
       top: 0;
       left: 0;
@@ -1160,31 +1188,36 @@ a.header-link {
   }
 
   .bio-title {
-    font-size: 32px;
-    line-height: 40px;
-    margin: 0 0 24px 0;
+    font-size: 26px;
+    font-style: normal;
     font-weight: 400;
+    line-height: 24px;
+    /* 133.333% */
+    letter-spacing: -0.18px;
+
   }
 
   .bio-intro {
-    font-size: 18px;
-    line-height: 26px;
-    letter-spacing: 0.36px;
-    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-style: normal;
     font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.32px;
+
   }
 
   .subsection-title {
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 24px;
     font-weight: 500;
   }
 
   .subsection-content {
-    font-size: 16px;
-    line-height: 26px;
-    letter-spacing: 0.32px;
+    font-size: 15px;
+    font-style: normal;
     font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.3px;
   }
 
   .academic-content {
@@ -1200,9 +1233,12 @@ a.header-link {
   }
 
   .academic-title {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 26px;
+    font-style: normal;
     font-weight: 400;
+    line-height: 35px;
+    /* 134.615% */
+    letter-spacing: -0.26px;
   }
 
   .academic-subtitle {
@@ -1211,9 +1247,11 @@ a.header-link {
   }
 
   .publication-item {
-    padding: 16px;
+    display: flex;
+    padding: 14px 16px;
+    align-items: flex-start;
+    align-self: stretch;
     border-bottom: 0.30px solid #A4A4A4;
-    gap: 8px;
   }
 
   .publication-title {
@@ -1223,22 +1261,22 @@ a.header-link {
   }
 
   .publication-authors {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 15px;
+    line-height: normal;
     letter-spacing: 0.32px;
     font-weight: 400;
   }
 
   .publication-meta {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 26px;
     letter-spacing: 0.32px;
     font-weight: 400;
   }
 
   .publication-note {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 15px;
+    line-height: normal;
     letter-spacing: 0.32px;
     font-weight: 400;
   }
@@ -1257,7 +1295,8 @@ a.header-link {
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
-    background-color: var(--bg-primary); /* Fix for white flash scroll */
+    background-color: var(--bg-primary);
+    /* Fix for white flash scroll */
   }
 
   /* 1. HIDE DESKTOP NAV - Ensures CV/Academic links don't crowd the bar */
@@ -1270,7 +1309,8 @@ a.header-link {
   /* 2. HEADER BAR - Absolute Left/Right Anchor */
   .header-bar {
     height: 60px;
-    padding: 0 20px; /* Tighter padding for small mobile screens */
+    padding: 0 20px;
+    /* Tighter padding for small mobile screens */
     border-bottom: 0.5px solid var(--border-color);
     display: flex;
     justify-content: space-between !important;
@@ -1299,7 +1339,8 @@ a.header-link {
   }
 
   .header-left a {
-    font-size: 17px; /* Slightly smaller for small phones */
+    font-size: 17px;
+    /* Slightly smaller for small phones */
     font-weight: 600;
     padding-left: 0 !important;
     display: flex;
@@ -1308,7 +1349,8 @@ a.header-link {
 
   /* 5. HAMBURGER MENU - Fixed Visibility and Positioning */
   .hamburger-menu {
-    display: flex !important; /* Changed from 'none' to show on mobile */
+    display: flex !important;
+    /* Changed from 'none' to show on mobile */
     width: 24px;
     height: 24px;
     background: transparent;
@@ -1321,7 +1363,8 @@ a.header-link {
     align-items: center;
     gap: 4px;
     z-index: 1002;
-    margin-left: auto !important; /* Pushes to far right */
+    margin-left: auto !important;
+    /* Pushes to far right */
   }
 
   .hamburger-line {
@@ -1353,7 +1396,8 @@ a.header-link {
 
   /* 7. OVERLAY ADJUSTMENTS FOR SMALL SCREENS */
   .mobile-nav-overlay .mobile-nav-content {
-    padding: 30px 20px; /* Matches the header padding */
+    padding: 30px 20px;
+    /* Matches the header padding */
   }
 
   .mobile-nav-link {
@@ -1511,7 +1555,7 @@ a.header-link {
     }
 
     .profile-name {
-      font-size: 20px;
+      font-size: 18px;
       letter-spacing: 0.40px;
       margin: 16px 0 4px 0;
       top: 0;
@@ -1524,7 +1568,7 @@ a.header-link {
     }
 
     .profile-email {
-      font-size: 16px;
+      font-size: 14px;
       letter-spacing: 0.32px;
       top: 0;
       left: 0;
@@ -1553,31 +1597,35 @@ a.header-link {
   }
 
   .bio-title {
-    font-size: 26px;
-    line-height: 34px;
-    margin: 0 0 24px 0;
-    font-weight: 400;
+   font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 30px; /* 125% */
+letter-spacing: -0.24px;
   }
 
   .bio-intro {
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0.32px;
-    margin: 0 0 16px 0;
-    font-weight: 400;
+   font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.3px;
   }
 
   .subsection-title {
-    font-size: 17px;
-    line-height: 24px;
-    font-weight: 500;
+    font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.16px;
   }
 
   .subsection-content {
-    font-size: 15px;
-    line-height: 24px;
-    letter-spacing: 0.30px;
-    font-weight: 400;
+   font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.28px;
   }
 
   .academic-content {
@@ -1585,18 +1633,24 @@ a.header-link {
   }
 
   .academic-section {
-    gap: 32px;
+    gap: 28px;
   }
 
   .academic-title {
-    font-size: 26px;
-    line-height: 34px;
+    font-size: 24px;
+    font-style: normal;
     font-weight: 400;
+    line-height: 30px;
+    /* 125% */
+    letter-spacing: -0.24px;
   }
 
   .academic-subtitle {
     font-size: 12px;
+    font-style: italic;
     font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.12px;
   }
 
   .publication-item {
@@ -1612,17 +1666,19 @@ a.header-link {
   }
 
   .publication-authors {
-    font-size: 15px;
-    line-height: 24px;
-    letter-spacing: 0.30px;
+    font-size: 14px;
+    font-style: normal;
     font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.28px;
   }
 
   .publication-meta {
-    font-size: 15px;
-    line-height: 24px;
-    letter-spacing: 0.30px;
+    font-size: 14px;
+    font-style: normal;
     font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.28px;
   }
 
   .publication-note {
@@ -1686,12 +1742,14 @@ a.header-link {
   -moz-box-shadow: none !important;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 /* ===== FINAL WIDE-SCREEN CONTENT LOCK (CLIENT REQUIREMENT) ===== */
 @media (min-width: 1440px) {
+
   /* 1. Limit the text width for readability */
   .bio-section {
     max-width: 732px;
@@ -1709,21 +1767,23 @@ html, body {
   .center-content,
   .academic-content,
   .main-content-wrapper {
-    max-width: 1400px; 
+    max-width: 1400px;
     margin-left: 0 !important;
     margin-right: auto !important;
     width: 100%;
   }
 
   /* 3. Keep your title size updates */
-  .bio-title, .academic-title {
-    font-size: 38px;
-    line-height: 46px;
+  .bio-title,
+  .academic-title {
+    font-size: 28px;
+    line-height: 40px;
   }
 }
 
 /* ========== VERY LARGE SCREENS (1920px and above) ========== */
 @media (min-width: 1920px) {
+
   /* 1. Structural Constraints: Match the header's lock-point */
   .main-content-wrapper,
   .academic-content,
