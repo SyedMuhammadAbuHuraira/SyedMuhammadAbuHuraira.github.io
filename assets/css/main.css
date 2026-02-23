@@ -220,7 +220,7 @@ body {
 
 .header-left a {
   color: var(--text-primary);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   font-family: 'SF Pro Display', sans-serif;
   text-decoration: none;
@@ -245,7 +245,7 @@ body {
 
 a.header-link {
   color: var(--text-primary);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.32px;
   padding: 2px;
@@ -451,7 +451,7 @@ a.header-link {
 .subsection-title {
   font-size: 19px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 26px;
   color: var(--text-primary);
   margin: 0;
@@ -461,7 +461,7 @@ a.header-link {
 .subsection-content {
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
   letter-spacing: 0.36px;
   color: var(--text-primary);
@@ -566,8 +566,8 @@ a.header-link {
   left: 0;
   top: 344px;
   text-align: center;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 21px;
+  font-weight: 500;
   letter-spacing: 0.48px;
   color: #D3D3D3;
 }
@@ -578,7 +578,7 @@ a.header-link {
   left: 0;
   top: 375px;
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.32px;
   color: #FAFAFA;
@@ -1215,7 +1215,7 @@ a.header-link {
   .subsection-content {
     font-size: 15px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: normal;
     letter-spacing: 0.3px;
   }
@@ -1623,7 +1623,7 @@ letter-spacing: -0.16px;
   .subsection-content {
    font-size: 14px;
 font-style: normal;
-font-weight: 400;
+font-weight: 300;
 line-height: normal;
 letter-spacing: 0.28px;
   }
@@ -1934,7 +1934,7 @@ body {
 /* Link styles */
 a {
   color: var(--link-color);
-  text-decoration: none;
+  text-decoration: none; /* This adds the underline permanently */
 }
 
 a:hover {
