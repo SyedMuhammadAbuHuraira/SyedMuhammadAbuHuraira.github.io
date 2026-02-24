@@ -49,10 +49,10 @@ permalink: /academic-works.html
                             {% endif %}
                         </h3>
                         
-                        <div class="publication-authors">
-                            {% assign bold_author_name = '<span class="author-name">' | append: site.author_name | append: '</span>' %}
-                            {{pub.authors | replace: site.author_name, bold_author_name}}
-                        </div>
+                      <div class="publication-authors">
+    {% assign bold_author_name = '<span class="author-name" style="font-size: 17px; font-weight: 600;">' | append: site.author_name | append: '</span>' %}
+    {{pub.authors | replace: site.author_name, bold_author_name}}
+</div>
                         
                         <div class="publication-meta">
                             <span class="publication-venue">{{pub.location}}</span>
