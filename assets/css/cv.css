@@ -293,31 +293,33 @@ a.header-link:hover {
     .mobile-nav-links {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        padding: 20px 0;
+        gap: 0px;
+        padding: 0px 0;
     }
 
     .mobile-nav-link {
-        display: flex;
-        padding: 14px 40px;
-        align-items: center;
-        gap: 10px;
-        align-self: stretch;
-        color: var(--text-primary);
-        font-size: 20px;
-        font-weight: 400;
-        text-decoration: none;
-        text-align: left;
-        border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    padding: 0 40px; /* Changed from 14px 40px to remove vertical padding */
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    color: var(--text-primary);
+    font-size: 15px; /* Changed from 20px to 15px */
+    font-weight: 400;
+    text-decoration: none;
+    text-align: left;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+    line-height: 46px; /* Added line height */
+    height: 46px; /* Added fixed height */
 
-        &:last-child {
-            border-bottom: none;
-        }
-
-        &:active {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
+    &:last-child {
+        border-bottom: none;
     }
+
+    &:active {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
 }
 
 /* Remove old conflicting styles */
@@ -516,7 +518,7 @@ a.header-link:hover {
     font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 17px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: normal;
     letter-spacing: 0.17px;
 }
@@ -526,7 +528,7 @@ a.header-link:hover {
     font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: normal;
     letter-spacing: 0.36px;
     max-width: 100%;
