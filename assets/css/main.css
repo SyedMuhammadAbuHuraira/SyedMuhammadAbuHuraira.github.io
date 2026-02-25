@@ -725,7 +725,7 @@ a.header-link {
 /* ---------- TYPOGRAPHY ---------- */
 
 .publication-title {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 500;
   line-height: 30px;
   color: var(--text-primary);
@@ -739,9 +739,20 @@ a.header-link {
   color: var(--text-primary);
   text-decoration: none;
   transition: opacity 0.2s ease;
-  font-size: 19px; /* Titles are now 19px instead of 22px */
+  font-size: 19px; /* Desktop default */
 }
 
+/* Tablet and mobile */
+@media (max-width: 1024px) {
+  .publication-link {
+    font-size: 18px;
+  }
+}
+@media (max-width: 768px) {
+  .publication-link {
+    font-size: 16px; /* Mobile */
+  }
+}
 .publication-link:hover {
   text-decoration: underline;
   opacity: 0.9;
@@ -833,7 +844,7 @@ a.header-link {
 .site-footer.desktop-only-footer .copyright {
   color: var(--text-tertiary);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
   margin: 0;
   opacity: 0.9;
 }
@@ -884,7 +895,7 @@ a.header-link {
 .footer-copyright {
   color: var(--text-tertiary);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
   text-align: center;
 }
 
@@ -1048,7 +1059,7 @@ a.header-link {
     align-self: stretch;
     color: var(--text-primary);
     font-size: 15px; /* Changed from 20px to 15px */
-    font-weight: 400;
+    font-weight: 300;
     text-decoration: none;
     text-align: left;
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
@@ -1165,7 +1176,7 @@ a.header-link {
       top: 0;
       left: 0;
       color: #FAFAFA;
-      font-weight: 400;
+      font-weight: 300;
       text-align: center;
       width: 100%;
       padding: 4px 0;
@@ -1267,21 +1278,21 @@ a.header-link {
     font-size: 15px;
     line-height: normal;
     letter-spacing: 0.32px;
-    font-weight: 400;
+    font-weight: 300;
   }
 
   .publication-meta {
     font-size: 15px;
     line-height: 26px;
     letter-spacing: 0.32px;
-    font-weight: 400;
+    font-weight: 300;
   }
 
   .publication-note {
     font-size: 15px;
     line-height: normal;
     letter-spacing: 0.32px;
-    font-weight: 400;
+    font-weight: 300;
   }
 
   .social-sidebar {
@@ -1494,7 +1505,7 @@ a.header-link {
 .mobile-nav-overlay .mobile-nav-link {
     color: var(--text-primary);
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 0.32px;
     text-decoration: none;
     padding: 0 40px; /* Removed vertical padding */
@@ -1578,7 +1589,7 @@ a.header-link {
       top: 0;
       left: 0;
       color: #FAFAFA;
-      font-weight: 400;
+      font-weight: 300;
       padding: 4px 0;
       text-align: center;
       width: 100%;
@@ -1612,7 +1623,7 @@ letter-spacing: -0.24px;
   .bio-intro {
    font-size: 15px;
 font-style: normal;
-font-weight: 400;
+font-weight: 300;
 line-height: normal;
 letter-spacing: 0.3px;
   }
@@ -1626,12 +1637,12 @@ letter-spacing: -0.16px;
   }
 
   .subsection-content {
-   font-size: 14px;
-font-style: normal;
-font-weight: 300;
-line-height: normal;
-letter-spacing: 0.28px;
-  }
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.6; /* Increased for better readability on mobile */
+    letter-spacing: 0.35px; /* Slightly increased for mobile */
+  } 
 
   .academic-content {
     padding: 32px 24px 32px 24px;
