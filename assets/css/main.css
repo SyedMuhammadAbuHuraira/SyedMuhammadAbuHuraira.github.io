@@ -827,18 +827,28 @@ a.header-link {
       var(--bg-tertiary) 100%);
   background-attachment: fixed;
   border-top: 0.5px solid transparent;
-  padding: 40px 160px;
+  padding: 40px 0; /* Vertical padding only */
   margin-top: auto;
   flex-shrink: 0;
-  display: none;
+  display: flex;
+  width: 100%;
 }
 
 .site-footer.desktop-only-footer .footer-content {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  
+  /* MATCHES YOUR CONTENT-CONTAINER EXACTLY */
   width: 100%;
-  text-align: center;
+  max-width: 1400px; 
+  margin: 0; 
+  
+  /* Use the same padding your main text uses to avoid touching the screen edge */
+  /* If your sidebar/main content has a 200px gap, use 200px here */
+  padding-left: 200px; 
+  
+  box-sizing: border-box;
 }
 
 .site-footer.desktop-only-footer .copyright {
@@ -847,6 +857,7 @@ a.header-link {
   font-weight: 300;
   margin: 0;
   opacity: 0.9;
+  text-align: left;
 }
 
 /* Mobile/Tablet Footer - FIXED WITH SAME GRADIENT */
